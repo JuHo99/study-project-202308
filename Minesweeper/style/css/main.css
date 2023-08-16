@@ -1,0 +1,14 @@
+@import url(./common.css);
+
+.menuIcon .lnr-menu {
+  position: absolute;
+  top: 15px;
+  left: 25px;
+  color: #000000;
+}
+.closedIcon .lnr-cross-circle {
+  position: absolute;
+  top: 15px;
+  right: 25px;
+  color: #ff0000;
+}
