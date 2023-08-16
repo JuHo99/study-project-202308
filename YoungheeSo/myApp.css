@@ -1,8 +1,45 @@
 
+*{
+    box-sizing: border-box;
+}
+
 body{
+    background: #C9FFFC;    
+}
+
+.main-game-play{
     width: 75vw;
     height: 80vh;
-    background: #C9FFFC;
-    margin: 10vh auto 0;
 
+    background: #fff;
+    margin: 10vh auto 0;
+    padding: 50px 0;
+
+    display: flex; justify-content: center;
+}
+
+.game-movement .read-Output{
+    width: 70vw; height: 15vh; 
+
+    background: red;
+    border: 1px solid #000;
+    border-radius: 15px;
+
+    margin-bottom: 10px;
+    padding: 20px; text-align: justify;
+
+    display: flex; justify-content: center; align-content: center;
+}
+
+.game-movement .write-userInput{
+    width: 70vw; height: 15vh; 
+
+    background: orange;
+    border: 1px solid #000;
+    border-radius: 15px;
+
+    margin-bottom: 10px;
+    padding: 20px; text-align: justify;
+
+    display: flex; justify-content: center; align-content: center;
 }
