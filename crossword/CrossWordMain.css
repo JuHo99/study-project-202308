@@ -1,0 +1,24 @@
+@import url(./common.css);
+
+#crossWordBody .container {
+  width: 75%;
+  height: 80vh;
+  background: #ffffff;
+  margin: 10vh auto 0;
+  position: relative;
+}
+
+#crossWordBody .container .gameBox {
+  width: 65%;
+  height: 100%;
+  display: flex;
+  background: #e2e2e2;
+}
+
+#crossWordBody .container .gameBox .box {
+}
+
+#crossWordBody .container .explainBox {
+  width: 35%;
+  height: 100%;
+}
