@@ -12,3 +12,28 @@
   right: 25px;
   color: #ff0000;
 }
+
+.container .gameBox {
+  height: 100%;
+  /* background: lightblue; */
+}
+.container .gameBox .mainTitle {
+  height: 100%;
+
+  font-size: 25px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.container .gameBox .mainTitle h1 {
+  font-size: 50px;
+  font-weight: 700;
+}
+.container .gameBox .mainTitle .levels a {
+  padding: 15px;
+  border: 1px solid #000;
+  border-radius: 25%;
+  margin: 0 20px;
+}
