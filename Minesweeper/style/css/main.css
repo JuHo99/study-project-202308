@@ -14,28 +14,41 @@
   color: #ff0000;
 }
 /* 메뉴바 */
-.container .menu{
+.container .menu {
   width: 40%;
   height: 100%;
   background: blanchedalmond;
   position: absolute;
   z-index: 1;
 }
-.container .menu.hide{
+.container .menu.hide {
   display: none;
 }
-.container .menu .menuItem{
+.container .menu .menuItem {
   width: 70%;
   height: 150px;
   border: 1px solid #000;
-  margin-top: 7vh;
-  margin-left: 8vh;
+  margin-top: 10%;
+  margin-left: 15%;
 }
-.container .menu .menuItem .gameImg{
+.container .menu .menuItem .gameImg {
   height: 80%;
-  background: url('../../cat.png') 
-  no-repeat center;
+}
+#backdrop {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 1;
+  pointer-events: none;
+  display: none;
+}
 
+#backdrop.visible {
+  display: block;
+  pointer-events: all;
 }
 
 /* 게임 창 */
@@ -43,24 +56,3 @@
   height: 100%;
   /* background: lightblue; */
 }
-.container .gameBox .mainTitle {
-  height: 100%;
-
-  font-size: 25px;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  align-items: center;
-}
-.container .gameBox .mainTitle h1 {
-  font-size: 50px;
-  font-weight: 700;
-}
-.container .gameBox .mainTitle .levels a {
-  padding: 15px;
-  border: 1px solid #000;
-  border-radius: 25%;
-  margin: 0 20px;
-}
-
