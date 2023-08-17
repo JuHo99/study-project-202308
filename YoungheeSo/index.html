@@ -3,20 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css">    
+    <link rel="stylesheet" href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css"/>
     <link rel="stylesheet" href="/YoungheeSo/myApp.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css">
+    
+    <script src="./menuBar/menuBar.js" defer></script>    
+    
     <title></title>
 </head>
-<body>    
-    <div class="main-game-play">
-        <div class="game-movement">
-            <div class="read-Output">
-                <!-- Lorem ipsum dolor sit amet consectetur adipisicing elit.  -->
-                <!-- Aliquam optio eveniet ab natus ratione nisi quae sunt inventore ad quibusdam, 
-                officia omnis qui quia dolorem atque sapiente. Blanditiis, aliquam quo. -->
-            </div>
-            <input type="text" class="write-userInput">            
+
+<body>
+
+    <section class="container">
+        <div id="backdrop"></div>
+
+        <ul class="menu hide">
+          <a href="">
+            <li class="menuItem">
+              <img class="gameImg"></img>
+              <p class="gameName">안녕하세요</p>
+            </li>
+          </a>
+          <a href="">
+            <li class="menuItem">
+              <img class="gameImg"></img>
+              <p class="gameName">ㅎㅇ</p>
+            </li>
+          </a>
+          <a href="">
+            <li class="menuItem">
+              <img class="gameImg"></img>
+              <p class="gameName">ㅎㅇ</p>
+            </li>
+          </a>
+          <a href="">
+            <li class="menuItem">
+              <img class="gameImg"></img>
+              <p class="gameName">ㅎㅇ</p>
+            </li>
+          </a>
+        </ul>
+
+        <div class="icons">
+          <div class="menuIcon"><span class="lnr lnr-menu"></span></div>
+          <div class="closedIcon"><a href="#"><span class="lnr lnr-cross-circle"></span></a></div>
         </div>
-    </div>    
+    
+        <div class="gameBox">
+            <div class="main-game-play">
+                <div class="game-movement">
+                    <div class="read-Output">출력창</div>
+                    <input type="text" class="write-userInput">            
+                </div>
+            </div>
+        </div>   
+
+      </section>
+
 </body>
 </html>

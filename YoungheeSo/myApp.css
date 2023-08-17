@@ -1,24 +1,47 @@
+@import url(./menuBar/menuBar.css);
+
+@font-face {
+    font-family: 'ONE-Mobile-POP';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/ONE-Mobile-POP.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
 
 *{
     box-sizing: border-box;
 }
 
-body{
-    background: #C9FFFC;    
+body{    
+    background: #C9FFFC;   
 }
 
-.main-game-play{
-    width: 75vw;
-    height: 80vh;
+.container {
+    font-family: 'ONE-Mobile-POP';
 
+    width: 75%;
+    height: 80vh;
+    background: #ffffff;
+    margin: 10vh auto 0;
+    position: relative;
+  }
+  
+  .container .icons {
+    font-size: 3em;
+    opacity: 0.4;
+  }
+
+
+/* .main-game-play .game-movement{
+    width: 75%;
+    height: 80vh;
     background: #fff;
     margin: 10vh auto 0;
-    padding: 50px 0;
+    position: relative;
+    display: flex;
+    
+} */
 
-    display: flex; justify-content: center;
-}
-
-.game-movement .read-Output{
+.main-game-play .game-movement .read-Output{
     width: 70vw; height: 15vh; 
 
     background: red;
@@ -27,11 +50,12 @@ body{
 
     margin-bottom: 10px;
     padding: 20px; text-align: justify;
+    /* font-family: 'ONE-Mobile-POP'; */
 
     display: flex; justify-content: center; align-content: center;
 }
 
-.game-movement .write-userInput{
+.main-game-play .game-movement .write-userInput{
     width: 70vw; height: 15vh; 
 
     background: orange;
