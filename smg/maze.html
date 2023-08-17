@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="UTF-8" />
-    <title>Random Maze Generator</title>
+    <title>미로 탈출하기</title>
     <link rel="stylesheet" href="./css/maze.css" />
     <link
       rel="stylesheet"
@@ -11,34 +11,31 @@
     <script src="./js/maze.js" defer></script>
   </head>
   <body>
-    <div id="bg">
-      <header id="crossWordHeader"></header>
-      <div class="container">
-        <div class="gameBox">
-          <div class="box">
-            <div id="mazeMain">
-              <!-- <div class="menuIcon"><span class="lnr lnr-menu-circle"></span></div> -->
-              <div class="menuIcon"><span class="lnr lnr-menu"></span></div>
-              <!-- <div class="closedIcon"><span class="lnr lnr-cross-circle"></span></div> -->
-              <div class="closedIcon"><span class="lnr lnr-cross"></span></div>
-              <canvas id="maze"></canvas>
+    <div class="container">
+      <div class="gameBox">
+        <div class="box">
+          <div id="mazeMain">
+            <!-- <div class="menuIcon"><span class="lnr lnr-menu-circle"></span></div> -->
+            <div class="menuIcon"><span class="lnr lnr-menu"></span></div>
+            <!-- <div class="closedIcon"><span class="lnr lnr-cross-circle"></span></div> -->
+            <div class="closedIcon"><span class="lnr lnr-cross"></span></div>
+            <canvas id="maze"></canvas>
 
-              <br />
+            <br />
 
-              Maze Size(Min: 5, Max : 29)<br />
-              <input type="text" id="sizeInput" onkeyup="enterkey();" />
+            Maze Size(Min: 5, Max : 29)<br />
+            <input type="text" id="sizeInput" onkeyup="enterkey();" />
 
-              <br />
-              <br />
+            <br />
+            <br />
 
-              <label id="text"></label>
-              <br />
-              <label id="count"></label>
-            </div>
+            <label id="text"></label>
+            <br />
+            <label id="count"></label>
           </div>
-          <div class="explainBox">
-            <div class="box"></div>
-          </div>
+        </div>
+        <div class="explainBox">
+          <div class="box"></div>
         </div>
       </div>
     </div>
