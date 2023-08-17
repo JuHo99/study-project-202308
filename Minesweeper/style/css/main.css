@@ -1,5 +1,6 @@
 @import url(./common.css);
 
+/* 닫기랑 메뉴 */
 .menuIcon .lnr-menu {
   position: absolute;
   top: 15px;
@@ -12,10 +13,34 @@
   right: 25px;
   color: #ff0000;
 }
+/* 메뉴바 */
+.container .menu{
+  width: 40%;
+  height: 100%;
+  background: blanchedalmond;
+  position: absolute;
+  z-index: 1;
+}
+.container .menu.hide{
+  display: none;
+}
+.container .menu .menuItem{
+  width: 70%;
+  height: 150px;
+  border: 1px solid #000;
+  margin-top: 7vh;
+  margin-left: 8vh;
+}
+.container .menu .menuItem .gameImg{
+  height: 80%;
+  background: url('../../cat.png') 
+  no-repeat center;
 
+}
+
+/* 게임 창 */
 .container .gameBox {
   height: 100%;
-  z-index: -1;
   /* background: lightblue; */
 }
 .container .gameBox .mainTitle {
@@ -39,15 +64,3 @@
   margin: 0 20px;
 }
 
-.container .menu{
-  width: 40%;
-  height: 100%;
-  background: blanchedalmond;
-  position: absolute;
-
-}
-.container .menu .menuItem{
-  width: 20%;
-  height: 100px;
-  border: 1px solid #000;
-}
