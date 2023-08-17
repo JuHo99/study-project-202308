@@ -1,0 +1,37 @@
+
+*{
+    box-sizing: border-box;
+}
+
+body{
+    background: #C9FFFC;
+}
+
+#collection-of-games{
+    background: #fff;
+    width: 75%; height: 80vh;
+    margin: 10vh auto;
+
+    display: flex; justify-content: center; align-content: center;
+    flex-wrap: wrap;
+    
+}
+
+#collection-of-games li{
+    width: 40%; height: 40%;
+    display: flex; justify-content: center; 
+    flex-wrap: wrap;
+}
+
+#collection-of-games .game-access{
+    border: 1px solid #000;
+    margin: 10px auto;
+    width: 90%; height: 70%;
+}
+
+#collection-of-games .game-name{
+    border: 1px solid #000;
+    width: 150px; height: 25px;
+    margin: 5px auto;
+
+}
