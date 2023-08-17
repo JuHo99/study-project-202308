@@ -3,43 +3,42 @@
   <head>
     <meta charset="UTF-8" />
     <title>Random Maze Generator</title>
-    <link rel="stylesheet" href="maze.css" />
+    <link rel="stylesheet" href="./css/maze.css" />
     <link
       rel="stylesheet"
       href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css"
     />
-    <script src="./CrossWordMain.js" defer></script>
-    <script src="maze.js" defer></script>
+    <script src="./js/maze.js" defer></script>
   </head>
-  <body id="crossWordBody">
-    <header id="crossWordHeader"></header>
-    <div class="container">
-      <div class="gameBox">
-        <div class="box">
-          <div id="mazeMain">
-            <!-- <div class="menuIcon"><span class="lnr lnr-menu-circle"></span></div> -->
-            <div class="menuIcon"><span class="lnr lnr-menu"></span></div>
-            <!-- <div class="closedIcon"><span class="lnr lnr-cross-circle"></span></div> -->
-            <div class="closedIcon"><span class="lnr lnr-cross"></span></div>
-            <canvas id="maze"></canvas>
+  <body>
+    <div id="bg">
+      <header id="crossWordHeader"></header>
+      <div class="container">
+        <div class="gameBox">
+          <div class="box">
+            <div id="mazeMain">
+              <!-- <div class="menuIcon"><span class="lnr lnr-menu-circle"></span></div> -->
+              <div class="menuIcon"><span class="lnr lnr-menu"></span></div>
+              <!-- <div class="closedIcon"><span class="lnr lnr-cross-circle"></span></div> -->
+              <div class="closedIcon"><span class="lnr lnr-cross"></span></div>
+              <canvas id="maze"></canvas>
 
-            <br />
-            <br />
+              <br />
 
-            Maze Size(Min: 5, Max : 29)<br /><input
-              type="text"
-              id="sizeInput"
-              onkeyup="enterkey();"
-            />
+              Maze Size(Min: 5, Max : 29)<br />
+              <input type="text" id="sizeInput" onkeyup="enterkey();" />
 
-            <br />
-            <br />
+              <br />
+              <br />
 
-            <label id="text"></label>
+              <label id="text"></label>
+              <br />
+              <label id="count"></label>
+            </div>
           </div>
-        </div>
-        <div class="explainBox">
-          <div class="box"></div>
+          <div class="explainBox">
+            <div class="box"></div>
+          </div>
         </div>
       </div>
     </div>

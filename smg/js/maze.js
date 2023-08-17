@@ -9,6 +9,7 @@ var stack
 var stucked
 
 var x, y
+var count = 0;
 
 window.onload = function () {
     canv = document.getElementById('maze')
@@ -97,26 +98,29 @@ function keyPush(evt) {
         ctx.fillRect((x - xv) * gs, (y - yv) * gs, gs, gs)
         document.getElementById('text').innerHTML =
             'x좌표: ' + x + ' y좌표: ' + y
+        count++;
+        document.getElementById('count').innerHTML = '이동횟수 : ' + count;
         if (x == tc - 1 && y == tc - 2) {
-            alert('You Win!')
+            alert(`탈출 성공! \n이동횟수: ${count}회`);
+            count = 0;
             initialize()
         }
     }
 }
 
 function make2DArray() {
-    console.log('tc: ' + tc)
+    // console.log('tc: ' + tc)
     field = new Array(parseInt(tc))
     for (var i = 0; i < field.length; i++) {
         field[i] = new Array(parseInt(tc))
     }
-    console.log('field length: ' + field.length)
+    // console.log('field length: ' + field.length)
     for (var i = 0; i < field.length; i++) {
         for (var j = 0; j < field[i].length; j++) {
             field[i][j] = 0 // value of 0 is for not visited, 1 for visited, 2 for backtracked.
         }
     }
-    console.log('field: ' + field)
+    // console.log('field: ' + field)
 }
 
 function randomMazeGenerator() {
@@ -124,7 +128,7 @@ function randomMazeGenerator() {
     while (stack.length > 0) {
         if (stucked) backtracking()
         else tracking()
-        //console.log("cnt: " + cnt++);
+        // console.log("cnt: " + cnt++);
     }
 }
 
