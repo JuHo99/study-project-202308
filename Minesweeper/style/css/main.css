@@ -37,18 +37,6 @@
   box-shadow: 5px 5px 10px #9c9c9c;
 }
 
-.menu .game-name {
-  /* border: 1px solid #000; */
-  width: 180px;
-  height: 25px;
-  margin: 0px auto;
-
-  display: flex;
-  justify-content: center;
-  font-weight: 700;
-  font-size: 1.5em;
-}
-
 #backdrop {
   position: absolute;
   width: 100%;
@@ -70,4 +58,25 @@
 .container .gameBox {
   height: 100%;
   /* background: lightblue; */
+}
+
+.container .gameBox .mainTitle {
+  height: 100%;
+
+  font-size: 25px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.container .gameBox .mainTitle h1 {
+  font-size: 50px;
+  font-weight: 700;
+}
+.container .gameBox .mainTitle .levels a {
+  padding: 15px;
+  border: 1px solid #000;
+  border-radius: 25%;
+  margin: 0 20px;
 }

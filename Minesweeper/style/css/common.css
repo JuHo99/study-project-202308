@@ -14,12 +14,20 @@
   font-weight: normal;
   font-style: normal;
 }
-
-* {
-  box-sizing: border-box;
+@font-face {
+  font-family: 'ONE-Mobile-Title';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/ONE-Mobile-Title.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
 }
-p {
+* {
+box-sizing: border-box;
+}
+p{
   font-family: 'ONE-Mobile-Regular';
+}
+h1 {
+  font-family: 'ONE-Mobile-Title';
 }
 .clearfix::after {
   content: '';
