@@ -42,7 +42,9 @@ function initialize() {
     canv.width = canv.height = tc * gs
     ctx.fillRect(0, 0, canv.width, canv.height)
 
+    // 시작지점 만들기
     makeWay(0, 1)
+    // 출구 만들기
     makeWay(tc - 1, tc - 2)
 
     px = py = 1
@@ -59,13 +61,13 @@ function initialize() {
     ctx.fillStyle = 'red'
     ctx.fillRect(x * gs, y * gs, gs, gs)
 }
-
 function makeWay(xx, yy) {
     //console.log("makeWay: " + xx + " " + yy);
     field[yy][xx]++
     ctx.fillStyle = 'white'
     ctx.fillRect(xx * gs, yy * gs, gs, gs)
 }
+
 function keyPush(evt) {
     switch (evt.keyCode) {
         case 37:
