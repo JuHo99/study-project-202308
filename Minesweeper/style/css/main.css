@@ -1,5 +1,6 @@
 @import url(./common.css);
 
+
 /* 닫기랑 메뉴 */
 .menuIcon .lnr-menu {
   position: absolute;
@@ -31,9 +32,23 @@
   margin-top: 10%;
   margin-left: 15%;
 }
-.container .menu .menuItem .gameImg {
-  height: 80%;
+
+.container .menu .menuItem:hover {
+  box-shadow: 5px 5px 10px #9c9c9c;
 }
+
+.menu .game-name {
+  /* border: 1px solid #000; */
+  width: 180px;
+  height: 25px;
+  margin: 0px auto;
+
+  display: flex;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1.5em;
+}
+
 #backdrop {
   position: absolute;
   width: 100%;
