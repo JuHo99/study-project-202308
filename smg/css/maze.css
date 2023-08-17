@@ -4,6 +4,12 @@ body {
     background: #c9fffc;
 }
 
+p,
+input,
+label {
+    font-family: 'ONE-Mobile-POP';
+}
+
 .menuIcon .lnr-menu-circle,
 .menuIcon .lnr-menu {
     position: absolute;
