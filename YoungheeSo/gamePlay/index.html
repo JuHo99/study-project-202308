@@ -6,9 +6,10 @@
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css">    
     <link rel="stylesheet" href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css"/>
-    <link rel="stylesheet" href="/YoungheeSo/myApp.css">
+    <link rel="stylesheet" href="./gamePlay.css">
     
-    <script src="./menuBar/menuBar.js" defer></script>    
+    <script src="../menuBar/menuBar.js" defer></script>
+    <script src="./gamePlay.js"></script>
     
     <title></title>
 </head>
@@ -47,12 +48,17 @@
 
         <div class="icons">
           <div class="menuIcon"><span class="lnr lnr-menu"></span></div>
+          <div class="time-track"></div>
           <div class="closedIcon"><a href="#"><span class="lnr lnr-cross-circle"></span></a></div>
         </div>    
        
         <div class="main-game-play">
             <div class="game-movement">
-                <div class="read-Output">출력창</div>
+                <div class="read-Output">
+                  <ul id="textBox">
+                    <li>바난나</li>
+                  </ul>
+                </div>
                 
                 <input type="text" class="write-userInput">            
             </div>

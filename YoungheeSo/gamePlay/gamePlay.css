@@ -1,4 +1,4 @@
-@import url(./menuBar/menuBar.css);
+@import url(../menuBar/menuBar.css);
 
 @font-face {
     font-family: 'ONE-Mobile-POP';
@@ -16,7 +16,6 @@ body{
 }
 
 .container {
-
     font-family: 'ONE-Mobile-POP';
     
     width: 75%;
@@ -30,17 +29,6 @@ body{
     font-size: 3em;
     opacity: 0.4;
   }
-
-
-/* .main-game-play .game-movement{
-    width: 75%;
-    height: 80vh;
-    background: #fff;
-    margin: 10vh auto 0;
-    position: relative;
-    display: flex;
-    
-} */
 
 .container .main-game-play{
     background: pink;
@@ -63,6 +51,11 @@ body{
 
     display: flex; justify-content: center; align-content: center;
 }
+
+.main-game-play .game-movement .read-Output #textBox{
+    width: 50px; height: 50px; background: #fff;
+}
+
 
 .main-game-play .game-movement input{
     width: 50vw; height: 10vh; 
