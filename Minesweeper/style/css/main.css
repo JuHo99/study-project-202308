@@ -15,6 +15,7 @@
 
 .container .gameBox {
   height: 100%;
+  z-index: -1;
   /* background: lightblue; */
 }
 .container .gameBox .mainTitle {
@@ -42,8 +43,8 @@
   width: 40%;
   height: 100%;
   background: blanchedalmond;
-  display: flex;
-  flex-direction: column;
+  position: absolute;
+
 }
 .container .menu .menuItem{
   width: 20%;
