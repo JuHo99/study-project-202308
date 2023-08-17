@@ -12,60 +12,54 @@
     <script src="./js/main.js" defer></script>
   </head>
   <body>
+    <section class="container">
+      <div id="backdrop"></div>
+      <ul class="menu hide">
+        <a href="">
+          <li class="menuItem">
+            <img class="gameImg"></img>
+            <p class="gameName">안녕하세요</p>
+          </li>
+        </a>
+        <a href="">
+          <li class="menuItem">
+            <img class="gameImg"></img>
+            <p class="gameName">ㅎㅇ</p>
+          </li>
+        </a>
+        <a href="">
+          <li class="menuItem">
+            <img class="gameImg"></img>
+            <p class="gameName">ㅎㅇ</p>
+          </li>
+        </a>
+        <a href="">
+          <li class="menuItem">
+            <img class="gameImg"></img>
+            <p class="gameName">ㅎㅇ</p>
+          </li>
+        </a>
+      </ul>
+      <div class="icons">
+        <div class="menuIcon"><span class="lnr lnr-menu"></span></div>
+        <div class="closedIcon"><a href="#"><span class="lnr lnr-cross-circle"></span></a></div>
+      </div>
       <div class="gameBox">
-        <div class="box">
-          <div id="mazeMain">
-            <div class="icons">
-              <div class="menuIcon"><span class="lnr lnr-menu"></span></div>
-              <section class="container">
-                <div id="backdrop"></div>
-                <ul class="menu hide">
-                  <a href="">
-                    <li class="menuItem">
-                      <img class="gameImg"></img>
-                      <p class="gameName">안녕하세요</p>
-                    </li>
-                  </a>
-                  <a href="">
-                    <li class="menuItem">
-                      <img class="gameImg"></img>
-                      <p class="gameName">ㅎㅇ</p>
-                    </li>
-                  </a>
-                  <a href="">
-                    <li class="menuItem">
-                      <img class="gameImg"></img>
-                      <p class="gameName">ㅎㅇ</p>
-                    </li>
-                  </a>
-                  <a href="">
-                    <li class="menuItem">
-                      <img class="gameImg"></img>
-                      <p class="gameName">ㅎㅇ</p>
-                    </li>
-                  </a>
-                </ul>
-              <div class="closedIcon"><a href="#"><span class="lnr lnr-cross-circle"></span></a></div>
-            </div>
-            <canvas id="maze"></canvas>
+        <div id="mazeMain">
+          <canvas id="maze"></canvas>
 
-            <br />
+          <br />
 
-            <p>Size(Min: 5, Max : 29)</p>
-            <br />
-            <input type="text" id="sizeInput" onkeyup="enterkey();" />
+          <p>Size(Min: 5, Max : 29)</p>
+          <br />
+          <input type="text" id="sizeInput" onkeyup="enterkey();" />
 
-            <br />
-            <br />
+          <br />
+          <br />
 
-            <label id="text"></label>
-            <br />
-            <label id="count"></label>
-          </div>
-        </div>
-        <div class="explainBox">
-          <div class="box"></div>
-        </div>
+          <label id="text"></label>
+          <br />
+          <label id="count"></label>
       </div>
   </body>
 </html>
