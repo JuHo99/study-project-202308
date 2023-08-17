@@ -23,6 +23,7 @@ body {
   opacity: 0.4;
   color: #000;
   font-size: 3em;
+  z-index: 1000;
 }
 .closedIcon .lnr-cross-circle,
 .closedIcon .lnr-cross 
@@ -33,4 +34,22 @@ body {
   opacity: 0.4;
   color: #ff0000;
   font-size: 3em;
+  z-index: 1000;
+}
+
+.menu{
+  width: 33%;
+  height: 100%;
+  position: absolute;
+  background: #000;
+  opacity: 0.4;
+  z-index: 1;
+}
+
+.menu .menuItem{
+  width: 70%;
+  height: 200px;
+  border: 1px solid #000;
+  position: absolute;
+  z-index: 2;
 }

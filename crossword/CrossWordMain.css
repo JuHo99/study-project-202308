@@ -12,10 +12,33 @@
   width: 65%;
   height: 100%;
   display: flex;
-  background: #e2e2e2;
+  /* background: #e2e2e2; */
+  background: #ffffff;
+  position: relative;
+  flex-wrap: wrap;
+  align-items: end;
+  align-content: end;
+}
+
+#crossWordBody .container .gameBox .title{
+  position: absolute;
+  top: 0.7rem;
+  left: 67%;
+  font-size: 3em;
+  font-weight: 700;
 }
 
 #crossWordBody .container .gameBox .box {
+  width: 6.5%;
+  height: 7.5%;
+  border: 1px solid #000;
+  border-radius: 15px;
+  margin: 0.3rem;
+}
+
+#crossWordBody .container .gameBox .box.area{
+  background: #ffffff;
+
 }
 
 #crossWordBody .container .explainBox {
