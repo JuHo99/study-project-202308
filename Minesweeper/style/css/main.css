@@ -37,3 +37,16 @@
   border-radius: 25%;
   margin: 0 20px;
 }
+
+.container .menu{
+  width: 40%;
+  height: 100%;
+  background: blanchedalmond;
+  display: flex;
+  flex-direction: column;
+}
+.container .menu .menuItem{
+  width: 20%;
+  height: 100px;
+  border: 1px solid #000;
+}
