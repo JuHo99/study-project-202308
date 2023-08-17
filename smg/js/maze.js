@@ -1,5 +1,5 @@
-var tc = 21 // tile count (must be odd number)
-var gs = 20 // grid size
+var tc = 21 // tile count (must be odd number) 가로,세로 타일의 개수
+var gs = 20 // grid size 
 var field // map position array which value is 0 for wall, 1~2 for way
 var px = (py = 1) // 0 <= px,py < tc
 var xv = (yv = 0)
@@ -44,6 +44,7 @@ function initialize() {
     // 시작지점 만들기
     makeWay(0, 1)
     // 출구 만들기
+    // makeWay(tc - 1, Math.floor(Math.random() * (tc - 1)) + 1)
     makeWay(tc - 1, tc - 2)
 
     px = py = 1
@@ -54,10 +55,17 @@ function initialize() {
     stucked = false
     randomMazeGenerator()
 
+    // 출구 설정(파란색으로)
+    x = tc - 1
+    y = tc - 2
+    ctx.fillStyle = 'blue'
+    ctx.fillRect(x * gs, y * gs, gs, gs)
+
     x = 0
     y = 1
-    // character initial position
+    // character initial position, 캐릭터 포지션 설정
     ctx.fillStyle = 'red'
+
     ctx.fillRect(x * gs, y * gs, gs, gs)
 }
 function makeWay(xx, yy) {
