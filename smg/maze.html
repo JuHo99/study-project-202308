@@ -9,16 +9,44 @@
       href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css"
     />
     <script src="./js/maze.js" defer></script>
+    <script src="./js/main.js" defer></script>
   </head>
   <body>
-    <div class="container">
       <div class="gameBox">
         <div class="box">
           <div id="mazeMain">
-            <!-- <div class="menuIcon"><span class="lnr lnr-menu-circle"></span></div> -->
-            <div class="menuIcon"><span class="lnr lnr-menu"></span></div>
-            <!-- <div class="closedIcon"><span class="lnr lnr-cross-circle"></span></div> -->
-            <div class="closedIcon"><span class="lnr lnr-cross"></span></div>
+            <div class="icons">
+              <div class="menuIcon"><span class="lnr lnr-menu"></span></div>
+              <section class="container">
+                <div id="backdrop"></div>
+                <ul class="menu hide">
+                  <a href="">
+                    <li class="menuItem">
+                      <img class="gameImg"></img>
+                      <p class="gameName">안녕하세요</p>
+                    </li>
+                  </a>
+                  <a href="">
+                    <li class="menuItem">
+                      <img class="gameImg"></img>
+                      <p class="gameName">ㅎㅇ</p>
+                    </li>
+                  </a>
+                  <a href="">
+                    <li class="menuItem">
+                      <img class="gameImg"></img>
+                      <p class="gameName">ㅎㅇ</p>
+                    </li>
+                  </a>
+                  <a href="">
+                    <li class="menuItem">
+                      <img class="gameImg"></img>
+                      <p class="gameName">ㅎㅇ</p>
+                    </li>
+                  </a>
+                </ul>
+              <div class="closedIcon"><a href="#"><span class="lnr lnr-cross-circle"></span></a></div>
+            </div>
             <canvas id="maze"></canvas>
 
             <br />
@@ -39,6 +67,5 @@
           <div class="box"></div>
         </div>
       </div>
-    </div>
   </body>
 </html>

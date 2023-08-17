@@ -1,4 +1,3 @@
-
 var tc = 21 // tile count (must be odd number)
 var gs = 20 // grid size
 var field // map position array which value is 0 for wall, 1~2 for way
