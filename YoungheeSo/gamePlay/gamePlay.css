@@ -18,8 +18,9 @@ body{
 .container {
     font-family: 'ONE-Mobile-POP';
     
-    width: 75%;
-    height: 80vh;
+    width: 75%; height: 80vh;
+    min-width: 75%; min-height: 80vh;
+
     background: #ffffff;
     margin: 10vh auto 0;
     position: relative;
@@ -53,7 +54,16 @@ body{
 }
 
 .main-game-play .game-movement .read-Output #textBox{
-    width: 50px; height: 50px; background: #fff;
+    display: flex; flex-wrap: wrap; justify-content: center; align-items: center;
+
+}
+
+.main-game-play .game-movement .read-Output #textBox li{
+    width: 5em; height: 5em; background: #fff;
+    margin: 5px;
+
+    display: flex; justify-content: center; align-items: center;
+
 }
 
 
