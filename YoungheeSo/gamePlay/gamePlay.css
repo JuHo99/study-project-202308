@@ -42,12 +42,12 @@ body{
 .main-game-play .game-movement .read-Output{
     width: 68vw; height: 55vh; 
 
-    background: red;
+    background: url('/img/사진1.png') no-repeat center/cover;
     border: 1px solid #000;
     border-radius: 15px;
 
     margin-bottom: 2vh;
-    padding: 20px; 
+    /* padding: 10px;  */
     /* text-align: justify; */
 
     display: flex; justify-content: center; align-content: center;
@@ -55,15 +55,18 @@ body{
 
 .main-game-play .game-movement .read-Output #textBox{
     display: flex; flex-wrap: wrap; justify-content: center; align-items: center;
-
+    position: relative;
 }
 
 .main-game-play .game-movement .read-Output #textBox li{
-    width: 5em; height: 5em; background: #fff;
-    margin: 5px;
+    width: 100px; height:85px; background: plum;
+    margin: 1%;
 
     display: flex; justify-content: center; align-items: center;
+}
 
+.main-game-play .game-movement .read-Output #textBox .no-see{
+    opacity: 1;
 }
 
 
