@@ -7,6 +7,7 @@ const $textbox = document.getElementById('textBox');
 const textBoxs =()=>{
     outputArray.forEach(text => {
         const $newLi = document.createElement('li');
+        $newLi.setAttribute('class', `no-see index-${outputArray.indexOf(text)}`);
         
         $newLi.textContent=text;
         $textbox.appendChild($newLi);
@@ -21,6 +22,7 @@ const userInputTextHandler=()=>{
     
     const $userInput = document.querySelector('.write-userInput');
     const $textbox = document.getElementById('textBox');
+    // const $textli =  $textbox.createElement('li');
     
     outputArray.forEach(textBox => {
         if(textBox!==$userInput.value) return;
@@ -28,11 +30,11 @@ const userInputTextHandler=()=>{
         //outputArray배열의 text의 indexnum 받아서 삭제
         outputArray.splice(outputArray.indexOf($userInput.value), 1);
 
-        for(const $li of [...$textbox.children]){
-            $textbox.removeChild($li);
-        }
-        textBoxs();
-        
+        // for(const $li of [...$textbox.children]){
+        //     $textbox.removeChild($li);
+        // }
+        // textBoxs();
+
         console.log($userInput.value);
         console.log(outputArray.indexOf($userInput.value));
         console.log(outputArray);

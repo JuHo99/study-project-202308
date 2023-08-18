@@ -66,7 +66,7 @@ body{
 }
 
 .main-game-play .game-movement .read-Output #textBox .no-see{
-    opacity: 1;
+    opacity: 0;
 }
 
 
