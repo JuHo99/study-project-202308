@@ -8,5 +8,7 @@
   margin: 10px auto;
 }
 .container .gameBox .gamemain td {
+  width: 66px;
+  height: 88px;
   border: 1px solid #000;
 }
