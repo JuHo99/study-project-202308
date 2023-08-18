@@ -9,6 +9,72 @@
   display: flex;
 }
 
+#crossWordBody .container .start{
+  position: absolute;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  font-family: 'ONE-Mobile-POP';
+  background: #c2c2c2;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  gap : 5vh;
+}
+
+#crossWordBody .container .start.invisible {
+  display: none;
+}
+
+#crossWordBody .container .start h1{
+  font-size: 8em;
+  margin-bottom: 15vh;
+}
+
+#crossWordBody .container .start .startButton{
+  color: #ffffff;
+  background: #000;
+  border-radius: 20px;
+  width: 10rem;
+  height: 4rem;
+  font-size: 2em;
+  
+}
+
+
+#crossWordBody .container .difficulty{
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  font-family: 'ONE-Mobile-POP';
+  background: #c2c2c2;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+#crossWordBody .container .difficulty.invisible{
+  display: none;
+}
+
+#crossWordBody .container .difficulty button{
+  width: 15%;
+  height: 15vh;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3em;
+  border-radius: 15px;
+}
+
+#crossWordBody .container .difficulty button:hover{
+  box-shadow:  5px 5px 5px #000;
+  background: #feaefe;
+}
+
 #crossWordBody .container .gameBox {
   width: 65%;
   height: 100%;
@@ -24,29 +90,53 @@
   position: absolute;
   top: 0.7rem;
   left: 43%;
+  z-index: 1;
   font-size: 3em;
-  font-weight: 700;
+  font-family: 'ONE-Mobile-POP';
 }
 
 #crossWordBody .container .gameBox .box {
   width: 6.5%;
   height: 7.5%;
-  border: 1px solid #000;
+  /* border: 1px solid #000; */
   border-radius: 15px;
   margin: 0.3rem;
   position: relative;
-  z-index: -1;
+  background: #e4e4e4;
 }
 
 #crossWordBody .container .gameBox .box.area{
   background: #ffffff;
-
+  border: 1px solid #000;
 }
 
 #crossWordBody .container .explainBox {
-  width: 30%;
+  width: 35%;
   height: 100%;
   margin: 0 auto 0;
-  background: #ffffff;
-  
+  background: #ffffff; 
+}
+#crossWordBody .container .explainBox .widthLine,
+#crossWordBody .container .explainBox .columnLine
+{
+  width: 100%;
+  height: 50%;
+}
+#crossWordBody .container .explainBox .widthLine h3,
+#crossWordBody .container .explainBox .columnLine h3
+{
+  font-size: 2rem;
+  font-weight: 700;
+  margin-top: 1rem;
+}
+#crossWordBody .container .explainBox .widthLine p,
+#crossWordBody .container .explainBox .columnLine p
+{
+  margin-top: 0.4rem;
+  font-size: 1rem;
+}
+#crossWordBody .container .explainBox .widthLine p:nth-child(2),
+#crossWordBody .container .explainBox .columnLine p:nth-child(2)
+{
+  margin-top: 1.4rem;
 }

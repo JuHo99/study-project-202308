@@ -1,7 +1,14 @@
 @import url(https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css);
+@font-face {
+  font-family: 'ONE-Mobile-POP';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/ONE-Mobile-POP.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
 
 * {
   box-sizing: border-box;
+  font-family: 'ONE-Mobile-POP';
 }
 .clearfix::after {
   content: '';
@@ -47,7 +54,7 @@ body {
   height: 100%;
   background: #ffffff;
   position: absolute;
-  z-index: 2;
+  z-index: 4;
 }
 
 .menuItem{
@@ -69,7 +76,7 @@ body {
   top: 0;
   left: 0;
   background: rgba(0, 0, 0, 0.45);
-  z-index: 1;
+  z-index: 3;
   pointer-events: none;
   display: none;
 }
