@@ -50,6 +50,10 @@ const selectCell = (e) => {
 };
 
 const tableClickHandler = (e) => {
+   //버튼 클릭시 사라지기
+   $mineTagble.addEventListener('click', deleteButtonHandler);
+
+
   const btncell = e.target; //button
   const clickTd = btncell.parentNode;
 
@@ -98,22 +102,37 @@ const tableClickHandler = (e) => {
   console.log(sweep);
   //지뢰 넣기
   for (const swp of sweep) {
-    const tdCell = trList[swp.one].children[swp.two];
+    const {one:trIndex, two:tdIndex} = swp;
+    const swpLen = sweep.length
+    const tdCell = trList[trIndex].children[tdIndex];
+
     tdCell.setAttribute('boom', 'B');
     tdCell.appendChild(document.createElement('div'));
 
-    if (
-      (swp.one - 1 < 0 || swp.two - 1 < 0) &&
-      (swp.one + 1 > swp.length || swp.two + 1 > swp.length)
-    ) {
-      continue;
+
+    //지뢰 주변에 숫자 넣기 
+    //numTdIndex => td -1,+0,+1 
+    for(let numTdIndex= tdIndex -1; numTdIndex<tdIndex+2; numTdIndex++){
+      if (numTdIndex === swpLen || numTdIndex < 0){
+        break;
+      }
+      for(let numTrIndex= trIndex -1; numTrIndex<trIndex+2; numTrIndex++){
+        if (numTrIndex === swpLen || numTrIndex < 0
+          || (numTrIndex === trIndex && numTdIndex === tdIndex ))
+        {
+          break;
+        }
+        else {
+          const pTag = trList[numTrIndex].children[numTdIndex].children[1];
+          
+          pTag.textContent='1';
+          pTag.setAttribute('Num','1');
+        }
+      }
     }
-    console.log(trList[swp.one + 1].children[swp.two + 1]);
-    // console.log(trList[swp.one + 1].children[swp.two + 1].children[1]);
   }
 
-  //버튼 클릭시 사라지기
-  $mineTagble.addEventListener('click', deleteButtonHandler);
+ 
 };
 
 const deleteButtonHandler = (e) => {

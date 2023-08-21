@@ -26,10 +26,17 @@
   top: 0;
   left: 0;
   position: absolute;
+  z-index: 2;
 }
 
 .container .gameBox .gamemain .cell div {
   width: 100%;
   height: 100%;
   background: lightblue;
+}
+.container .gameBox .gamemain .cell p {
+  font-size: 1.5em;
+  position: absolute;
+  top:25%;
+  left:35%;
 }
