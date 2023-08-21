@@ -1,6 +1,5 @@
 @import url(./common.css);
 
-
 /* 닫기랑 메뉴 */
 .menuIcon .lnr-menu {
   position: absolute;
@@ -60,23 +59,24 @@
   /* background: lightblue; */
 }
 
-.container .gameBox .mainTitle {
-  height: 100%;
-
-  font-size: 25px;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  align-items: center;
-}
-.container .gameBox .mainTitle h1 {
-  font-size: 50px;
-  font-weight: 700;
-}
-.container .gameBox .mainTitle .levels a {
-  padding: 15px;
+.container .gameBox .levels a {
+  padding: 10px;
   border: 1px solid #000;
   border-radius: 25%;
   margin: 0 20px;
+}
+.container .gameBox .gameHead {
+  width: 80%;
+  height: 10%;
+  margin: 0 4%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.container .gameBox .gameHead Button {
+  width: 100px;
+  height: 50px;
+}
+.container .gameBox .gameHead .gameHead_text .pding {
+  margin: 15px;
 }

@@ -9,8 +9,10 @@
       href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css"
     />
     <link rel="stylesheet" href="style/css/main.css" />
-    
     <script src="style/js/main.js" defer></script>
+
+    <link rel="stylesheet" href="style/css/minesweep.css" />
+    <script src="style/js/minesweep.js" defer></script>
   </head>
   <body>
     <section class="container">
@@ -46,14 +48,22 @@
         <div class="closedIcon"><a href="#"><span class="lnr lnr-cross-circle"></span></a></div>
       </div>
       <div class="gameBox">
-        <div class="mainTitle">
-          <h1>지뢰찾기</h1>
+        <div class="gameHead">
           <div class="levels">
             <a href="#">초급</a>
             <a href="#">중급</a>
             <a href="#">고급</a>
           </div>
+          <button type="reset" >Reset</button>
+          <div class="gameHead_text">
+            <p class="pding">남은 지뢰 :<span id="boomCnt"></span> </p>
+            <p class="pding">Time : <span id="time"></span> </p>
+          </div>
         </div>
+        <table class="gamemain">
+          <tbody id="mineTable">
+          </tbody>
+        </table>
       </div>
     </section>
   </body>
