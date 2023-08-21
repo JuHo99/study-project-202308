@@ -25,72 +25,188 @@ const createGameBox = (difficulty) => {
     for (let i = 1; i < 131; i++) {
         const gameBoxItem = document.createElement("div");
         gameBoxItem.classList.add("box");
+        gameBoxItem.classList.add(`${i}`);
         $gameBox.appendChild(gameBoxItem);
         if (diffichlty === 'easy') {
             switch (i) {
-                case 1: gameBoxItem.classList.add('area'); break;
+                case 29: gameBoxItem.classList.add('area'); break;
+                case 30: gameBoxItem.classList.add('area'); break;
+                case 31: gameBoxItem.classList.add('area'); break;
+                case 35: gameBoxItem.classList.add('area'); break;
+                case 44: gameBoxItem.classList.add('area'); break;
+                case 45: gameBoxItem.classList.add('area'); break;
+                case 46: gameBoxItem.classList.add('area'); break;
+                case 48: gameBoxItem.classList.add('area'); break;
+                case 55: gameBoxItem.classList.add('area'); break;
+                case 56: gameBoxItem.classList.add('area'); break;
+                case 57: gameBoxItem.classList.add('area'); break;
+                case 59: gameBoxItem.classList.add('area'); break;
+                case 60: gameBoxItem.classList.add('area'); break;
+                case 61: gameBoxItem.classList.add('area'); break;
+                case 69: gameBoxItem.classList.add('area'); break;
+                case 72: gameBoxItem.classList.add('area'); break;
+                case 75: gameBoxItem.classList.add('area'); break;
+                case 82: gameBoxItem.classList.add('area'); break;
+                case 88: gameBoxItem.classList.add('area'); break;
+                case 98: gameBoxItem.classList.add('area'); break;
+                case 99: gameBoxItem.classList.add('area'); break;
+                case 100: gameBoxItem.classList.add('area'); break;
+                case 101: gameBoxItem.classList.add('area'); break;
+                case 114: gameBoxItem.classList.add('area'); break;
                 default: break;
             }
         } else if (diffichlty === 'nomal') {
             switch (i) {
-                case 14: gameBoxItem.classList.add('area'); break;
+                case 29: gameBoxItem.classList.add('area'); addAltBox(gameBoxItem, 1, 0); break;
+                case 30: gameBoxItem.classList.add('area'); addAltBox(gameBoxItem, 0, 1); break;
+                case 31: gameBoxItem.classList.add('area'); break;
+                case 32: gameBoxItem.classList.add('area'); break;
+                case 35: gameBoxItem.classList.add('area'); addAltBox(gameBoxItem, 0, 3); break;
+                case 43: gameBoxItem.classList.add('area'); break;
+                case 48: gameBoxItem.classList.add('area'); addAltBox(gameBoxItem, 5, 0); break;
+                case 49: gameBoxItem.classList.add('area'); break;
+                case 50: gameBoxItem.classList.add('area'); break;
+                case 51: gameBoxItem.classList.add('area'); break;
+                case 56: gameBoxItem.classList.add('area'); addAltBox(gameBoxItem, 2, 0); break;
+                case 57: gameBoxItem.classList.add('area'); break;
+                case 58: gameBoxItem.classList.add('area'); break;
+                case 59: gameBoxItem.classList.add('area'); addAltBox(gameBoxItem, 0, 2); break;
+                case 61: gameBoxItem.classList.add('area'); break;
+                case 69: gameBoxItem.classList.add('area'); break;
+                case 72: gameBoxItem.classList.add('area'); addAltBox(gameBoxItem, 4, 0); break;
+                case 73: gameBoxItem.classList.add('area'); break;
+                case 74: gameBoxItem.classList.add('area'); break;
+                case 75: gameBoxItem.classList.add('area'); addAltBox(gameBoxItem, 0, 4); break;
+                case 85: gameBoxItem.classList.add('area'); break;
+                case 88: gameBoxItem.classList.add('area'); break;
+                case 95: gameBoxItem.classList.add('area'); addAltBox(gameBoxItem, 3, 0); break;
+                case 96: gameBoxItem.classList.add('area'); break;
+                case 97: gameBoxItem.classList.add('area'); break;
+                case 98: gameBoxItem.classList.add('area'); break;
+                case 101: gameBoxItem.classList.add('area'); break;
+                case 112: gameBoxItem.classList.add('area'); addAltBox(gameBoxItem, 6, 0); break;
+                case 113: gameBoxItem.classList.add('area'); break;
+                case 114: gameBoxItem.classList.add('area'); break;
+                case 115: gameBoxItem.classList.add('area'); break;
                 default: break;
             }
         } else {
             switch (i) {
-                case 1: gameBoxItem.classList.add('area'); break;
+                case 1:
+                    gameBoxItem.classList.add('area');
+                    addAltBox(gameBoxItem, 1, 1);
+                    break;
                 case 2: gameBoxItem.classList.add('area'); break;
-                case 3: gameBoxItem.classList.add('area'); break;
+                case 3: gameBoxItem.classList.add('area');
+                    addAltBox(gameBoxItem, 0, 2);
+                    break;
                 case 14: gameBoxItem.classList.add('area'); break;
-                case 16: gameBoxItem.classList.add('area'); break;
-                case 17: gameBoxItem.classList.add('area'); break;
-                case 19: gameBoxItem.classList.add('area'); break;
-                case 27: gameBoxItem.classList.add('area'); break;
-                case 28: gameBoxItem.classList.add('area'); break;
+                case 16:
+                    gameBoxItem.classList.add('area');
+                    addAltBox(gameBoxItem, 2, 0);
+                    break;
+                case 17:
+                    gameBoxItem.classList.add('area');
+                    addAltBox(gameBoxItem, 0, 3);
+                    break;
+                case 19:
+                    gameBoxItem.classList.add('area');
+                    addAltBox(gameBoxItem, 0, 7);
+                    break;
+                case 27:
+                    gameBoxItem.classList.add('area');
+                    addAltBox(gameBoxItem, 3, 0);
+                    break;
+                case 28:
+                    gameBoxItem.classList.add('area');
+                    addAltBox(gameBoxItem, 0, 4);
+                    break;
                 case 30: gameBoxItem.classList.add('area'); break;
                 case 32: gameBoxItem.classList.add('area'); break;
-                case 36: gameBoxItem.classList.add('area'); break;
+                case 36:
+                    gameBoxItem.classList.add('area');
+                    addAltBox(gameBoxItem, 0, 12);
+                    break;
                 case 41: gameBoxItem.classList.add('area'); break;
-                case 43: gameBoxItem.classList.add('area'); break;
+                case 43:
+                    gameBoxItem.classList.add('area');
+                    addAltBox(gameBoxItem, 4, 0);
+                    break;
                 case 44: gameBoxItem.classList.add('area'); break;
                 case 45: gameBoxItem.classList.add('area'); break;
-                case 49: gameBoxItem.classList.add('area'); break;
+                case 49:
+                    gameBoxItem.classList.add('area');
+                    addAltBox(gameBoxItem, 10, 0);
+                    break;
                 case 50: gameBoxItem.classList.add('area'); break;
                 case 51: gameBoxItem.classList.add('area'); break;
                 case 52: gameBoxItem.classList.add('area'); break;
                 case 54: gameBoxItem.classList.add('area'); break;
-                case 59: gameBoxItem.classList.add('area'); break;
+                case 59:
+                    gameBoxItem.classList.add('area');
+                    addAltBox(gameBoxItem, 9, 0);
+                    break;
                 case 60: gameBoxItem.classList.add('area'); break;
                 case 61: gameBoxItem.classList.add('area'); break;
                 case 62: gameBoxItem.classList.add('area'); break;
                 case 64: gameBoxItem.classList.add('area'); break;
-                case 67: gameBoxItem.classList.add('area'); break;
+                case 67:
+                    gameBoxItem.classList.add('area');
+                    addAltBox(gameBoxItem, 5, 0);
+                    break;
                 case 68: gameBoxItem.classList.add('area'); break;
-                case 69: gameBoxItem.classList.add('area'); break;
+                case 69:
+                    gameBoxItem.classList.add('area');
+                    addAltBox(gameBoxItem, 0, 5);
+                    break;
                 case 73: gameBoxItem.classList.add('area'); break;
                 case 77: gameBoxItem.classList.add('area'); break;
-                case 82: gameBoxItem.classList.add('area'); break;
+                case 82:
+                    gameBoxItem.classList.add('area');
+                    addAltBox(gameBoxItem, 6, 0);
+                    break;
                 case 83: gameBoxItem.classList.add('area'); break;
-                case 84: gameBoxItem.classList.add('area'); break;
+                case 84:
+                    gameBoxItem.classList.add('area');
+                    addAltBox(gameBoxItem, 0, 11);
+                    break;
                 case 85: gameBoxItem.classList.add('area'); break;
                 case 86: gameBoxItem.classList.add('area'); break;
-                case 88: gameBoxItem.classList.add('area'); break;
+                case 88:
+                    gameBoxItem.classList.add('area');
+                    addAltBox(gameBoxItem, 0, 14);
+                    break;
                 case 90: gameBoxItem.classList.add('area'); break;
-                case 92: gameBoxItem.classList.add('area'); break;
+                case 92:
+                    gameBoxItem.classList.add('area');
+                    addAltBox(gameBoxItem, 0, 9);
+                    break;
                 case 97: gameBoxItem.classList.add('area'); break;
                 case 101: gameBoxItem.classList.add('area'); break;
                 case 103: gameBoxItem.classList.add('area'); break;
-                case 105: gameBoxItem.classList.add('area'); break;
-                case 106: gameBoxItem.classList.add('area'); break;
+                case 105:
+                    gameBoxItem.classList.add('area');
+                    addAltBox(gameBoxItem, 7, 0);
+                    break;
+                case 106:
+                    gameBoxItem.classList.add('area');
+                    addAltBox(gameBoxItem, 0, 10);
+                    break;
                 case 107: gameBoxItem.classList.add('area'); break;
                 case 108: gameBoxItem.classList.add('area'); break;
                 case 110: gameBoxItem.classList.add('area'); break;
-                case 112: gameBoxItem.classList.add('area'); break;
+                case 112:
+                    gameBoxItem.classList.add('area');
+                    addAltBox(gameBoxItem, 11, 0);
+                    break;
                 case 113: gameBoxItem.classList.add('area'); break;
                 case 114: gameBoxItem.classList.add('area'); break;
                 case 115: gameBoxItem.classList.add('area'); break;
                 case 119: gameBoxItem.classList.add('area'); break;
-                case 123: gameBoxItem.classList.add('area'); break;
+                case 123:
+                    gameBoxItem.classList.add('area');
+                    addAltBox(gameBoxItem, 8, 0);
+                    break;
                 case 124: gameBoxItem.classList.add('area'); break;
                 case 127: gameBoxItem.classList.add('area'); break;
                 default: break;
@@ -120,10 +236,12 @@ const explainBoxDiffichltyHard = () => {
 <p>6.어떤 일이 뜻하지 아니하게 일어남</p>
 <p>7.행정기관에서 일의 관련자에게 의견을 듣는 공개적 모임</p>
 <p>8.장치들이 과열되어 망가지는 것을 방지하는 화학물질</p>
-<p>9.제 몸에 벌어지는 일을 모를 만큼 정신을 잃은 상태</p>
-<p>10.풀이나 나무 따위를 얽거나 엮어 경계를 지어 막는 물건</p>
-<p>11.프랑스 작가 빅토르 위고가 쓴 소설</p>
-<p>12.자기가 저지른 일은 자기가 해결하여야 함을 이르는 말.</p>
+<p>9.가루로 된 설탕</p>
+<p>10.볼과 입술을 붉은 색조로 치장하는 화장품</p>
+<p>11.제 몸에 벌어지는 일을 모를 만큼 정신을 잃은 상태</p>
+<p>12.풀이나 나무 따위를 얽거나 엮어 경계를 지어 막는 물건</p>
+<p>13.프랑스 작가 빅토르 위고가 쓴 소설</p>
+<p>14.자기가 저지른 일은 자기가 해결하여야 함을 이르는 말.</p>
 `
     $explainBoxWidthLine.innerHTML = `
 <h3>가로문제</h3>
@@ -142,6 +260,50 @@ const explainBoxDiffichltyHard = () => {
 `
 }
 
+const explainBoxDiffichltyNomal = () => {
+    $explainBoxColumnLine.innerHTML = `
+<h3>세로문제</h3>
+
+<p>1.집에만 있고 바깥출입을 아니함.</p>
+<p>2.한밤중에 몰래 도망치는 행위</p>
+<p>3.여러 사람이 조금씩 힘을 합하면 한 사람을 돕기 쉬움</p>
+<p>4.뜻이 매우 깊다</p>
+`
+    $explainBoxWidthLine.innerHTML = `
+<h3>가로문제</h3>
+
+<p>1.어떤 일의 핵심만 간단히 말한다.</p>
+<p>2.밤낮을 가리지 않는다</p>
+<p>3.사방으로 이리저리 몹시 바쁘게 돌아다님</p>
+<p>4.얼마쯤 믿으면서도 한편으로는 의심함</p>
+<p>5.그때의 사정이나 요구에 아주 알맞음</p>
+<p>6.웃음 속에 칼이 있다</p>
+`
+}
+
+const explainBoxDiffichltyEasy = () => {
+    $explainBoxColumnLine.innerHTML = `
+<h3>세로문제</h3>
+
+<p>1.기OO : 기차가 다니는 길</p>
+<p>2.솔OO : 소나무 열매의 송이</p>
+<p>3.O구O : 지구의 모습을 본따 만든 모형</p>
+<p>4.O렁O : 빈모강의 환형동물을 통틀어 이르는 말</p>
+<p>5.O랑나O : 호랑나빗과의 곤충들을 통틀어 이르는 말</p>
+`
+    $explainBoxWidthLine.innerHTML = `
+<h3>가로문제</h3>
+
+<p>1.기OO : 한국에서도 볼 수 있는 철새의 종류 </p>
+<p>2.O솔O : 폭이 좁은 호젓한 길</p>
+<p>3.O고O : 자동차 따위의 차량을 넣어 두거나 세워 놓는 곳</p>
+<p>4.OO이 : 한국에서 볼 수 있는 뱀 종류</p>
+<p>5.O구아O : 파충류, 과거에는 애완동물로 인기가 있었음</p>
+`
+}
+
+
+
 
 // ===============startButton click =================
 const $startpage = document.querySelector('.start');
@@ -157,11 +319,13 @@ const $difficultypage = document.querySelector('.difficulty');
 const difficultyEasyBtnCilckHandler = e => {
     $difficultypage.classList.add('invisible');
     createGameBox('easy');
+    explainBoxDiffichltyEasy();
 }
 
 const difficultyNomalBtnCilckHandler = e => {
     $difficultypage.classList.add('invisible');
     createGameBox('nomal');
+    explainBoxDiffichltyNomal();
 }
 
 const difficultyHardBtnCilckHandler = e => {
@@ -170,6 +334,70 @@ const difficultyHardBtnCilckHandler = e => {
     explainBoxDiffichltyHard();
 }
 
+// =======================focus ========================
+
+$gameBox.addEventListener('click', (e) => {
+    const clickedBox = e.target;
+    if (clickedBox.classList.contains('area')) {
+        // Create an input element for text input
+        const input = document.createElement('input');
+        input.type = 'text';
+
+        // Add event listener for the Enter key
+        input.addEventListener('keyup', (event) => {
+            if (event.key === 'Enter') {
+                const newText = input.value;
+                // Set the entered text as the content of the clicked box
+                clickedBox.textContent = newText;
+                // Remove the input element
+                clickedBox.removeChild(input);
+            }
+        });
+
+        // Append the input element to the clicked box
+        clickedBox.appendChild(input);
+        input.focus(); // Focus on the input element
+    }
+});
+
+// ====================================================
+
+
+function addAltBox(box, width = '0', column = '0') {
+    let timeoutId;
+
+    box.addEventListener('mouseover', () => {
+        timeoutId = setTimeout(() => {
+            showBoxDescription(box, width, column);
+        }, 2000);
+    });
+
+    box.addEventListener('mouseout', () => {
+        clearTimeout(timeoutId);
+    });
+
+    const showBoxDescription = (box, width, column) => {
+        const description = getBoxDescription(width, column);
+        const altBox = document.createElement('div');
+        altBox.classList.add('altBox');
+        altBox.textContent = description;
+        box.appendChild(altBox);
+
+        setTimeout(() => {
+            box.removeChild(altBox);
+        }, 5000);
+    };
+}
+
+function getBoxDescription(width = '0', column = '0') {
+    if (column === 0) {
+        return `가로 : ${width}`;
+    } else if (width === 0) {
+        return `세로 : ${column}`;
+    } else {
+        return `가로:${width} 세로:${column}`;
+    }
+};
 
 const $difficultyEasyBtn = $difficultypage.querySelector('.easy');
 $difficultyEasyBtn.addEventListener('click', difficultyEasyBtnCilckHandler);
