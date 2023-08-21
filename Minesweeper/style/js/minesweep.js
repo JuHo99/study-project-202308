@@ -9,11 +9,13 @@ const createMineTable = () => {
     for (let j = 0; j < 10; j++) {
       const $tableTd = document.createElement('td');
       const $tdBtn = document.createElement('button');
+      const $tdNum = document.createElement('p');
 
       $tableTd.classList.add('cell');
 
       $tableTr.appendChild($tableTd);
       $tableTd.appendChild($tdBtn);
+      $tableTd.appendChild($tdNum);
     }
   }
 };
@@ -93,15 +95,16 @@ const tableClickHandler = (e) => {
       });
     }
   }
-  console.log(sweep);
-  //textContent로 넣기
+  //지뢰 넣기
   sweep.map((swp) => {
     trList[swp.one].children[swp.two].setAttribute('boom', 'B');
     trList[swp.one].children[swp.two].appendChild(
       document.createElement('div')
     );
+    trList[swp.one].children[swp.two]
   });
-  console.log(sweep);
+
+  //버튼 클릭시 사라지기
   $mineTagble.addEventListener('click', deleteButtonHandler);
 };
 
