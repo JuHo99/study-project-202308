@@ -105,6 +105,7 @@
     display: flex; justify-content: center; align-content: center;
 
     font-size: 2em; font-family: 'ONE-Mobile-POP'; color: #FFA1CF;
+    
 }
 
 .main-game-play input.typing-error{
@@ -113,6 +114,7 @@
 
 
 .main-game-play input:focus{
+    box-shadow: 5px 5px 5px #868686;
     outline: none;
 }
 

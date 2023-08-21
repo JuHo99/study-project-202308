@@ -32,11 +32,14 @@ const userInputTextHandler=()=>{
     const $textbox = document.getElementById('textBox');
     
     if(outputArray.includes($userInput.value)===false) {
-        $userInput.value='';
+        // $userInput.value='';
+        $userInput.classList.add('typing-error');
         console.log('룰루');
         return;
     }
 
+    $userInput.classList.remove('typing-error');
+    
     //outputArray배열의 text의 indexnum 받아서 삭제
     console.log(outputArray.indexOf($userInput.value));
     outputArray.splice(outputArray.indexOf($userInput.value), 1);
