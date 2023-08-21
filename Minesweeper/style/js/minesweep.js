@@ -95,14 +95,22 @@ const tableClickHandler = (e) => {
       });
     }
   }
+  console.log(sweep);
   //지뢰 넣기
-  sweep.map((swp) => {
-    trList[swp.one].children[swp.two].setAttribute('boom', 'B');
-    trList[swp.one].children[swp.two].appendChild(
-      document.createElement('div')
-    );
-    trList[swp.one].children[swp.two]
-  });
+  for (const swp of sweep) {
+    const tdCell = trList[swp.one].children[swp.two];
+    tdCell.setAttribute('boom', 'B');
+    tdCell.appendChild(document.createElement('div'));
+
+    if (
+      (swp.one - 1 < 0 || swp.two - 1 < 0) &&
+      (swp.one + 1 > swp.length || swp.two + 1 > swp.length)
+    ) {
+      continue;
+    }
+    console.log(trList[swp.one + 1].children[swp.two + 1]);
+    // console.log(trList[swp.one + 1].children[swp.two + 1].children[1]);
+  }
 
   //버튼 클릭시 사라지기
   $mineTagble.addEventListener('click', deleteButtonHandler);
