@@ -17,7 +17,9 @@
 
 #content{    
     height: 100vh;
-    background: linear-gradient(180deg, #FDE5EC, #E48586);
+    background: #C9FFFC;
+    /* background: url('/img/background.png') no-repeat center/cover; */
+    /* background: linear-gradient(180deg, #FDE5EC, #E48586); */
     display: flex; justify-content: center; align-items: center;
     flex-wrap: wrap;
       
@@ -31,6 +33,7 @@
 
     /* background: #ffffff; */
     margin: 10vh auto;
+    position: relative;
   }
   
   .container .icons {
@@ -39,8 +42,8 @@
   }
 
 .container .main-game-play{
-    background: #FCBAAD; 
-    border: 3px solid #FAF1E4; border-radius: 15px; 
+    background: #AEE2FF; 
+    border: 3px solid #93C6E7; border-radius: 15px; 
 
     width: 100%; height: 100%;
 
@@ -54,7 +57,7 @@
     width: 68vw; height: 55vh; 
 
     background: url('/img/사진1.png') no-repeat center/cover;
-    border: 1px solid #000;
+    border: 3px solid #93C6E7;
     border-radius: 15px;
 
     margin-bottom: 2vh;
@@ -73,8 +76,15 @@
 .main-game-play .read-Output #textBox li{
     width: 30%; height: 24%;
     min-width: 100px; min-height:85px; 
-    background: plum;
+
+    /* background: #FEDEFF; */
+    background: url('/img/6181861.jpg') no-repeat center/cover;
+
     margin: 1px;
+
+    font-size: 2em; color: #FFA1CF;
+    border-radius: 15px;
+
 
     display: flex; justify-content: center; align-items: center;
 }
@@ -83,21 +93,24 @@
     opacity: 0;
 }
 
-
-
 .main-game-play input{
     width: 50vw; height: 10vh; 
     min-width: 150px; min-height: 30px;
 
-    background: #916DB3;
-    border: 3px solid #916DB3;
+    background: #B9F3FC;
+    border: 3px solid #93C6E7;
     border-radius: 15px;
     margin: 0 auto; padding: 20px; 
 
     display: flex; justify-content: center; align-content: center;
 
-    font-size: 2em;
+    font-size: 2em; font-family: 'ONE-Mobile-POP'; color: #FFA1CF;
 }
+
+.main-game-play input.typing-error{
+    background: red;
+}
+
 
 .main-game-play input:focus{
     outline: none;

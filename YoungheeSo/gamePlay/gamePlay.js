@@ -31,29 +31,28 @@ const userInputTextHandler=()=>{
     const $userInput = document.querySelector('.write-userInput');
     const $textbox = document.getElementById('textBox');
     
-    outputArray.forEach(textBox => {
-        if(textBox!==$userInput.value) return;
-        
-        //outputArray배열의 text의 indexnum 받아서 삭제
-        console.log(outputArray.indexOf(textBox));
-        outputArray.splice(outputArray.indexOf($userInput.value), 1);
+    if(outputArray.includes($userInput.value)===false) {
+        $userInput.value='';
+        console.log('룰루');
+        return;
+    }
 
-        console.log(textBox===$userInput.value);
-        console.log(outputArray);
-        
-        for(const $li of [...$textbox.children]){
-            if(textBox===$li.textContent){
-                console.log($li);
-                $li.classList.add('no-see')                
-            }            
-        }    
-    });
+    //outputArray배열의 text의 indexnum 받아서 삭제
+    console.log(outputArray.indexOf($userInput.value));
+    outputArray.splice(outputArray.indexOf($userInput.value), 1);
+
+    for(const $li of [...$textbox.children]){
+        if($userInput.value===$li.textContent){
+            console.log($li);
+            $li.classList.add('no-see')                
+        }            
+    }
 
     if($userInput.value.trim()===''){
         console.log('빈칸');
         alert('빈칸!!!');
     }
-
+        
     $userInput.value='';
 
     allremove();

@@ -13,14 +13,15 @@
     position: absolute;
     top: 15px;
     left: 25px;
-    color: #000000;
+    color: #937DC2;
     z-index: 1;
   }
   .closedIcon .lnr-cross-circle {
     position: absolute;
     top: 15px;
     right: 25px;
-    color: #ff0000;
+    /* color: #ff0000; */
+    color: #fb87ff;
   }
 
   /* 메뉴바 */
