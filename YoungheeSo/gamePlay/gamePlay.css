@@ -11,8 +11,16 @@
     box-sizing: border-box;
 }
 
-body{    
-    background: #C9FFFC;   
+/* body{
+    background: #C9FFFC;
+} */
+
+#content{    
+    height: 100vh;
+    background: linear-gradient(180deg, #FDE5EC, #E48586);
+    display: flex; justify-content: center; align-items: center;
+    flex-wrap: wrap;
+      
 }
 
 .container {
@@ -21,9 +29,8 @@ body{
     width: 75%; height: 80vh;
     min-width: 75%; min-height: 80vh;
 
-    background: #ffffff;
-    margin: 10vh auto 0;
-    position: relative;
+    /* background: #ffffff; */
+    margin: 10vh auto;
   }
   
   .container .icons {
@@ -32,14 +39,18 @@ body{
   }
 
 .container .main-game-play{
-    background: pink;
+    background: #FCBAAD; 
+    border: 3px solid #FAF1E4; border-radius: 15px; 
+
     width: 100%; height: 100%;
+
     padding: 10vh 0 0px;
 
     display: flex; justify-content: center; 
+    flex-wrap: wrap;
 }
 
-.main-game-play .game-movement .read-Output{
+.main-game-play .read-Output{
     width: 68vw; height: 55vh; 
 
     background: url('/img/사진1.png') no-repeat center/cover;
@@ -53,32 +64,45 @@ body{
     display: flex; justify-content: center; align-content: center;
 }
 
-.main-game-play .game-movement .read-Output #textBox{
-    display: flex; flex-wrap: wrap; justify-content: center; align-items: center;
+.main-game-play .read-Output #textBox{
+    display: flex; flex-wrap: wrap; justify-content: center; 
+    align-items: center;
     position: relative;
 }
 
-.main-game-play .game-movement .read-Output #textBox li{
-    width: 100px; height:85px; background: plum;
-    margin: 1%;
+.main-game-play .read-Output #textBox li{
+    width: 30%; height: 24%;
+    min-width: 100px; min-height:85px; 
+    background: plum;
+    margin: 1px;
 
     display: flex; justify-content: center; align-items: center;
 }
 
-.main-game-play .game-movement .read-Output #textBox .no-see{
+.main-game-play  .read-Output #textBox .no-see{
     opacity: 0;
 }
 
 
-.main-game-play .game-movement input{
-    width: 50vw; height: 10vh; 
 
-    background: aqua;
-    border: 1px solid #000;
+.main-game-play input{
+    width: 50vw; height: 10vh; 
+    min-width: 150px; min-height: 30px;
+
+    background: #916DB3;
+    border: 3px solid #916DB3;
     border-radius: 15px;
     margin: 0 auto; padding: 20px; 
 
     display: flex; justify-content: center; align-content: center;
 
     font-size: 2em;
+}
+
+.main-game-play input:focus{
+    outline: none;
+}
+
+footer{
+    width: 100%;
 }
