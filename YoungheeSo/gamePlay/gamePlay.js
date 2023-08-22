@@ -1,32 +1,67 @@
 
 
-const outputArray = ['출력','사랑','싹', '설산', '예수', '물방아 꽃', '사막', '끓는 열매', '얼음', '봄바람','마나님', '트럼프'];   
-// const outputArray = ['출력'];   
+// const outputArray = ['출력','사랑','싹', '설산', '예수', '물방아 꽃', '사막', '끓는 열매', '얼음', '봄바람','마나님', '트럼프'];   
+const outputArray = ['출력'];   
 const $textbox = document.getElementById('textBox');
-
 const $startBtn = document.querySelector('.start-btn');
-const $checkBtn = document.querySelector('.btn-check');
+const $checkBtn = document.querySelector('.backdrop');
 const $outputbg = document.querySelector('.read-Output');
 const $timergauge = document.querySelector('.tiem-Gauge');
+
+const $timeOver = document.querySelector('.game-end');
 
 const $clockImg =document.querySelector('img');
 
 const $content = document.getElementById('content');
 
+const $readInput = document.querySelector('input');
+
+let num=1;
+let secode;
+// let secode = new Date().getUTCSeconds()+1
+// let ikonwhour=(secode/secode)*20
+
 const gameStartHandler=(e)=>{
     console.log('시작');
-
+    
+    $outputbg.removeAttribute('style');
     $checkBtn.classList.add('inaction');
     $timergauge.classList.add('action');
-
+    
     textLiBoxs(1);
 
+    
+    
+    let timerId = setInterval(()=>{
+        if(secode===0) return;
+        
+        secode=20-(num++);       
+        
+        console.log(secode); //type number
+
+        if(secode>0){
+            if(outputArray.length===0){
+                console.log(`걸린 시간: ${20-secode}초`);
+                $readInput.value=secode;
+                $readInput.value=`${secode}, 걸린 시간: ${20-secode}초`;
+                $timergauge.classList.remove('action');
+
+                clearInterval(timerId);
+            }
+        };
+        
+    },1000);
+    
+    
+
     setTimeout(()=>{
-        //여기부분 사진 나오도록 바꾸기
         console.log('끝');
+
+        $timeOver.classList.add('game-over');        
     }, 20000)
 
-    $outputbg.removeAttribute('style');
+    
+    
 }
 
 let $target = document.querySelector('.timer-box');
@@ -55,12 +90,6 @@ const textLiBoxs=(check)=>{
         $newLi.textContent=text;
         $textbox.appendChild($newLi); 
     });
-}
-
-const allremove=()=>{
-    if(outputArray.length===0){
-        alert('끝!!');
-    }
 }
 
 textLiBoxs();
@@ -99,7 +128,7 @@ const userInputTextHandler=()=>{
         
     $userInput.value='';
 
-    allremove();
+    // allremove();
 }
 
 $startBtn.addEventListener('click', gameStartHandler);
@@ -110,14 +139,3 @@ $EnterInput.addEventListener('keydown', e=>{
         userInputTextHandler();
     }
 });
-
-
-
-
-
-
-
-
-
-
-

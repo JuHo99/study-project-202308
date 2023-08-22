@@ -8,8 +8,7 @@
     <link rel="stylesheet" href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css"/>
     <link rel="stylesheet" href="./YoungheeSo/gamePlay/gamePlay.css">
     
-    <!-- <script src="../menuBar/menuBar.js" defer></script> -->
-    <script src="/YoungheeSo/menuBar/menuBar.js" defer></script>
+    <script src="./YoungheeSo/gamePlay/gamePlay.js" defer></script>
     
     <title></title>
 </head>
@@ -19,10 +18,16 @@
   <!-- 첫시작화면 상태, textbox에 글자가 안보이고 게임 시작을 눌러야 text가 보이도록 해야함 -->
 
   <div class="game-start-before">
-
-    <div class="btn-check">
+    <div class="backdrop">
       <button class="start-btn">게임시작</button>
       <button class="end-btn">취소</button>
+    </div>
+  </div>
+
+  <div class="game-end">
+    <div class="backdrop">
+      <button class="reset-btn">다시하기</button>
+      <button class="end-btn">그만하기</button>
     </div>
   </div>
 
@@ -70,7 +75,7 @@
           <ul id="textBox"></ul>
         </div>
         <div class="timer-box">
-          <img src="/img/clock.png" alt="clock">
+          <!-- <img src="/img/clock.png" alt="clock"> -->
           <p class="tiem-Gauge"></p>
         </div>                
         <input type="text" class="write-userInput">     
@@ -81,7 +86,7 @@
     <footer><a href="https://kr.freepik.com/free-vector/cartoon-news-source-set_19965522.htm#query=%EA%B2%8C%EC%9E%84%EA%B8%B0&position=12&from_view=search&track=country_rows_v1#position=12&query=%EA%B2%8C%EC%9E%84%EA%B8%B0">작가 pikisuperstar</a> 출처 Freepik</footer>
   </div>
 
-  <script src="./YoungheeSo/gamePlay/gamePlay.js"></script>
+  <script src="/YoungheeSo/menuBar/menuBar.js" ></script>
 
 </body>
 </html>
