@@ -1,6 +1,37 @@
-.container .gameBox .gamemain {
+/* 게임 창 */
+.container .gameBox {
+  height: 100%;
+  /* background: lightblue; */
+}
+/* 헤드부분  */
+
+.container .gameBox .gameHead {
   width: 80%;
-  height: 85%;
+  height: 8%;
+  margin: 0 4%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.container .gameBox .levels a {
+  padding: 10px;
+  border: 1px solid #000;
+  border-radius: 25%;
+  margin: 0 20px;
+}
+.container .gameBox .gameHead Button {
+  width: 100px;
+  height: 50px;
+}
+.container .gameBox .gameHead .gameHead_text .pding {
+  margin: 15px;
+}
+
+/* 메인 게임창 */
+
+.container .gameBox .gamemain {
+  width: 90%;
+  height: 90%;
   margin: auto;
   table-layout: fixed;
 }
@@ -37,6 +68,6 @@
 .container .gameBox .gamemain .cell p {
   font-size: 1.5em;
   position: absolute;
-  top:25%;
-  left:35%;
+  top: 25%;
+  left: 35%;
 }

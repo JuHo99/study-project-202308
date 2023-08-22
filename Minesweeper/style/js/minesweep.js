@@ -1,8 +1,9 @@
 const $mineTagble = document.getElementById('mineTable');
 
-const ROW = 10;
-const COL = 10;
-const MINE = 5;
+//초급 : 9x9/10 , 중급:16x16/40 , 고급:20x16/68
+const ROW = 16;
+const COL = 16;
+const MINE = 40;
 //게임 테이블 생성
 const createMineTable = () => {
   for (let i = 0; i < ROW; i++) {
@@ -71,11 +72,12 @@ const tableClickHandler = (e) => {
   const twoIndex = tdTrList.indexOf(clickTd);
 
   //클릭한 td 가져옴
-  const clicktable = trList[oneIndex].children[twoIndex];
-  //배경화면 투명으로 변경
+  const $clicktable = trList[oneIndex].children[twoIndex];
 
-  clicktable.classList.add('transparency');
-  clicktable.removeChild(btncell);
+  //배경화면 투명으로 변경
+  $clicktable.classList.add('transparency');
+  //버튼 삭제
+  $clicktable.removeChild(btncell);
 
   //폭탄 10개를 심을 인덱스 생성
   while (sweep.length !== MINE) {
@@ -110,9 +112,10 @@ const tableClickHandler = (e) => {
     tdCell.classList.add('boom');
     tdCell.appendChild(document.createElement('div'));
   }
+
+  //지뢰 주변에 숫자 넣기
   for (const swp of sweep) {
     const { one: trIndex, two: tdIndex } = swp;
-    //지뢰 주변에 숫자 넣기
     for (
       let numTrIndex = trIndex - 1;
       numTrIndex <= trIndex + 1;
@@ -145,6 +148,61 @@ const tableClickHandler = (e) => {
       }
     }
   }
+  const nullCellTest = (oneIndex, twoIndex) => {
+    for (
+      let numTrIndex = oneIndex - 1;
+      numTrIndex <= oneIndex + 1;
+      numTrIndex++
+    ) {
+      if (numTrIndex === ROW || numTrIndex < 0) {
+        continue;
+      }
+      for (
+        let numTdIndex = twoIndex - 1;
+        numTdIndex <= twoIndex + 1;
+        numTdIndex++
+      ) {
+        const $tdTag = trList[numTrIndex].children[numTdIndex];
+        if (
+          numTdIndex === COL ||
+          numTdIndex < 0 ||
+          $tdTag.classList.contains('boom') ||
+          $tdTag.classList.contains('transparency')
+        ) {
+          continue;
+        }
+        $tdTag.classList.add('transparency');
+        $tdTag.removeChild($tdTag.querySelector('button'));
+      }
+    }
+  };
+
+  for (
+    let numTrIndex = oneIndex - 1;
+    numTrIndex <= oneIndex + 1;
+    numTrIndex++
+  ) {
+    if (numTrIndex === ROW || numTrIndex < 0) {
+      continue;
+    }
+    for (
+      let numTdIndex = twoIndex - 1;
+      numTdIndex <= twoIndex + 1;
+      numTdIndex++
+    ) {
+      const $tdTag = trList[numTrIndex].children[numTdIndex];
+      if (
+        numTdIndex === COL ||
+        numTdIndex < 0 ||
+        $tdTag.classList.contains('boom') ||
+        $tdTag.classList.contains('transparency')
+      ) {
+        continue;
+      }
+      nullCellTest(numTrIndex, numTdIndex);
+    }
+  }
+  //빈칸을 클릭했을때 자동으로 열리게 하기
 };
 
 const deleteButtonHandler = (e) => {
