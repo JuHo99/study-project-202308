@@ -27,7 +27,7 @@ body{
     top: 0;
     left: 0;
     background: rgba(0, 0, 0, 0.45);
-    z-index: 1;
+    z-index: 5;
     display: block;
     pointer-events: all;
     display: flex; justify-content: center; align-items: center;
@@ -130,14 +130,16 @@ body{
 
 .main-game-play .timer-box{
     background: #000; border: 3px solid #93C6E7; border-radius: 15px;
+    margin-top: 10px;
     margin-left: 5vh; padding: 10px;
     
-    width: 5%; height: 55vh;
+    width: 5%; height: 53vh;
 }
 
 .main-game-play .timer-box .tiem-Gauge{
     background: red; height: 100%; border-radius: 15px;
 }
+
 
 .main-game-play .timer-box .tiem-Gauge.action{
     animation:  rotation 20s linear; 

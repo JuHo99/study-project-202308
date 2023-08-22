@@ -13,12 +13,26 @@ const gameStartHandler=(e)=>{
     console.log('시작');
 
     $checkBtn.classList.add('inaction');
+    $timergauge.classList.add('action');
+
     textLiBoxs(1);
+
+    setTimeout(()=>{
+        //여기부분 사진 나오도록 바꾸기
+        console.log('끝');
+    }, 20000)
+
+    $outputbg.removeAttribute('style');
+}
+
+const timeOut=()=>{
+
 }
 
 //ouputArray의 배열의 길이만큼 li 만들기
 const textLiBoxs=(check)=>{   
-    console.log(check, typeof check); 
+    console.log(check, typeof check);
+
     outputArray.forEach(text => {
         const $newLi = document.createElement('li');
         $newLi.setAttribute('class', `index-${outputArray.indexOf(text)}`);
@@ -27,14 +41,12 @@ const textLiBoxs=(check)=>{
         if(check!==1) {
             $newLi.textContent='';
             $outputbg.setAttribute('style','background: #fff;');
-
+            
             return;
         }
         
-        $timergauge.classList.add('action');
         $newLi.textContent=text;
         $textbox.appendChild($newLi); 
-        $outputbg.removeAttribute('style');
     });
 }
 
