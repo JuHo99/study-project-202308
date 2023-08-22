@@ -14,10 +14,9 @@
   justify-content: space-evenly;
   align-items: center;
 }
-.container .gameBox .levels a {
+.container .gameBox .levels .lev {
   padding: 10px;
   border: 1px solid #000;
-  border-radius: 25%;
   margin: 0 20px;
 }
 .container .gameBox .gameHead Button {
