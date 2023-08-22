@@ -9,9 +9,12 @@ const $easyBtn = document.querySelector('.easy');
 const $nomalBtn = document.querySelector('.nomal');
 const $hardBtn = document.querySelector('.hard');
 //초급 : 9x9/10 , 중급:16x16/40 , 고급:20x16/68
-let ROW = 9;
-let COL = 9;
-let MINE = 10;
+localStorage.setItem('ROW', '9');
+localStorage.setItem('COL', '9');
+localStorage.setItem('MINE', '9');
+let ROW = localStorage.getItem('ROW');
+let COL = localStorage.getItem('COL');;
+let MINE = localStorage.getItem('MINE');;
 
 //폭탄 위치를 담을 배열
 const sweep = [];
@@ -109,11 +112,13 @@ const nullCellTest = (oneIndex, twoIndex, trList) => {
 
 // ==========테이블 클릭 핸들러 ============
 const tableClickHandler = (e) => {
-  //버튼 클릭시 사라지기
-  $mineTagble.addEventListener('click', deleteButtonHandler);
 
   const { oneIndex, twoIndex, trList } = selectCell(e);
 
+  if (trList[oneIndex].children[twoIndex].classList.contains('boom')) {
+    $deathModal.classList.remove('hide');
+    $backdrop.classList.add('visible');
+  }
   const setMineAndNum = ()=> {
   //폭탄 10개를 심을 인덱스 생성
     while (sweep.length !== MINE) {
@@ -220,20 +225,14 @@ const tableClickHandler = (e) => {
           openAround(trIndex + 1, tdIndex + 1);
         }
       }
+     
     }, 0);
+     return;
   };
 
   openAround(oneIndex, twoIndex);
 };
 
-const deleteButtonHandler = (e) => {
-  const { oneIndex, twoIndex, trList } = selectCell(e);
-
-  if (trList[oneIndex].children[twoIndex].classList.contains('boom')) {
-    $deathModal.classList.remove('hide');
-    $backdrop.classList.add('visible');
-  }
-};
 
 $mineTagble.addEventListener('click', tableClickHandler);
 
