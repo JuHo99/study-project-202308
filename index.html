@@ -6,7 +6,6 @@
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css">    
     <link rel="stylesheet" href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css"/>
-    
     <link rel="stylesheet" href="./YoungheeSo/gamePlay/gamePlay.css">
     
     <!-- <script src="../menuBar/menuBar.js" defer></script> -->
@@ -17,8 +16,17 @@
 
 <body>
 
-  <div id="content">
+  <!-- 첫시작화면 상태, textbox에 글자가 안보이고 게임 시작을 눌러야 text가 보이도록 해야함 -->
 
+  <div class="game-start-before">
+
+    <div class="btn-check">
+      <button class="start-btn">게임시작</button>
+      <button class="end-btn">취소</button>
+    </div>
+  </div>
+
+  <div id="content">
     <section class="container">
 
       <div id="backdrop"></div>
@@ -60,7 +68,8 @@
         <div class="read-Output">
           <!-- <img src="./img/사진1.png" alt="사진1"> -->
           <ul id="textBox"></ul>
-        </div>                
+        </div>
+        <div class="timer-box"><p class="tiem-Gauge"></p></div>                
         <input type="text" class="write-userInput">     
       </div>
 

@@ -4,16 +4,38 @@ const outputArray = ['출력','사랑','싹', '설산', '예수', '물방아 꽃
 // const outputArray = ['출력'];   
 const $textbox = document.getElementById('textBox');
 
+const $startBtn = document.querySelector('.start-btn');
+const $checkBtn = document.querySelector('.btn-check');
+const $outputbg = document.querySelector('.read-Output');
+const $timergauge = document.querySelector('.tiem-Gauge');
+
+const gameStartHandler=(e)=>{
+    console.log('시작');
+
+    $checkBtn.classList.add('inaction');
+    textLiBoxs(1);
+}
+
 //ouputArray의 배열의 길이만큼 li 만들기
-const textLiBoxs=()=>{    
+const textLiBoxs=(check)=>{   
+    console.log(check, typeof check); 
     outputArray.forEach(text => {
         const $newLi = document.createElement('li');
         $newLi.setAttribute('class', `index-${outputArray.indexOf(text)}`);
         // $newLi.setAttribute(`${tag}`, `${value} index-${outputArray.indexOf(text)}`);        
+        
+        if(check!==1) {
+            $newLi.textContent='';
+            $outputbg.setAttribute('style','background: #fff;');
+
+            return;
+        }
+        
+        $timergauge.classList.add('action');
         $newLi.textContent=text;
-        $textbox.appendChild($newLi);        
+        $textbox.appendChild($newLi); 
+        $outputbg.removeAttribute('style');
     });
-    
 }
 
 const allremove=()=>{
@@ -61,12 +83,15 @@ const userInputTextHandler=()=>{
     allremove();
 }
 
+$startBtn.addEventListener('click', gameStartHandler);
+
 const $EnterInput = document.querySelector('.write-userInput');
 $EnterInput.addEventListener('keydown', e=>{
     if(e.key==='Enter'){
         userInputTextHandler();
     }
 });
+
 
 
 

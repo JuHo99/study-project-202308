@@ -11,9 +11,44 @@
     box-sizing: border-box;
 }
 
-/* body{
-    background: #C9FFFC;
-} */
+body{
+    -webkit-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select:none;
+    user-select:none;
+
+    position: relative;
+}
+
+.btn-check{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.45);
+    z-index: 1;
+    display: block;
+    pointer-events: all;
+    display: flex; justify-content: center; align-items: center;
+}
+
+.btn-check.inaction{
+    pointer-events: none;
+    display: none;    
+}
+
+ Button{    
+    font-family: 'ONE-Mobile-POP'; font-size: 2em;
+    
+    width: 20%; height: 10%;   
+    margin: 20px;
+
+    border: 3px solid #93C6E7; border-radius: 15px;  
+    display: flex; justify-content: center; align-items: center; 
+}
+
+
 
 #content{    
     height: 100vh;
@@ -54,7 +89,7 @@
 }
 
 .main-game-play .read-Output{
-    width: 68vw; height: 55vh; 
+    width: 55vw; height: 55vh; 
 
     background: url('/img/사진1.png') no-repeat center/cover;
     border: 3px solid #93C6E7;
@@ -93,6 +128,46 @@
     opacity: 0;
 }
 
+.main-game-play .timer-box{
+    background: #000; border: 3px solid #93C6E7; border-radius: 15px;
+    margin-left: 5vh; padding: 10px;
+    
+    width: 5%; height: 55vh;
+}
+
+.main-game-play .timer-box .tiem-Gauge{
+    background: red; height: 100%; border-radius: 15px;
+}
+
+.main-game-play .timer-box .tiem-Gauge.action{
+    animation:  rotation 20s linear; 
+    animation-duration: reverse;   
+}
+
+
+@keyframes rotation{
+    0%{
+        background: blue;
+        height: 100%;
+    }
+    25%{
+        background: green;
+        height: 75%;
+    }
+    50%{
+        background: yellow;
+        height: 50%;
+    }
+    75%{
+        background: orange;
+        height: 25%;
+    }
+    100%{
+        background: red;
+        height: 0%;
+    }
+}
+
 .main-game-play input{
     width: 50vw; height: 10vh; 
     min-width: 150px; min-height: 30px;
@@ -105,13 +180,12 @@
     display: flex; justify-content: center; align-content: center;
 
     font-size: 2em; font-family: 'ONE-Mobile-POP'; color: #FFA1CF;
-    
+
 }
 
 .main-game-play input.typing-error{
     background: red;
 }
-
 
 .main-game-play input:focus{
     box-shadow: 5px 5px 5px #868686;
