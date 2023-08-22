@@ -129,6 +129,7 @@ body{
 }
 
 .main-game-play .timer-box{
+    position: relative;
     background: #000; border: 3px solid #93C6E7; border-radius: 15px;
     margin-top: 10px;
     margin-left: 5vh; padding: 10px;
@@ -140,6 +141,10 @@ body{
     background: red; height: 100%; border-radius: 15px;
 }
 
+.main-game-play .timer-box img{
+    position: absolute;
+    width: 50px;
+}
 
 .main-game-play .timer-box .tiem-Gauge.action{
     animation:  rotation 20s linear; 

@@ -9,6 +9,10 @@ const $checkBtn = document.querySelector('.btn-check');
 const $outputbg = document.querySelector('.read-Output');
 const $timergauge = document.querySelector('.tiem-Gauge');
 
+const $clockImg =document.querySelector('img');
+
+const $content = document.getElementById('content');
+
 const gameStartHandler=(e)=>{
     console.log('시작');
 
@@ -25,9 +29,12 @@ const gameStartHandler=(e)=>{
     $outputbg.removeAttribute('style');
 }
 
-const timeOut=()=>{
+let $target = document.querySelector('.timer-box');
 
-}
+let $top= $target.getBoundingClientRect().top;
+console.log(Math.floor($top));
+
+$clockImg.setAttribute('style',`right: ${$top}px;` );
 
 //ouputArray의 배열의 길이만큼 li 만들기
 const textLiBoxs=(check)=>{   
