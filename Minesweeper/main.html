@@ -12,7 +12,8 @@
     <script src="style/js/main.js" defer></script>
 
     <link rel="stylesheet" href="style/css/minesweep.css" />
-    <script src="style/js/minesweep.js" defer></script>
+    <script src="style/js/init_minesweep.js" defer></script>
+    <script src="style/js/function_minesweep.js" defer></script>
   </head>
   <body>
     <section class="container">
@@ -48,22 +49,42 @@
         <div class="closedIcon"><a href="#"><span class="lnr lnr-cross-circle"></span></a></div>
       </div>
       <div class="gameBox">
+        <!-- 헤드부분 -->
         <div class="gameHead">
           <div class="levels">
             <a href="#">초급</a>
             <a href="#">중급</a>
             <a href="#">고급</a>
           </div>
-          <button type="reset" >Reset</button>
+          <button type="reset" class="btn" >Reset</button>
           <div class="gameHead_text">
             <p class="pding">남은 지뢰 :<span id="boomCnt"></span> </p>
             <p class="pding">Time : <span id="time"></span> </p>
           </div>
         </div>
+        <!-- 지뢰찾기 메인 -->
         <table class="gamemain">
           <tbody id="mineTable">
           </tbody>
         </table>
+
+        <!-- 지뢰 밟았을때 모달 -->
+        <div class="death_modal hide">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">게임 오버</h5>
+                </div>
+                <div class="modal-body">
+                  <p>지뢰를 밟았습니다 ! ! !</p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary">Reset</button>
+                </div>
+              </div>
+          </div>
+        </div>
       </div>
     </section>
   </body>

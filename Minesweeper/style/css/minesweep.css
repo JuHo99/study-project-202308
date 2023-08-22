@@ -1,5 +1,6 @@
 /* 게임 창 */
 .container .gameBox {
+  width: 100%;
   height: 100%;
   /* background: lightblue; */
 }
@@ -70,4 +71,28 @@
   position: absolute;
   top: 25%;
   left: 35%;
+}
+
+.death_modal {
+  width: 45%;
+  height: 30%;
+  background: lightcoral;
+  border-radius: 5%;
+  position: absolute;
+  top: 30%;
+  left: 30%;
+  z-index: 20;
+}
+.death_modal .modal-dialog {
+  height: 100%;
+}
+.death_modal .modal-content {
+  height: inherit;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.death_modal .modal-title {
+  font-size: 3em;
 }

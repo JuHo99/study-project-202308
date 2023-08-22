@@ -19,9 +19,9 @@
   height: 100%;
   background: blanchedalmond;
   position: absolute;
-  z-index: 1;
+  z-index: 40;
 }
-.container .menu.hide {
+.hide {
   display: none;
 }
 .container .menu .menuItem {
@@ -43,7 +43,7 @@
   top: 0;
   left: 0;
   background: rgba(0, 0, 0, 0.45);
-  z-index: 1;
+  z-index: 4;
   pointer-events: none;
   display: none;
 }
@@ -52,5 +52,3 @@
   display: block;
   pointer-events: all;
 }
-
-

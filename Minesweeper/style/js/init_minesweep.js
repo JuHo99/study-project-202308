@@ -1,9 +1,17 @@
+//게임창
 const $mineTagble = document.getElementById('mineTable');
 
+//모달
+const $deathModal = document.querySelector('.death_modal');
+
 //초급 : 9x9/10 , 중급:16x16/40 , 고급:20x16/68
-const ROW = 16;
-const COL = 16;
-const MINE = 40;
+const ROW = 9;
+const COL = 9;
+const MINE = 10;
+
+//폭탄 위치를 담을 배열
+const sweep = [];
+
 //게임 테이블 생성
 const createMineTable = () => {
   for (let i = 0; i < ROW; i++) {
@@ -25,9 +33,7 @@ const createMineTable = () => {
   }
 };
 
-//폭탄 위치를 담을 배열
-const sweep = [];
-
+// 선택한 셀 찾아오기 =================
 const selectCell = (e) => {
   const btncell = e.target; //button
   const clickTd = btncell.parentNode;
@@ -50,34 +56,51 @@ const selectCell = (e) => {
   clicktable.classList.add('transparency');
   clicktable.removeChild(btncell);
 
-  return [oneIndex, twoIndex];
+  return {
+    oneIndex: oneIndex,
+    twoIndex: twoIndex,
+    trList: trList,
+  };
 };
 
+// 빈셀 없애기
+const nullCellTest = (oneIndex, twoIndex, trList) => {
+  let boomCount = 0;
+  let emptyCount = 0;
+  for (
+    let numTrIndex = oneIndex - 1;
+    numTrIndex <= oneIndex + 1;
+    numTrIndex++
+  ) {
+    for (
+      let numTdIndex = twoIndex - 1;
+      numTdIndex <= twoIndex + 1;
+      numTdIndex++
+    ) {
+      const $tdTag = trList[numTrIndex].children[numTdIndex];
+      if (!$tdTag) return;
+
+      if ($tdTag.classList.contains('boom')) {
+        boomCount++;
+        continue;
+      }
+      if ($tdTag.classList.contains('transparency')) {
+        emptyCount++;
+        continue;
+      }
+      $tdTag.classList.add('transparency');
+      $tdTag.removeChild($tdTag.querySelector('button'));
+    }
+  }
+  return [boomCount, emptyCount];
+};
+
+// ==========테이블 클릭 핸들러 ============
 const tableClickHandler = (e) => {
   //버튼 클릭시 사라지기
   $mineTagble.addEventListener('click', deleteButtonHandler);
 
-  const btncell = e.target; //button
-  const clickTd = btncell.parentNode;
-
-  //tr 전체를 배열로 변환
-  const trList = Array.from($mineTagble.querySelectorAll('tr'));
-
-  //클릭된 td에서 tr가 몇번째 있는지 확인
-  const tdTr = clickTd.closest('.rows');
-  const tdTrList = Array.from(tdTr.children);
-
-  //tr과 td 인덱스 뽑아옴
-  const oneIndex = trList.indexOf(tdTr);
-  const twoIndex = tdTrList.indexOf(clickTd);
-
-  //클릭한 td 가져옴
-  const $clicktable = trList[oneIndex].children[twoIndex];
-
-  //배경화면 투명으로 변경
-  $clicktable.classList.add('transparency');
-  //버튼 삭제
-  $clicktable.removeChild(btncell);
+  const { oneIndex, twoIndex, trList } = selectCell(e);
 
   //폭탄 10개를 심을 인덱스 생성
   while (sweep.length !== MINE) {
@@ -138,9 +161,6 @@ const tableClickHandler = (e) => {
         ) {
           continue;
         } else {
-          console.log(tdTag);
-          console.log(numTrIndex, numTdIndex);
-
           const $pTag = tdTag.querySelector('.mineNum');
           $pTag.textContent = +$pTag.textContent + 1;
           $pTag.setAttribute('Num', '1');
@@ -148,65 +168,52 @@ const tableClickHandler = (e) => {
       }
     }
   }
-  const nullCellTest = (oneIndex, twoIndex) => {
-    for (
-      let numTrIndex = oneIndex - 1;
-      numTrIndex <= oneIndex + 1;
-      numTrIndex++
-    ) {
-      if (numTrIndex === ROW || numTrIndex < 0) {
-        continue;
-      }
-      for (
-        let numTdIndex = twoIndex - 1;
-        numTdIndex <= twoIndex + 1;
-        numTdIndex++
+
+  //빈칸을 클릭했을때 자동으로 열리게 하기
+  const openAround = (trIndex, tdIndex) => {
+    console.log(`${trIndex},${tdIndex}`);
+    setTimeout(() => {
+      if (
+        !trList[trIndex].children[tdIndex].querySelector('.mineNum').textContent
       ) {
-        const $tdTag = trList[numTrIndex].children[numTdIndex];
         if (
-          numTdIndex === COL ||
-          numTdIndex < 0 ||
-          $tdTag.classList.contains('boom') ||
-          $tdTag.classList.contains('transparency')
+          trIndex - 1 < 0 ||
+          tdIndex - 1 < 0 ||
+          trIndex + 1 > ROW ||
+          tdIndex + 1 > COL
         ) {
-          continue;
+          return;
         }
-        $tdTag.classList.add('transparency');
-        $tdTag.removeChild($tdTag.querySelector('button'));
+
+        const [boomCount, emptyCount] = nullCellTest(trIndex, tdIndex, trList);
+        console.log(`eptCo: ${emptyCount}`);
+        if (emptyCount === 9) {
+          return;
+        }
+        if (boomCount === 0) {
+          openAround(trIndex - 1, tdIndex - 1);
+          openAround(trIndex - 1, tdIndex);
+          openAround(trIndex - 1, tdIndex + 1);
+          openAround(trIndex, tdIndex - 1);
+          openAround(trIndex, tdIndex + 1);
+          openAround(trIndex + 1, tdIndex - 1);
+          openAround(trIndex + 1, tdIndex);
+          openAround(trIndex + 1, tdIndex + 1);
+        }
       }
-    }
+    }, 0);
   };
 
-  for (
-    let numTrIndex = oneIndex - 1;
-    numTrIndex <= oneIndex + 1;
-    numTrIndex++
-  ) {
-    if (numTrIndex === ROW || numTrIndex < 0) {
-      continue;
-    }
-    for (
-      let numTdIndex = twoIndex - 1;
-      numTdIndex <= twoIndex + 1;
-      numTdIndex++
-    ) {
-      const $tdTag = trList[numTrIndex].children[numTdIndex];
-      if (
-        numTdIndex === COL ||
-        numTdIndex < 0 ||
-        $tdTag.classList.contains('boom') ||
-        $tdTag.classList.contains('transparency')
-      ) {
-        continue;
-      }
-      nullCellTest(numTrIndex, numTdIndex);
-    }
-  }
-  //빈칸을 클릭했을때 자동으로 열리게 하기
+  openAround(oneIndex, twoIndex);
 };
 
 const deleteButtonHandler = (e) => {
-  selectCell(e);
+  const { oneIndex, twoIndex, trList } = selectCell(e);
+
+  if (trList[oneIndex].children[twoIndex].classList.contains('boom')) {
+    $deathModal.classList.remove('hide');
+    $backdrop.classList.add('visible');
+  }
 };
 
 $mineTagble.addEventListener('click', tableClickHandler, { once: true });
