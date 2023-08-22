@@ -2,6 +2,7 @@ const $mineTagble = document.getElementById('mineTable');
 
 const ROW = 10;
 const COL = 10;
+const MINE = 5;
 //게임 테이블 생성
 const createMineTable = () => {
   for (let i = 0; i < ROW; i++) {
@@ -14,6 +15,7 @@ const createMineTable = () => {
       const $tdNum = document.createElement('p');
 
       $tableTd.classList.add('cell');
+      $tdNum.classList.add('mineNum');
 
       $tableTr.appendChild($tableTd);
       $tableTd.appendChild($tdBtn);
@@ -21,7 +23,6 @@ const createMineTable = () => {
     }
   }
 };
-createMineTable();
 
 //폭탄 위치를 담을 배열
 const sweep = [];
@@ -77,7 +78,7 @@ const tableClickHandler = (e) => {
   clicktable.removeChild(btncell);
 
   //폭탄 10개를 심을 인덱스 생성
-  while (sweep.length !== ROW) {
+  while (sweep.length !== MINE) {
     const one = Math.floor(Math.random() * ROW);
     const two = Math.floor(Math.random() * COL);
 
@@ -104,12 +105,13 @@ const tableClickHandler = (e) => {
   //지뢰 넣기
   for (const swp of sweep) {
     const { one: trIndex, two: tdIndex } = swp;
-    const swpLen = sweep.length;
     const tdCell = trList[trIndex].children[tdIndex];
 
-    tdCell.setAttribute('boom', 'B');
+    tdCell.classList.add('boom');
     tdCell.appendChild(document.createElement('div'));
-
+  }
+  for (const swp of sweep) {
+    const { one: trIndex, two: tdIndex } = swp;
     //지뢰 주변에 숫자 넣기
     for (
       let numTrIndex = trIndex - 1;
@@ -124,24 +126,21 @@ const tableClickHandler = (e) => {
         numTdIndex <= tdIndex + 1;
         numTdIndex++
       ) {
+        const tdTag = trList[numTrIndex].children[numTdIndex];
         if (
           numTdIndex === COL ||
           numTdIndex < 0 ||
+          tdTag.classList.contains('boom') ||
           (numTdIndex === tdIndex && numTrIndex === trIndex)
         ) {
           continue;
         } else {
-          const tdTag = trList[numTrIndex].children[numTdIndex];
-          const openTdCheck = tdTag.classList.contains('transparency');
-
-          if (openTdCheck) {
-            continue;
-          }
+          console.log(tdTag);
           console.log(numTrIndex, numTdIndex);
-          console.log(trList[numTrIndex].children[numTdIndex]);
-          const pTag = tdTag.children[1];
-          pTag.textContent = 1;
-          pTag.setAttribute('Num', '1');
+
+          const $pTag = tdTag.querySelector('.mineNum');
+          $pTag.textContent = +$pTag.textContent + 1;
+          $pTag.setAttribute('Num', '1');
         }
       }
     }
@@ -153,3 +152,6 @@ const deleteButtonHandler = (e) => {
 };
 
 $mineTagble.addEventListener('click', tableClickHandler, { once: true });
+
+// - 화면 렌더링 -
+createMineTable();
