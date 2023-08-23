@@ -100,7 +100,7 @@ button{
 .main-game-play .read-Output{
     width: 55vw; height: 55vh; 
 
-    background: url('/img/사진1.png') no-repeat center/cover;
+    background: url('/YoungheeSo/img/사진1.png') no-repeat center/cover;
     border: 3px solid #93C6E7;
     border-radius: 15px;
 
@@ -122,7 +122,7 @@ button{
     min-width: 100px; min-height:85px; 
 
     /* background: #FEDEFF; */
-    background: url('/img/6181861.jpg') no-repeat center/cover;
+    background: url('/YoungheeSo/img/6181861.jpg') no-repeat center/cover;
 
     margin: 1px;
 
