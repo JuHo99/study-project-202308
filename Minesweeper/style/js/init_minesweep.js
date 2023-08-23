@@ -181,9 +181,9 @@ const setMineAndNum = (trIndex, tdIndex, trList) => {
 };
 
 function openAround(trIndex, tdIndex, trList) {
+  console.log('실행됩니다');
   const $clickEmptyTd = trList[trIndex].children[tdIndex];
-
-  $clickEmptyTd.classList.add('clicked');
+  console.log($clickEmptyTd);
 
   for (let numTrIndex = trIndex - 1; numTrIndex <= trIndex + 1; numTrIndex++) {
     if (numTrIndex === ROW || numTrIndex < 0) {
@@ -198,9 +198,14 @@ function openAround(trIndex, tdIndex, trList) {
       if (numTdIndex === COL || numTdIndex < 0 || $tdTag.hasAttribute('mine')) {
         continue;
       }
-      openAround(numTdIndex, numTrIndex);
+      $tdTag.classList.add('clicked');
+      $tdTag.setAttribute('num', '0');
+
+      // openAround(numTdIndex, numTrIndex);
     }
     //빈칸을 클릭했을때 자동으로 열리게 하기
+    {
+    }
   }
 }
 
@@ -213,9 +218,8 @@ const tableClickHandler = (e) => {
     setMineAndNum(trIndex, tdIndex, trList);
     mineIsValid = true;
   }
-  if ($clickTd.classList.contains('clicked')) {
-    return;
-  } else if ($clickTd.hasAttribute('mine')) {
+
+  if ($clickTd.hasAttribute('mine')) {
     $deathModal.classList.remove('hide');
     $backdrop.classList.add('visible');
 
@@ -225,10 +229,11 @@ const tableClickHandler = (e) => {
 
       $tdCell.classList.add('has-mine');
     }
-  } else if ($clickTd.hasAttribute('num')) {
-    $clickTd.classList.add('clicked');
-  } else {
+  } else if (!$clickTd.hasAttribute('num')) {
+    console.log('Around');
     openAround(trIndex, tdIndex, trList);
+  } else {
+    return;
   }
 
   //빈칸을 클릭했을때 자동으로 열리게 하기
