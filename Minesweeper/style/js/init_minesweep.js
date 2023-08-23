@@ -106,12 +106,116 @@ const nullCellTest = (oneIndex, twoIndex, trList) => {
   return [boomCount, emptyCount];
 };
 
+//지뢰와 숫자 넣기
+const setMineAndNum = (trIndex, tdIndex, trList) => {
+  //폭탄 10개를 심을 인덱스 생성
+  while (sweep.length !== MINE) {
+    const one = Math.floor(Math.random() * ROW);
+    const two = Math.floor(Math.random() * COL);
+
+    //초기 클릭위치와 one,two가 이미 있는지 확인
+    let isDuplicate = false;
+    if (trIndex === one && tdIndex === two) {
+      isDuplicate = true;
+    }
+    for (const entry of sweep) {
+      if (entry.one === one && entry.two === two) {
+        isDuplicate = true;
+        break;
+      }
+    }
+    //false일때 실행
+    if (!isDuplicate) {
+      sweep.push({
+        one: one,
+        two: two,
+      });
+    }
+  }
+  console.log(sweep);
+  //지뢰 넣기
+  for (const swp of sweep) {
+    const { one: trIndex, two: tdIndex } = swp;
+    const tdCell = trList[trIndex].children[tdIndex];
+
+    tdCell.setAttribute('mine', 1);
+  }
+
+  //지뢰 주변에 숫자 넣기
+  for (const swp of sweep) {
+    const { one: trIndex, two: tdIndex } = swp;
+    for (
+      let numTrIndex = trIndex - 1;
+      numTrIndex <= trIndex + 1;
+      numTrIndex++
+    ) {
+      if (numTrIndex === ROW || numTrIndex < 0) {
+        continue;
+      }
+      for (
+        let numTdIndex = tdIndex - 1;
+        numTdIndex <= tdIndex + 1;
+        numTdIndex++
+      ) {
+        const $tdTag = trList[numTrIndex].children[numTdIndex];
+        if (
+          numTdIndex === COL ||
+          numTdIndex < 0 ||
+          $tdTag.getAttribute('mine') ||
+          (numTdIndex === tdIndex && numTrIndex === trIndex)
+        ) {
+          continue;
+        }
+
+        if (!$tdTag.textContent) {
+          $tdTag.textContent = 1;
+        } else {
+          $tdTag.textContent = +$tdTag.textContent + 1;
+          $tdTag.classList.remove('txt-' + `${+$tdTag.textContent - 1}`);
+        }
+        $tdTag.setAttribute('Num', `${$tdTag.textContent}`);
+        $tdTag.classList.add('txt-' + `${$tdTag.getAttribute('Num')}`);
+      }
+    }
+  }
+};
+
+function openAround(trIndex, tdIndex, trList) {
+  const $clickEmptyTd = trList[trIndex].children[tdIndex];
+
+  $clickEmptyTd.classList.add('clicked');
+
+  for (let numTrIndex = trIndex - 1; numTrIndex <= trIndex + 1; numTrIndex++) {
+    if (numTrIndex === ROW || numTrIndex < 0) {
+      continue;
+    }
+    for (
+      let numTdIndex = tdIndex - 1;
+      numTdIndex <= tdIndex + 1;
+      numTdIndex++
+    ) {
+      const $tdTag = trList[numTrIndex].children[numTdIndex];
+      if (numTdIndex === COL || numTdIndex < 0 || $tdTag.hasAttribute('mine')) {
+        continue;
+      }
+      openAround(numTdIndex, numTrIndex);
+    }
+    //빈칸을 클릭했을때 자동으로 열리게 하기
+  }
+}
+
 // ==========테이블 클릭 핸들러 ============
 const tableClickHandler = (e) => {
   const $clickTd = e.target;
   const { trIndex, tdIndex, trList } = selectCell($clickTd);
 
-  if (trList[trIndex].children[tdIndex].getAttribute('mine')) {
+  if (!mineIsValid) {
+    setMineAndNum(trIndex, tdIndex, trList);
+    mineIsValid = true;
+  }
+  if ($clickTd.classList.contains('clicked')) {
+    return;
+  } else if ($clickTd.hasAttribute('mine')) {
     $deathModal.classList.remove('hide');
     $backdrop.classList.add('visible');
 
@@ -121,156 +225,13 @@ const tableClickHandler = (e) => {
 
       $tdCell.classList.add('has-mine');
     }
-  }
-  const setMineAndNum = () => {
-    //폭탄 10개를 심을 인덱스 생성
-    while (sweep.length !== MINE) {
-      const one = Math.floor(Math.random() * ROW);
-      const two = Math.floor(Math.random() * COL);
-
-      //초기 클릭위치와 one,two가 이미 있는지 확인
-      let isDuplicate = false;
-      if (trIndex === one && tdIndex === two) {
-        isDuplicate = true;
-      }
-      for (const entry of sweep) {
-        if (entry.one === one && entry.two === two) {
-          isDuplicate = true;
-          break;
-        }
-      }
-      //false일때 실행
-      if (!isDuplicate) {
-        sweep.push({
-          one: one,
-          two: two,
-        });
-      }
-    }
-    console.log(sweep);
-    //지뢰 넣기
-    for (const swp of sweep) {
-      const { one: trIndex, two: tdIndex } = swp;
-      const tdCell = trList[trIndex].children[tdIndex];
-
-      tdCell.setAttribute('mine', 1);
-    }
-
-    //지뢰 주변에 숫자 넣기
-    for (const swp of sweep) {
-      const { one: trIndex, two: tdIndex } = swp;
-      for (
-        let numTrIndex = trIndex - 1;
-        numTrIndex <= trIndex + 1;
-        numTrIndex++
-      ) {
-        if (numTrIndex === ROW || numTrIndex < 0) {
-          continue;
-        }
-        for (
-          let numTdIndex = tdIndex - 1;
-          numTdIndex <= tdIndex + 1;
-          numTdIndex++
-        ) {
-          const $tdTag = trList[numTrIndex].children[numTdIndex];
-          if (
-            numTdIndex === COL ||
-            numTdIndex < 0 ||
-            $tdTag.getAttribute('mine') ||
-            (numTdIndex === tdIndex && numTrIndex === trIndex)
-          ) {
-            continue;
-          }
-
-          if (!$tdTag.textContent) {
-            $tdTag.textContent = 1;
-          } else {
-            $tdTag.textContent = +$tdTag.textContent + 1;
-            $tdTag.classList.remove('txt-' + `${+$tdTag.textContent - 1}`);
-          }
-          $tdTag.setAttribute('Num', `${$tdTag.textContent}`);
-          $tdTag.classList.add('txt-' + `${$tdTag.getAttribute('Num')}`);
-        }
-      }
-    }
-  };
-  if (!mineIsValid) {
-    setMineAndNum();
-    mineIsValid = true;
+  } else if ($clickTd.hasAttribute('num')) {
+    $clickTd.classList.add('clicked');
+  } else {
+    openAround(trIndex, tdIndex, trList);
   }
 
-  //   //빈칸을 클릭했을때 자동으로 열리게 하기
-  //   function openAround(trIndex, tdIndex) {
-  //     // trList[trIndex].children[tdIndex].classList.add('clicked');
-  //     let noMine = true;
-
-  //     setTimeout(() => {
-  //       if (!trList[trIndex].children[tdIndex].textContent) {
-  //         if (
-  //           trIndex - 1 < 0 ||
-  //           tdIndex - 1 < 0 ||
-  //           trIndex + 1 > ROW ||
-  //           tdIndex + 1 > COL
-  //         ) {
-  //           return;
-  //         }
-  //         for (
-  //           let numTrIndex = trIndex - 1;
-  //           numTrIndex <= trIndex + 1;
-  //           numTrIndex++
-  //         ) {
-  //           if (numTrIndex === ROW || numTrIndex < 0) {
-  //             continue;
-  //           }
-  //           for (
-  //             let numTdIndex = tdIndex - 1;
-  //             numTdIndex <= tdIndex + 1;
-  //             numTdIndex++
-  //           ) {
-  //             const $tdTag = trList[numTrIndex].children[numTdIndex];
-  //             if (
-  //               numTdIndex === COL ||
-  //               numTdIndex < 0 ||
-  //               $tdTag.getAttribute('Num') ||
-  //               (numTdIndex === tdIndex && numTrIndex === trIndex)
-  //             ) {
-  //               continue;
-  //             }
-  //             if ($tdTag.getAttribute('mine')) {
-  //               noMine = false;
-  //             }
-  //           }
-  //         }
-
-  //         for (
-  //           let numTrIndex = trIndex - 1;
-  //           numTrIndex <= trIndex + 1;
-  //           numTrIndex++
-  //         ) {
-  //           if (numTrIndex === ROW || numTrIndex < 0) {
-  //             continue;
-  //           }
-  //           for (
-  //             let numTdIndex = tdIndex - 1;
-  //             numTdIndex <= tdIndex + 1;
-  //             numTdIndex++
-  //           ) {
-  //             const $tdTag = trList[numTrIndex].children[numTdIndex];
-  //             if (
-  //               numTdIndex === COL ||
-  //               numTdIndex < 0 ||
-  //               $tdTag.getAttribute('mine') ||
-  //               (numTdIndex === tdIndex && numTrIndex === trIndex)
-  //             ) {
-  //               continue;
-  //             }
-  //             openAround(numTdIndex, numTrIndex);
-  //           }
-  //         }
-  //       }
-  //     }, 0);
-  //   }
-  //   openAround(trIndex, tdIndex);
+  //빈칸을 클릭했을때 자동으로 열리게 하기
 };
 
 $mineTagble.addEventListener('click', tableClickHandler);
