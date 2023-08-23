@@ -1,6 +1,6 @@
 
-const outputArray = ['출력','사랑','싹', '설산', '예수', '물방아 꽃', '사막', '해바라기', '얼음', '봄바람','마나님', '나그네'];   
-// const outputArray = ['출력'];
+// const outputArray = ['출력','사랑','싹', '설산', '예수', '물방아 꽃', '사막', '해바라기', '얼음', '봄바람','마나님', '나그네'];   
+const outputArray = ['출력'];
 
 const $textbox = document.getElementById('textBox');
 
