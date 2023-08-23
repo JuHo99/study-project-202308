@@ -29,26 +29,26 @@ const createGameBox = (difficulty) => {
         $gameBox.appendChild(gameBoxItem);
         if (diffichlty === 'easy') {
             switch (i) {
-                case 29: gameBoxItem.classList.add('area');addAltBox(gameBoxItem, 1); break;
+                case 29: gameBoxItem.classList.add('area'); addAltBox(gameBoxItem, 1); break;
                 case 30: gameBoxItem.classList.add('area'); break;
-                case 31: gameBoxItem.classList.add('area');addAltBox(gameBoxItem, 1); break;
-                case 35: gameBoxItem.classList.add('area');addAltBox(gameBoxItem, 4); break;
-                case 44: gameBoxItem.classList.add('area');addAltBox(gameBoxItem, 3); break;
+                case 31: gameBoxItem.classList.add('area'); addAltBox(gameBoxItem, 1); break;
+                case 35: gameBoxItem.classList.add('area'); addAltBox(gameBoxItem, 4); break;
+                case 44: gameBoxItem.classList.add('area'); addAltBox(gameBoxItem, 3); break;
                 case 45: gameBoxItem.classList.add('area'); break;
-                case 46: gameBoxItem.classList.add('area');addAltBox(gameBoxItem, 3); break;
+                case 46: gameBoxItem.classList.add('area'); addAltBox(gameBoxItem, 3); break;
                 case 48: gameBoxItem.classList.add('area'); break;
-                case 55: gameBoxItem.classList.add('area');addAltBox(gameBoxItem, 2); break;
-                case 56: gameBoxItem.classList.add('area');addAltBox(gameBoxItem, 2); break;
+                case 55: gameBoxItem.classList.add('area'); addAltBox(gameBoxItem, 2); break;
+                case 56: gameBoxItem.classList.add('area'); addAltBox(gameBoxItem, 2); break;
                 case 57: gameBoxItem.classList.add('area'); break;
-                case 59: gameBoxItem.classList.add('area');addAltBox(gameBoxItem, 4); break;
+                case 59: gameBoxItem.classList.add('area'); addAltBox(gameBoxItem, 4); break;
                 case 60: gameBoxItem.classList.add('area'); break;
                 case 61: gameBoxItem.classList.add('area'); break;
                 case 69: gameBoxItem.classList.add('area'); break;
                 case 72: gameBoxItem.classList.add('area'); break;
-                case 75: gameBoxItem.classList.add('area');addAltBox(gameBoxItem, 5); break;
+                case 75: gameBoxItem.classList.add('area'); addAltBox(gameBoxItem, 5); break;
                 case 82: gameBoxItem.classList.add('area'); break;
                 case 88: gameBoxItem.classList.add('area'); break;
-                case 98: gameBoxItem.classList.add('area');addAltBox(gameBoxItem, 5); break;
+                case 98: gameBoxItem.classList.add('area'); addAltBox(gameBoxItem, 5); break;
                 case 99: gameBoxItem.classList.add('area'); break;
                 case 100: gameBoxItem.classList.add('area'); break;
                 case 101: gameBoxItem.classList.add('area'); break;
@@ -58,10 +58,10 @@ const createGameBox = (difficulty) => {
         } else if (diffichlty === 'nomal') {
             switch (i) {
                 case 29: gameBoxItem.classList.add('area'); addAltBox(gameBoxItem, 1); break;
-                case 30: gameBoxItem.classList.add('area'); addAltBox(gameBoxItem,  1); break;
+                case 30: gameBoxItem.classList.add('area'); addAltBox(gameBoxItem, 1); break;
                 case 31: gameBoxItem.classList.add('area'); break;
                 case 32: gameBoxItem.classList.add('area'); break;
-                case 35: gameBoxItem.classList.add('area'); addAltBox(gameBoxItem,  3); break;
+                case 35: gameBoxItem.classList.add('area'); addAltBox(gameBoxItem, 3); break;
                 case 43: gameBoxItem.classList.add('area'); break;
                 case 48: gameBoxItem.classList.add('area'); addAltBox(gameBoxItem, 5); break;
                 case 49: gameBoxItem.classList.add('area'); break;
@@ -70,13 +70,13 @@ const createGameBox = (difficulty) => {
                 case 56: gameBoxItem.classList.add('area'); addAltBox(gameBoxItem, 2); break;
                 case 57: gameBoxItem.classList.add('area'); break;
                 case 58: gameBoxItem.classList.add('area'); break;
-                case 59: gameBoxItem.classList.add('area'); addAltBox(gameBoxItem,  2); break;
+                case 59: gameBoxItem.classList.add('area'); addAltBox(gameBoxItem, 2); break;
                 case 61: gameBoxItem.classList.add('area'); break;
                 case 69: gameBoxItem.classList.add('area'); break;
                 case 72: gameBoxItem.classList.add('area'); addAltBox(gameBoxItem, 4); break;
                 case 73: gameBoxItem.classList.add('area'); break;
                 case 74: gameBoxItem.classList.add('area'); break;
-                case 75: gameBoxItem.classList.add('area'); addAltBox(gameBoxItem,  4); break;
+                case 75: gameBoxItem.classList.add('area'); addAltBox(gameBoxItem, 4); break;
                 case 85: gameBoxItem.classList.add('area'); break;
                 case 88: gameBoxItem.classList.add('area'); break;
                 case 95: gameBoxItem.classList.add('area'); addAltBox(gameBoxItem, 3); break;
@@ -94,13 +94,13 @@ const createGameBox = (difficulty) => {
             switch (i) {
                 case 1: gameBoxItem.classList.add('area'); addAltBox(gameBoxItem, 1); break;
                 case 2: gameBoxItem.classList.add('area'); break;
-                case 3: gameBoxItem.classList.add('area'); addAltBox(gameBoxItem,2); break;
+                case 3: gameBoxItem.classList.add('area'); addAltBox(gameBoxItem, 2); break;
                 case 14: gameBoxItem.classList.add('area'); break;
                 case 16: gameBoxItem.classList.add('area'); addAltBox(gameBoxItem, 2); break;
                 case 17: gameBoxItem.classList.add('area'); addAltBox(gameBoxItem, 3); break;
                 case 19: gameBoxItem.classList.add('area'); addAltBox(gameBoxItem, 7); break;
                 case 27: gameBoxItem.classList.add('area'); addAltBox(gameBoxItem, 3); break;
-                case 28: gameBoxItem.classList.add('area'); addAltBox(gameBoxItem,4); break;
+                case 28: gameBoxItem.classList.add('area'); addAltBox(gameBoxItem, 4); break;
                 case 30: gameBoxItem.classList.add('area'); break;
                 case 32: gameBoxItem.classList.add('area'); break;
                 case 36: gameBoxItem.classList.add('area'); addAltBox(gameBoxItem, 12); break;
@@ -120,17 +120,17 @@ const createGameBox = (difficulty) => {
                 case 64: gameBoxItem.classList.add('area'); break;
                 case 67: gameBoxItem.classList.add('area'); addAltBox(gameBoxItem, 5); break;
                 case 68: gameBoxItem.classList.add('area'); break;
-                case 69: gameBoxItem.classList.add('area'); addAltBox(gameBoxItem,  5); break;
+                case 69: gameBoxItem.classList.add('area'); addAltBox(gameBoxItem, 5); break;
                 case 73: gameBoxItem.classList.add('area'); break;
                 case 77: gameBoxItem.classList.add('area'); break;
                 case 82: gameBoxItem.classList.add('area'); addAltBox(gameBoxItem, 6); break;
                 case 83: gameBoxItem.classList.add('area'); break;
-                case 84: gameBoxItem.classList.add('area'); addAltBox(gameBoxItem,  11); break;
+                case 84: gameBoxItem.classList.add('area'); addAltBox(gameBoxItem, 11); break;
                 case 85: gameBoxItem.classList.add('area'); break;
                 case 86: gameBoxItem.classList.add('area'); break;
                 case 88: gameBoxItem.classList.add('area'); addAltBox(gameBoxItem, 14); break;
                 case 90: gameBoxItem.classList.add('area'); break;
-                case 92: gameBoxItem.classList.add('area'); addAltBox(gameBoxItem,  9); break;
+                case 92: gameBoxItem.classList.add('area'); addAltBox(gameBoxItem, 9); break;
                 case 97: gameBoxItem.classList.add('area'); break;
                 case 101: gameBoxItem.classList.add('area'); break;
                 case 103: gameBoxItem.classList.add('area'); break;
@@ -269,7 +269,8 @@ function hardButtonClickHandler() {
         '당', '연', '지', '사', '불', '백', '년', '해', '로',
         '지', '성', '곽', '지'
     ];
-    compareTextAndArray(boxIds, targetArray);
+    const wrongAnswerNum = compareTextAndArray(boxIds, targetArray);
+    endGame(wrongAnswerNum)
 }
 
 function nomalButtonClickHandler() {
@@ -381,17 +382,21 @@ $gameBox.addEventListener('click', (e) => {
 
 function addAltBox(box, question = '0') {
 
-        const description = (question);
-        const altBox = document.createElement('div');
-        altBox.textContent = description;
-        box.appendChild(altBox);
+    const description = (question);
+    const altBox = document.createElement('div');
+    altBox.textContent = description;
+    box.appendChild(altBox);
 }
 
 
 
 // ================== 정답 체크 함수 ===================
 
+
 function compareTextAndArray(classNames, targetArray) {
+// 오답 문자열 추가할 변수 생성
+let wrongAnswer = [];
+
     for (let i = 0; i < classNames.length; i++) {
         const boxElement = document.querySelector(`[data-box-id="${classNames[i]}"]`);
 
@@ -405,10 +410,32 @@ function compareTextAndArray(classNames, targetArray) {
         if (boxText === targetArray[i]) {
             console.log(`정답`);
         } else {
-            console.log(`${boxText} 오답`);
+            // console.log(`${boxText}: 오답`);
+            wrongAnswer.push(boxText)
         }
     }
+console.log(wrongAnswer);
+return wrongAnswer
 }
+
+// ======================게임 종료 창=====================
+
+function endGame(...wrongAnswer) {
+
+    let aaaaa = []
+    wrongAnswer.forEach(element => {
+        aaaaa = element
+    });
+    alert('틀린 글자 : ',aaaaa)
+
+}
+
+
+
+
+
+
+
 
 
 
