@@ -2,9 +2,9 @@
 const outputArray = ['출력','사랑','싹', '설산', '예수', '물방아 꽃', '사막', '해바라기', '얼음', '봄바람','마나님', '나그네'];   
 // const outputArray = ['출력'];
 
-const $textbox = document.getElementById('textBox'); 
+const $textbox = document.getElementById('textBox');
 
-const $checkBtn = document.querySelector('.backdrop');
+const $backdp = document.querySelector('.backdrop');
 const $outputbg = document.querySelector('.read-Output');
 const $timergauge = document.querySelector('.tiem-Gauge');
 
@@ -12,12 +12,15 @@ const $timeOver = document.querySelector('.game-end');
 const $content = document.getElementById('content');
 const $readInput = document.querySelector('input');
 
+const $setgame=document.querySelector('.game-Explanation');
+
+
 // let secode = new Date().getUTCSeconds()+1
 // let ikonwhour=(secode/secode)*20
 
 //타이머 게이지 변수
 let num=0;
-let setTime=20;
+let setTime=5;
 let secode;
 
 //게임 시작 화면 세팅
@@ -49,8 +52,9 @@ const gameStartHandler=(e)=>{
     textLiBoxs(1);  
     
     $outputbg.removeAttribute('style');
-    $checkBtn.classList.add('inaction');
+    $backdp.classList.add('inaction');
     $timergauge.classList.add('action');
+    $setgame.classList.add('inaction');
     
     GameReslut();
 }
@@ -62,9 +66,10 @@ const GameReslut=()=>{
   let timeOut=setTimeout(()=>{        
     if(outputArray.length>0){
         console.log('끝');
-        $readInput.value=`실패`;
+        // $readInput.value=`실패`;
 
-        $timeOver.classList.add('game-over');        
+        $timeOver.classList.add('game-over');
+        $backdp.classList.remove('inaction');        
     }
         
     }, setTime*1000) 
@@ -121,10 +126,6 @@ const userInputTextHandler=()=>{
 }
 
 //이벤트 핸들러
-const $gameEnd = document.querySelector('.end-btn');
-$gameEnd.addEventListener('click', ()=>{
-    
-});
 
 const $startBtn = document.querySelector('.start-btn');
 $startBtn.addEventListener('click', gameStartHandler);

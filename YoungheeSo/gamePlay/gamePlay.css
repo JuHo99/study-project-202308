@@ -16,7 +16,70 @@ body{
     -moz-user-select:none;
     -ms-user-select:none;
     user-select:none;
+}
 
+.backdrop{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: rgba(68, 53, 53, 0.45);
+    z-index: 1;
+    display: block;
+    pointer-events: all;
+
+    display: flex; justify-content: center; align-items: center;
+    flex-wrap: wrap;
+}
+
+.backdrop.inaction,
+.game-Explanation.inaction,
+.game-end{
+    pointer-events: none;
+    display: none;    
+}
+
+
+.game-Explanation,
+.game-over{
+    pointer-events: all;
+    width: 60%; padding: 20px;
+
+    position: absolute; z-index: 3;
+    top: 40%; left: 50%; transform: translate(-50%, -50%);
+    
+    font-family: 'ONE-Mobile-POP'; text-align: center;
+    
+    border: 3px solid #93C6E7; border-radius: 15px; background: #fff;
+    
+    display: flex; 
+    justify-content: center; align-items: center;
+    flex-wrap: wrap;
+}
+
+.game-Explanation div{
+    /* background: red;  */
+    width: 100%;
+    /* font-size: 2em; */
+    margin-bottom: 20px;
+}
+
+.game-Explanation p{
+    /* background: red;  */
+    width: 100%;
+    /* font-size: 1.2em */
+}
+
+.game-Explanation button,
+.game-end button{    
+    font-family: 'ONE-Mobile-POP'; font-size: 1.2em;
+    
+    width: 20%; height: 100px;   
+    margin: 20px;
+    
+    border: 3px solid #93C6E7; border-radius: 15px;  background: #fff;
+    display: flex; justify-content: center; align-items: center;
 }
 
 #content{    
@@ -27,55 +90,15 @@ body{
     display: flex; justify-content: center; align-items: center;
     flex-wrap: wrap;
 
-    position: relative;
-      
-}
-
-.backdrop{
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    background: rgba(0, 0, 0, 0.45);
-    z-index: 1;
-    display: block;
-    pointer-events: all;
-
-    display: flex; justify-content: center; align-items: center;
-}
-
-.backdrop.inaction{
-    pointer-events: none;
-    display: none;    
-}
-
-.game-end{
-    display: none;
-}
-
-.game-end.game-over{
-    display: block;
-}
-
-
-button{    
-    font-family: 'ONE-Mobile-POP'; font-size: 2em;
-    
-    width: 20%; height: 10%;   
-    margin: 20px;
-    
-    border: 3px solid #93C6E7; border-radius: 15px;  background: #fff;
-    display: flex; justify-content: center; align-items: center;
+    position: relative;      
 }
 
 .container {
     font-family: 'ONE-Mobile-POP';
     
     width: 75%; height: 80vh;
-    min-width: 75%; min-height: 80vh;
+    min-width: 600px; 
 
-    /* background: #ffffff; */
     margin: 10vh auto;
     position: relative;
   }
@@ -86,6 +109,7 @@ button{
   }
 
 .container .main-game-play{
+
     background: #AEE2FF; 
     border: 3px solid #93C6E7; border-radius: 15px; 
 
@@ -98,7 +122,9 @@ button{
 }
 
 .main-game-play .read-Output{
-    width: 55vw; height: 55vh; 
+    width: 55vw; height: 55vh;
+    min-width: 450px; 
+    
 
     background: url('/YoungheeSo/img/사진1.png') no-repeat center/cover;
     border: 3px solid #93C6E7;

@@ -10,25 +10,23 @@
     
     <script src="/YoungheeSo/gamePlay/gamePlay.js" defer></script>
     
-    <title></title>
+    <title>타이핑 게임</title>
 </head>
 
 <body>
 
-  <!-- 첫시작화면 상태, textbox에 글자가 안보이고 게임 시작을 눌러야 text가 보이도록 해야함 -->
+    <div class="backdrop"></div>
 
-  <div class="game-start-before">
-    <div class="backdrop">
+    <div class="game-Explanation">
+      <div>타이핑 게임</div>
+      <p>20초 안에 꽃밭에 가려져 있는 것을 찾아내시오</p>
       <button class="start-btn">게임시작</button>
-      <button class="end-btn">취소</button>
+      <button class="end-btn" onclick="location.href='#'">취소(아직안됨)</button>
     </div>
-  </div>
-
+  
   <div class="game-end">
-    <div class="backdrop">
-      <button class="reset-btn">다시하기</button>
-      <button class="end-btn">그만하기</button>
-    </div>
+      <button class="reset-btn" onclick="location.href='/YoungheeSo/index.html'">다시하기</button>
+      <button class="back-btn" onclick="location.href='#'">그만하기(아직안됨)</button>
   </div>
 
   <div id="content">
@@ -71,7 +69,6 @@
       
       <div class="main-game-play">      
         <div class="read-Output">
-          <!-- <img src="./img/사진1.png" alt="사진1"> -->
           <ul id="textBox"></ul>
         </div>
         <div class="timer-box">
