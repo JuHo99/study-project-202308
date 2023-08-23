@@ -139,16 +139,16 @@
 
 /* 사진 관련 */
 .game-board .square.has-mine {
-  background: url('../../img/mines.png') no-repeat center / 80%;
+  background: url('../../img/mines.png') no-repeat center / contain;
 }
 .game-board .square.bg-red {
   background-color: #ff0000;
 }
 .game-board .square.flag {
-  background: url('../../img/flag.png') no-repeat center / 60%;
+  background: url('../../img/flag.png') no-repeat center / contain;
 }
 .game-board .square.no-mine {
-  background: url('../../img/icon_nomine.png') no-repeat center / 80%;
+  background: url('../../img/icon_nomine.png') no-repeat center / contain;
 }
 
 /* 지뢰 숫자 색 */

@@ -9,8 +9,12 @@ const $deathModalClose = $deathModal.querySelector('.btn-close');
 const $easyBtn = document.querySelector('.easy');
 const $nomalBtn = document.querySelector('.nomal');
 const $hardBtn = document.querySelector('.hard');
-//초급 : 9x9/10 , 중급:16x16/40 , 고급:20x16/68
 
+//지뢰랑 시간
+const $minCount = document.getElementById('mineCnt');
+const $timeCount = document.getElementById('time');
+
+//초급 : 9x9/10 , 중급:16x16/40 , 고급:20x16/68
 let ROW = 9;
 let COL = 9;
 let MINE = 10;
@@ -20,7 +24,8 @@ const sweep = [];
 
 //지뢰 생성 논리
 let mineIsValid = false;
-
+//타이머
+let timerId;
 $deathModal.addEventListener('click', (e) => {
   $deathModal.classList.add('hide');
   $backdrop.classList.remove('visible');
@@ -28,6 +33,7 @@ $deathModal.addEventListener('click', (e) => {
 
 //게임 테이블 생성
 const createMineTable = () => {
+  $minCount.textContent = MINE;
   for (let i = 0; i < ROW; i++) {
     const $tableTr = document.createElement('tr');
     $tableTr.classList.add('rows');
@@ -36,18 +42,43 @@ const createMineTable = () => {
       const $tableTd = document.createElement('td');
 
       $tableTd.classList.add('square');
-
       $tableTr.appendChild($tableTd);
     }
   }
 };
+
+//타이며
+function startTimer() {
+  let timeCnt = 0;
+  let fomatTime = ``;
+
+  timerId = setInterval(function () {
+    timeCnt++;
+    const minutes = Math.floor(timeCnt / 60);
+    const second = timeCnt % 60;
+    if (minutes < 10) {
+      second < 10
+        ? (fomatTime = `0${minutes}:0${second}`)
+        : (fomatTime = `0${minutes}:${second}`);
+    } else if (minutes > 10) {
+      second < 10
+        ? (fomatTime = `${minutes}:0${second}`)
+        : (fomatTime = `${minutes}:${second}`);
+    }
+
+    $timeCount.textContent = fomatTime;
+  }, 1000);
+}
 
 //테이블 지웠다가 다시 생성
 const reCreateTable = () => {
   $mineTagble.textContent = '';
   createMineTable();
 };
-
+const resetTimer = () => {
+  clearInterval(timerId);
+  $timeCount.textContent = `00:00`;
+};
 // 선택한 셀 찾아오기 =================
 const selectCell = ($clickTd) => {
   //tr 전체를 배열로 변환
@@ -67,37 +98,6 @@ const selectCell = ($clickTd) => {
     tdIndex: tdIndex,
     trList: trList,
   };
-};
-
-// 빈셀 없애기
-const nullCellTest = (oneIndex, twoIndex, trList) => {
-  let boomCount = 0;
-  let emptyCount = 0;
-  for (
-    let numTrIndex = oneIndex - 1;
-    numTrIndex <= oneIndex + 1;
-    numTrIndex++
-  ) {
-    for (
-      let numTdIndex = twoIndex - 1;
-      numTdIndex <= twoIndex + 1;
-      numTdIndex++
-    ) {
-      const $tdTag = trList[numTrIndex].children[numTdIndex];
-      if (!$tdTag) return;
-
-      if ($tdTag.classList.contains('boom')) {
-        boomCount++;
-        continue;
-      }
-      if ($tdTag.classList.contains('clicked')) {
-        emptyCount++;
-        continue;
-      }
-      $tdTag.classList.add('clicked');
-    }
-  }
-  return [boomCount, emptyCount];
 };
 
 //지뢰와 숫자 넣기
@@ -178,7 +178,7 @@ const setMineAndNum = (trIndex, tdIndex, trList) => {
 function openAround(trIndex, tdIndex, trList) {
   console.log('실행됩니다');
   const $clickEmptyTd = trList[trIndex].children[tdIndex];
-  console.log($clickEmptyTd);
+  console.log(`${trIndex}, ${tdIndex}`);
 
   let noMine = true;
 
@@ -239,6 +239,7 @@ const tableLeftClickHandler = (e) => {
   if (!mineIsValid) {
     setMineAndNum(trIndex, tdIndex, trList);
     mineIsValid = true;
+    startTimer();
   }
   if ($clickTd.classList.contains('flag')) {
     return;
@@ -260,9 +261,9 @@ const tableLeftClickHandler = (e) => {
   } else {
     return;
   }
-
-  //빈칸을 클릭했을때 자동으로 열리게 하기
 };
+
+//table 우클릭 깃발 세우기
 const tableRightClickHandler = (e) => {
   e.preventDefault();
   const $clickTd = e.target;
@@ -271,10 +272,16 @@ const tableRightClickHandler = (e) => {
   let hasFlag = $clickTd.classList.contains('flag');
 
   if (!alreadyClicked) {
-    if (!hasFlag) {
-      $clickTd.classList.add('flag');
-    } else {
-      $clickTd.classList.remove('flag');
+    if (MINE > 0) {
+      if (!hasFlag) {
+        MINE -= 1;
+        $minCount.textContent = MINE;
+        $clickTd.classList.add('flag');
+      } else {
+        MINE += 1;
+        $minCount.textContent = MINE;
+        $clickTd.classList.remove('flag');
+      }
     }
     hasFlag = !hasFlag;
   }
@@ -289,6 +296,7 @@ $easyBtn.addEventListener('click', () => {
   COL = 9;
   MINE = 10;
   reCreateTable();
+  resetTimer();
   mineIsValid = false;
 });
 $nomalBtn.addEventListener('click', () => {
@@ -296,6 +304,7 @@ $nomalBtn.addEventListener('click', () => {
   COL = 16;
   MINE = 40;
   reCreateTable();
+  resetTimer();
   mineIsValid = false;
 });
 $hardBtn.addEventListener('click', () => {
@@ -303,6 +312,7 @@ $hardBtn.addEventListener('click', () => {
   COL = 16;
   MINE = 68;
   reCreateTable();
+  resetTimer();
   mineIsValid = false;
 });
 
