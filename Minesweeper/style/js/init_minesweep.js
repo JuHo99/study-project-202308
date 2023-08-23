@@ -62,12 +62,6 @@ const selectCell = ($clickTd) => {
   const trIndex = trList.indexOf(tdTr);
   const tdIndex = tdTrList.indexOf($clickTd);
 
-  //클릭한 td 가져옴
-  const clicktable = trList[trIndex].children[tdIndex];
-  //배경화면 투명으로 변경
-
-  clicktable.classList.add('clicked');
-
   return {
     trIndex: trIndex,
     tdIndex: tdIndex,
@@ -180,12 +174,16 @@ const setMineAndNum = (trIndex, tdIndex, trList) => {
   }
 };
 
+//빈칸을 클릭했을때 자동으로 열리게 하기
 function openAround(trIndex, tdIndex, trList) {
   console.log('실행됩니다');
   const $clickEmptyTd = trList[trIndex].children[tdIndex];
   console.log($clickEmptyTd);
 
+  let noMine = true;
+
   for (let numTrIndex = trIndex - 1; numTrIndex <= trIndex + 1; numTrIndex++) {
+    console.log('지뢰 체크 for실행중');
     if (numTrIndex === ROW || numTrIndex < 0) {
       continue;
     }
@@ -195,22 +193,46 @@ function openAround(trIndex, tdIndex, trList) {
       numTdIndex++
     ) {
       const $tdTag = trList[numTrIndex].children[numTdIndex];
-      if (numTdIndex === COL || numTdIndex < 0 || $tdTag.hasAttribute('mine')) {
+      if (numTdIndex === COL || numTdIndex < 0) {
         continue;
       }
-      $tdTag.classList.add('clicked');
-      $tdTag.setAttribute('num', '0');
-
-      // openAround(numTdIndex, numTrIndex);
+      if ($tdTag.hasAttribute('mine')) {
+        console.log('false 됏서용');
+        noMine = false;
+      }
     }
-    //빈칸을 클릭했을때 자동으로 열리게 하기
-    {
+  }
+
+  if (noMine) {
+    console.log('지뢰 체크');
+    for (
+      let numTrIndex = trIndex - 1;
+      numTrIndex <= trIndex + 1;
+      numTrIndex++
+    ) {
+      if (numTrIndex === ROW || numTrIndex < 0) {
+        return;
+      }
+      for (
+        let numTdIndex = tdIndex - 1;
+        numTdIndex <= tdIndex + 1;
+        numTdIndex++
+      ) {
+        const $tdTag = trList[numTrIndex].children[numTdIndex];
+        if (numTdIndex === COL || numTdIndex < 0) {
+          return;
+        }
+        $tdTag.classList.add('clicked');
+        $tdTag.setAttribute('num', '0');
+        console.log('재귀 합니다');
+        openAround(numTdIndex, numTrIndex, trList);
+      }
     }
   }
 }
 
 // ==========테이블 클릭 핸들러 ============
-const tableClickHandler = (e) => {
+const tableLeftClickHandler = (e) => {
   const $clickTd = e.target;
   const { trIndex, tdIndex, trList } = selectCell($clickTd);
 
@@ -218,7 +240,10 @@ const tableClickHandler = (e) => {
     setMineAndNum(trIndex, tdIndex, trList);
     mineIsValid = true;
   }
-
+  if ($clickTd.classList.contains('flag')) {
+    return;
+  }
+  $clickTd.classList.add('clicked');
   if ($clickTd.hasAttribute('mine')) {
     $deathModal.classList.remove('hide');
     $backdrop.classList.add('visible');
@@ -238,10 +263,27 @@ const tableClickHandler = (e) => {
 
   //빈칸을 클릭했을때 자동으로 열리게 하기
 };
+const tableRightClickHandler = (e) => {
+  e.preventDefault();
+  const $clickTd = e.target;
 
-$mineTagble.addEventListener('click', tableClickHandler);
+  let alreadyClicked = $clickTd.classList.contains('clicked');
+  let hasFlag = $clickTd.classList.contains('flag');
 
-// - 화면 렌더링 -
+  if (!alreadyClicked) {
+    if (!hasFlag) {
+      $clickTd.classList.add('flag');
+    } else {
+      $clickTd.classList.remove('flag');
+    }
+    hasFlag = !hasFlag;
+  }
+};
+
+$mineTagble.addEventListener('click', tableLeftClickHandler);
+$mineTagble.addEventListener('contextmenu', tableRightClickHandler);
+
+// -====== 화면 렌더링 -
 $easyBtn.addEventListener('click', () => {
   ROW = 9;
   COL = 9;
