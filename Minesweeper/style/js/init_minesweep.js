@@ -176,15 +176,12 @@ const setMineAndNum = (trIndex, tdIndex, trList) => {
 
 //빈칸을 클릭했을때 자동으로 열리게 하기
 function openAround(trIndex, tdIndex, trList) {
-  console.log('실행됩니다');
-  const $clickEmptyTd = trList[trIndex].children[tdIndex];
-
-  console.log(`${trIndex}, ${tdIndex}`);
-
-  let noMine = true;
+  console.log('in around');
+  const EmpTd = [];
+  const $initTdTag = trList[trIndex].children[tdIndex];
+  $initTdTag.setAttribute('num', '0');
 
   for (let numTrIndex = trIndex - 1; numTrIndex <= trIndex + 1; numTrIndex++) {
-    console.log('지뢰 체크 for실행중');
     if (numTrIndex === ROW || numTrIndex < 0) {
       continue;
     }
@@ -194,46 +191,69 @@ function openAround(trIndex, tdIndex, trList) {
       numTdIndex++
     ) {
       const $tdTag = trList[numTrIndex].children[numTdIndex];
-      if (numTdIndex === COL || numTdIndex < 0) {
+      if (numTdIndex === COL || numTdIndex < 0 || $tdTag === $initTdTag ||$tdTag.hasAttribute('mine')) {
         continue;
       }
-      if ($tdTag.hasAttribute('mine')) {
-        console.log('false 됏서용');
-        noMine = false;
-      }
-    }
-  }
-
-  if (noMine) {
-    console.log('지뢰 체크');
-
-    for (
-      let numTrIndex = trIndex - 1;
-      numTrIndex <= trIndex + 1;
-      numTrIndex++
-    ) {
-      if (numTrIndex === ROW || numTrIndex < 0) {
-        return;
-      }
-      for (
-        let numTdIndex = tdIndex - 1;
-        numTdIndex <= tdIndex + 1;
-        numTdIndex++
-      ) {
-        const $tdTag = trList[numTrIndex].children[numTdIndex];
-        if (numTdIndex === COL || numTdIndex < 0) {
-          return;
-        }
-        if ($tdTag.classList.contains('clicked')) {
-          continue;
-        }
-
-        $tdTag.classList.add('clicked');
+      console.log('clickde 추가 ');
+      $tdTag.classList.add('clicked');
+      if (!$tdTag.hasAttribute('num')){
         $tdTag.setAttribute('num', '0');
-        console.log('재귀 합니다');
-        openAround(numTdIndex, numTrIndex, trList);
+        EmpTd.push({trIndex : numTrIndex, tdIndex: numTdIndex});
       }
+      // openAround(numTdIndex, numTrIndex);
     }
+    //빈칸을 클릭했을때 자동으로 열리게 하기
+  }
+  console.log(EmpTd);
+  if (EmpTd.length > 0){
+    console.log('EmpTd 실행');
+    for (const eTd of EmpTd){
+      const {trIndex,tdIndex} = eTd;
+      openAroundTail(trIndex, tdIndex, trList);
+  }
+  }else {
+    return 0;
+  }
+}
+function openAroundTail(trIndex, tdIndex, trList) {
+  console.log(`in aroundTail: ${trIndex}, ${tdIndex}`);
+
+  const EmpTd = [];
+  const $initTdTag = trList[trIndex].children[tdIndex];
+  $initTdTag.setAttribute('num', '0');
+
+  for (let numTrIndex = trIndex - 1; numTrIndex <= trIndex + 1; numTrIndex++) {
+    if (numTrIndex === ROW || numTrIndex < 0) {
+      continue;
+    }
+    for (
+      let numTdIndex = tdIndex - 1;
+      numTdIndex <= tdIndex + 1;
+      numTdIndex++
+    ) {
+      const $tdTag = trList[numTrIndex].children[numTdIndex];
+      if (numTdIndex === COL || numTdIndex < 0 || $tdTag === $initTdTag ||$tdTag.hasAttribute('mine')) {
+        continue;
+      }
+      console.log('clickde 추가 ');
+      $tdTag.classList.add('clicked');
+      if (!$tdTag.hasAttribute('num')){
+        $tdTag.setAttribute('num', '0');
+        EmpTd.push({trIndex : numTrIndex, tdIndex: numTdIndex});
+      }
+      // openAround(numTdIndex, numTrIndex);
+    }
+    //빈칸을 클릭했을때 자동으로 열리게 하기
+  }
+  console.log(EmpTd);
+  if (EmpTd.length > 0){
+    console.log('EmpTd 실행');
+    for (const eTd of EmpTd){
+      const {trIndex,tdIndex} = eTd;
+      openAround(trIndex, tdIndex, trList);
+  }
+  }else {
+    return 0;
   }
 }
 
