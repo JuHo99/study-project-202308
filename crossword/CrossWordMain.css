@@ -163,3 +163,16 @@
 {
   margin-top: 1.4rem;
 }
+
+#crossWordBody .container .explainBox .box button{
+  position: absolute;
+  right: 2rem;
+  bottom: 1rem;
+  width: 5rem;
+  height: 2.5rem;
+  font-size: 1rem;
+  font-family: 'ONE-Mobile-POP';
+  border-radius: 30px;
+  background: #6e6e6e;
+  color: #f7e6e6;
+}
