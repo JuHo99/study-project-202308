@@ -178,6 +178,7 @@ const setMineAndNum = (trIndex, tdIndex, trList) => {
 function openAround(trIndex, tdIndex, trList) {
   console.log('실행됩니다');
   const $clickEmptyTd = trList[trIndex].children[tdIndex];
+
   console.log(`${trIndex}, ${tdIndex}`);
 
   let noMine = true;
@@ -205,6 +206,7 @@ function openAround(trIndex, tdIndex, trList) {
 
   if (noMine) {
     console.log('지뢰 체크');
+
     for (
       let numTrIndex = trIndex - 1;
       numTrIndex <= trIndex + 1;
@@ -222,6 +224,10 @@ function openAround(trIndex, tdIndex, trList) {
         if (numTdIndex === COL || numTdIndex < 0) {
           return;
         }
+        if ($tdTag.classList.contains('clicked')) {
+          continue;
+        }
+
         $tdTag.classList.add('clicked');
         $tdTag.setAttribute('num', '0');
         console.log('재귀 합니다');
