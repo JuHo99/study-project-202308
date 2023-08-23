@@ -1,8 +1,9 @@
 //게임창
-const $mineTagble = document.getElementById('mineTable');
+const $mineTagble = document.querySelector('.game-board');
 
 //모달
 const $deathModal = document.querySelector('.death_modal');
+const $deathModalClose = $deathModal.querySelector('.btn-close');
 
 //레벨 버튼
 const $easyBtn = document.querySelector('.easy');
@@ -16,7 +17,14 @@ let MINE = 10;
 
 //폭탄 위치를 담을 배열
 const sweep = [];
+
+//지뢰 생성 논리
 let mineIsValid = false;
+
+$deathModal.addEventListener('click', (e) => {
+  $deathModal.classList.add('hide');
+  $backdrop.classList.remove('visible');
+});
 
 //게임 테이블 생성
 const createMineTable = () => {
@@ -26,15 +34,10 @@ const createMineTable = () => {
     $mineTagble.appendChild($tableTr);
     for (let j = 0; j < COL; j++) {
       const $tableTd = document.createElement('td');
-      const $tdBtn = document.createElement('button');
-      const $tdNum = document.createElement('p');
 
-      $tableTd.classList.add('cell');
-      $tdNum.classList.add('mineNum');
+      $tableTd.classList.add('square');
 
       $tableTr.appendChild($tableTd);
-      $tableTd.appendChild($tdBtn);
-      $tableTd.appendChild($tdNum);
     }
   }
 };
@@ -46,31 +49,28 @@ const reCreateTable = () => {
 };
 
 // 선택한 셀 찾아오기 =================
-const selectCell = (e) => {
-  const btncell = e.target; //button
-  const clickTd = btncell.parentNode;
-
+const selectCell = ($clickTd) => {
   //tr 전체를 배열로 변환
   const trList = Array.from($mineTagble.querySelectorAll('tr'));
 
   //클릭된 td에서 tr가 몇번째 있는지 확인
-  const tdTr = clickTd.closest('.rows');
+  const tdTr = $clickTd.closest('.rows');
+  //클릭된 tr에서의 td 리스트 생성
   const tdTrList = Array.from(tdTr.children);
 
   //tr과 td 인덱스 뽑아옴
-  const oneIndex = trList.indexOf(tdTr);
-  const twoIndex = tdTrList.indexOf(clickTd);
+  const trIndex = trList.indexOf(tdTr);
+  const tdIndex = tdTrList.indexOf($clickTd);
 
   //클릭한 td 가져옴
-  const clicktable = trList[oneIndex].children[twoIndex];
+  const clicktable = trList[trIndex].children[tdIndex];
   //배경화면 투명으로 변경
 
-  clicktable.classList.add('transparency');
-  clicktable.removeChild(btncell);
+  clicktable.classList.add('clicked');
 
   return {
-    oneIndex: oneIndex,
-    twoIndex: twoIndex,
+    trIndex: trIndex,
+    tdIndex: tdIndex,
     trList: trList,
   };
 };
@@ -96,12 +96,11 @@ const nullCellTest = (oneIndex, twoIndex, trList) => {
         boomCount++;
         continue;
       }
-      if ($tdTag.classList.contains('transparency')) {
+      if ($tdTag.classList.contains('clicked')) {
         emptyCount++;
         continue;
       }
-      $tdTag.classList.add('transparency');
-      $tdTag.removeChild($tdTag.querySelector('button'));
+      $tdTag.classList.add('clicked');
     }
   }
   return [boomCount, emptyCount];
@@ -109,11 +108,19 @@ const nullCellTest = (oneIndex, twoIndex, trList) => {
 
 // ==========테이블 클릭 핸들러 ============
 const tableClickHandler = (e) => {
-  const { oneIndex, twoIndex, trList } = selectCell(e);
+  const $clickTd = e.target;
+  const { trIndex, tdIndex, trList } = selectCell($clickTd);
 
-  if (trList[oneIndex].children[twoIndex].classList.contains('boom')) {
+  if (trList[trIndex].children[tdIndex].getAttribute('mine')) {
     $deathModal.classList.remove('hide');
     $backdrop.classList.add('visible');
+
+    for (const swp of sweep) {
+      const { one: trIndex, two: tdIndex } = swp;
+      const $tdCell = trList[trIndex].children[tdIndex];
+
+      $tdCell.classList.add('has-mine');
+    }
   }
   const setMineAndNum = () => {
     //폭탄 10개를 심을 인덱스 생성
@@ -123,7 +130,7 @@ const tableClickHandler = (e) => {
 
       //초기 클릭위치와 one,two가 이미 있는지 확인
       let isDuplicate = false;
-      if (oneIndex === one && twoIndex === two) {
+      if (trIndex === one && tdIndex === two) {
         isDuplicate = true;
       }
       for (const entry of sweep) {
@@ -146,8 +153,7 @@ const tableClickHandler = (e) => {
       const { one: trIndex, two: tdIndex } = swp;
       const tdCell = trList[trIndex].children[tdIndex];
 
-      tdCell.classList.add('boom');
-      tdCell.appendChild(document.createElement('div'));
+      tdCell.setAttribute('mine', 1);
     }
 
     //지뢰 주변에 숫자 넣기
@@ -166,19 +172,24 @@ const tableClickHandler = (e) => {
           numTdIndex <= tdIndex + 1;
           numTdIndex++
         ) {
-          const tdTag = trList[numTrIndex].children[numTdIndex];
+          const $tdTag = trList[numTrIndex].children[numTdIndex];
           if (
             numTdIndex === COL ||
             numTdIndex < 0 ||
-            tdTag.classList.contains('boom') ||
+            $tdTag.getAttribute('mine') ||
             (numTdIndex === tdIndex && numTrIndex === trIndex)
           ) {
             continue;
-          } else {
-            const $pTag = tdTag.querySelector('.mineNum');
-            $pTag.textContent = +$pTag.textContent + 1;
-            $pTag.setAttribute('Num', '1');
           }
+
+          if (!$tdTag.textContent) {
+            $tdTag.textContent = 1;
+          } else {
+            $tdTag.textContent = +$tdTag.textContent + 1;
+            $tdTag.classList.remove('txt-' + `${+$tdTag.textContent - 1}`);
+          }
+          $tdTag.setAttribute('Num', `${$tdTag.textContent}`);
+          $tdTag.classList.add('txt-' + `${$tdTag.getAttribute('Num')}`);
         }
       }
     }
@@ -188,43 +199,78 @@ const tableClickHandler = (e) => {
     mineIsValid = true;
   }
 
-  //빈칸을 클릭했을때 자동으로 열리게 하기
-  const openAround = (trIndex, tdIndex) => {
-    console.log(`${trIndex},${tdIndex}`);
-    setTimeout(() => {
-      if (
-        !trList[trIndex].children[tdIndex].querySelector('.mineNum').textContent
-      ) {
-        if (
-          trIndex - 1 < 0 ||
-          tdIndex - 1 < 0 ||
-          trIndex + 1 > ROW ||
-          tdIndex + 1 > COL
-        ) {
-          return;
-        }
+  //   //빈칸을 클릭했을때 자동으로 열리게 하기
+  //   function openAround(trIndex, tdIndex) {
+  //     // trList[trIndex].children[tdIndex].classList.add('clicked');
+  //     let noMine = true;
 
-        const [boomCount, emptyCount] = nullCellTest(trIndex, tdIndex, trList);
-        console.log(`eptCo: ${emptyCount}`);
-        if (emptyCount === 9) {
-          return;
-        }
-        if (boomCount === 0) {
-          openAround(trIndex - 1, tdIndex - 1);
-          openAround(trIndex - 1, tdIndex);
-          openAround(trIndex - 1, tdIndex + 1);
-          openAround(trIndex, tdIndex - 1);
-          openAround(trIndex, tdIndex + 1);
-          openAround(trIndex + 1, tdIndex - 1);
-          openAround(trIndex + 1, tdIndex);
-          openAround(trIndex + 1, tdIndex + 1);
-        }
-      }
-    }, 0);
-    return;
-  };
+  //     setTimeout(() => {
+  //       if (!trList[trIndex].children[tdIndex].textContent) {
+  //         if (
+  //           trIndex - 1 < 0 ||
+  //           tdIndex - 1 < 0 ||
+  //           trIndex + 1 > ROW ||
+  //           tdIndex + 1 > COL
+  //         ) {
+  //           return;
+  //         }
+  //         for (
+  //           let numTrIndex = trIndex - 1;
+  //           numTrIndex <= trIndex + 1;
+  //           numTrIndex++
+  //         ) {
+  //           if (numTrIndex === ROW || numTrIndex < 0) {
+  //             continue;
+  //           }
+  //           for (
+  //             let numTdIndex = tdIndex - 1;
+  //             numTdIndex <= tdIndex + 1;
+  //             numTdIndex++
+  //           ) {
+  //             const $tdTag = trList[numTrIndex].children[numTdIndex];
+  //             if (
+  //               numTdIndex === COL ||
+  //               numTdIndex < 0 ||
+  //               $tdTag.getAttribute('Num') ||
+  //               (numTdIndex === tdIndex && numTrIndex === trIndex)
+  //             ) {
+  //               continue;
+  //             }
+  //             if ($tdTag.getAttribute('mine')) {
+  //               noMine = false;
+  //             }
+  //           }
+  //         }
 
-  openAround(oneIndex, twoIndex);
+  //         for (
+  //           let numTrIndex = trIndex - 1;
+  //           numTrIndex <= trIndex + 1;
+  //           numTrIndex++
+  //         ) {
+  //           if (numTrIndex === ROW || numTrIndex < 0) {
+  //             continue;
+  //           }
+  //           for (
+  //             let numTdIndex = tdIndex - 1;
+  //             numTdIndex <= tdIndex + 1;
+  //             numTdIndex++
+  //           ) {
+  //             const $tdTag = trList[numTrIndex].children[numTdIndex];
+  //             if (
+  //               numTdIndex === COL ||
+  //               numTdIndex < 0 ||
+  //               $tdTag.getAttribute('mine') ||
+  //               (numTdIndex === tdIndex && numTrIndex === trIndex)
+  //             ) {
+  //               continue;
+  //             }
+  //             openAround(numTdIndex, numTrIndex);
+  //           }
+  //         }
+  //       }
+  //     }, 0);
+  //   }
+  //   openAround(trIndex, tdIndex);
 };
 
 $mineTagble.addEventListener('click', tableClickHandler);
