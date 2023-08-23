@@ -1,12 +1,4 @@
-@import url(./main.css);
-
-p,
-input,
-label {
-    font-family: 'ONE-Mobile-POP';
-}
-
-#mazeMain {
+.inputBox {
     width: 80%;
     height: 80vh;
     background: white;

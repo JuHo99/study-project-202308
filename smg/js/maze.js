@@ -10,27 +10,16 @@ var stucked
 var x, y
 var count = 0;
 
+if (localStorage.getItem('tc')) {
+    tc = localStorage.getItem('tc');
+    initialize()
+}
+
 window.onload = function () {
     canv = document.getElementById('maze')
     ctx = canv.getContext('2d')
     document.addEventListener('keydown', keyPush)
     initialize()
-}
-
-function enterkey() {
-    if (window.event.keyCode == 13) {
-        var sizeInput = document.getElementById('sizeInput').value
-        if (sizeInput % 2 == 0) {
-            alert('미로 사이즈는 홀수만 입력해주세요!')
-        } else if (sizeInput < 5) {
-            alert('미로 사이즈는 최소 5입니다!')
-        } else if (sizeInput > 30) {
-            alert('미로 사이즈는 최대 29입니다!')
-        } else {
-            tc = sizeInput
-            initialize()
-        }
-    }
 }
 
 function initialize() {
@@ -68,6 +57,7 @@ function initialize() {
 
     ctx.fillRect(x * gs, y * gs, gs, gs)
 }
+
 function makeWay(xx, yy) {
     //console.log("makeWay: " + xx + " " + yy);
     field[yy][xx]++

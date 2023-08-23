@@ -1,5 +1,9 @@
 @import url(./common.css);
 
+body {
+    background: #c9fffc;
+}
+
 .container {
     width: 75%;
     height: 80vh;
