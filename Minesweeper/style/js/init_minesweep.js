@@ -4,17 +4,15 @@ const $mineTagble = document.getElementById('mineTable');
 //모달
 const $deathModal = document.querySelector('.death_modal');
 
-//레벨 버튼 
+//레벨 버튼
 const $easyBtn = document.querySelector('.easy');
 const $nomalBtn = document.querySelector('.nomal');
 const $hardBtn = document.querySelector('.hard');
 //초급 : 9x9/10 , 중급:16x16/40 , 고급:20x16/68
-localStorage.setItem('ROW', '9');
-localStorage.setItem('COL', '9');
-localStorage.setItem('MINE', '9');
-let ROW = localStorage.getItem('ROW');
-let COL = localStorage.getItem('COL');;
-let MINE = localStorage.getItem('MINE');;
+
+let ROW = 9;
+let COL = 9;
+let MINE = 10;
 
 //폭탄 위치를 담을 배열
 const sweep = [];
@@ -41,12 +39,11 @@ const createMineTable = () => {
   }
 };
 
-//테이블 지웠다가 다시 생성 
-const reCreateTable = () =>{
-  $mineTagble.textContent='';
+//테이블 지웠다가 다시 생성
+const reCreateTable = () => {
+  $mineTagble.textContent = '';
   createMineTable();
-}
-
+};
 
 // 선택한 셀 찾아오기 =================
 const selectCell = (e) => {
@@ -112,15 +109,14 @@ const nullCellTest = (oneIndex, twoIndex, trList) => {
 
 // ==========테이블 클릭 핸들러 ============
 const tableClickHandler = (e) => {
-
   const { oneIndex, twoIndex, trList } = selectCell(e);
 
   if (trList[oneIndex].children[twoIndex].classList.contains('boom')) {
     $deathModal.classList.remove('hide');
     $backdrop.classList.add('visible');
   }
-  const setMineAndNum = ()=> {
-  //폭탄 10개를 심을 인덱스 생성
+  const setMineAndNum = () => {
+    //폭탄 10개를 심을 인덱스 생성
     while (sweep.length !== MINE) {
       const one = Math.floor(Math.random() * ROW);
       const two = Math.floor(Math.random() * COL);
@@ -185,13 +181,12 @@ const tableClickHandler = (e) => {
           }
         }
       }
-    } 
-  }
-  if(!mineIsValid){
+    }
+  };
+  if (!mineIsValid) {
     setMineAndNum();
     mineIsValid = true;
   }
-  
 
   //빈칸을 클릭했을때 자동으로 열리게 하기
   const openAround = (trIndex, tdIndex) => {
@@ -225,38 +220,36 @@ const tableClickHandler = (e) => {
           openAround(trIndex + 1, tdIndex + 1);
         }
       }
-     
     }, 0);
-     return;
+    return;
   };
 
   openAround(oneIndex, twoIndex);
 };
 
-
 $mineTagble.addEventListener('click', tableClickHandler);
 
 // - 화면 렌더링 -
-$easyBtn.addEventListener('click',()=>{
-  ROW = 9
-  COL = 9
-  MINE = 10
+$easyBtn.addEventListener('click', () => {
+  ROW = 9;
+  COL = 9;
+  MINE = 10;
   reCreateTable();
   mineIsValid = false;
-})
-$nomalBtn.addEventListener('click',()=>{
-  ROW = 16
-  COL = 16
-  MINE = 40
+});
+$nomalBtn.addEventListener('click', () => {
+  ROW = 16;
+  COL = 16;
+  MINE = 40;
   reCreateTable();
   mineIsValid = false;
-})
-$hardBtn.addEventListener('click',()=>{
-  ROW = 20
-  COL = 16
-  MINE = 68
+});
+$hardBtn.addEventListener('click', () => {
+  ROW = 20;
+  COL = 16;
+  MINE = 68;
   reCreateTable();
   mineIsValid = false;
-})
+});
 
 createMineTable();
