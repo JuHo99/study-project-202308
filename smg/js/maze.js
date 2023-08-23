@@ -1,4 +1,5 @@
-var btnCheck = document.getElementById('btnCheck');
+const btnCheck = document.getElementById('btnCheck');
+const modal = document.getElementById('modal');
 var tc = 21 // tile count (must be odd number) 가로,세로 타일의 개수
 var gs = 20 // grid size 
 var field // map position array which value is 0 for wall, 1~2 for way
@@ -7,14 +8,9 @@ var xv = (yv = 0)
 var tracker
 var stack
 var stucked
-var clear = false; //미로를 클리어한 상태인지 체크하는 함수
 
 var x, y
 var count = 0;
-
-window.onload = function () {
-    initialize()
-}
 
 document.addEventListener('keydown', keyPush)
 
@@ -61,7 +57,7 @@ function makeWay(xx, yy) {
 }
 
 function keyPush(evt) {
-    if (clear) return;
+    if (modal.style.display === 'block') return;
     switch (evt.keyCode) {
         case 37:
             xv = -1
@@ -79,6 +75,7 @@ function keyPush(evt) {
             xv = 0
             yv = 1
             break
+        default: return;
     }
     x += xv
     y += yv
@@ -100,7 +97,6 @@ function keyPush(evt) {
             count = 0;
             modal.style.display = 'block';
             initialize()
-            clear = true;
         }
     }
 }
@@ -192,8 +188,9 @@ function backtracking() {
 }
 
 // modal 창을 감춤
-var closeBtn = function () {
+var closeModal = function () {
     var sizeInput = document.getElementById('sizeInput').value
+    if (sizeInput.length === 0) return;
     if (sizeInput % 2 == 0) {
         alert('미로 사이즈는 홀수만 입력해주세요!')
     } else if (sizeInput < 5) {
@@ -201,14 +198,12 @@ var closeBtn = function () {
     } else if (sizeInput > 30) {
         alert('미로 사이즈는 최대 29입니다!')
     } else {
-        var modal = document.getElementById('modal');
         modal.style.display = 'none';
         tc = sizeInput
         canv = document.getElementById('maze')
         ctx = canv.getContext('2d')
-        clear = false;
         initialize()
     }
 }
 
-btnCheck.onclick = closeBtn;
+btnCheck.onclick = closeModal;

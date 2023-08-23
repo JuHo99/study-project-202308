@@ -21,3 +21,11 @@
     justify-content: center;
     align-items: center;
 }
+
+#modal label {
+    font-size: 1.2em;
+}
+
+#modal label p {
+    font-size: 1.5em;
+}
