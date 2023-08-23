@@ -11,9 +11,13 @@
 }
 
 #modal>#content {
-    width: 300px;
-    margin: 100px auto;
+    width: 50%;
+    margin: 40vh auto;
     padding: 20px;
     position: relative;
     background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }

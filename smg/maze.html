@@ -4,14 +4,26 @@
     <meta charset="UTF-8" />
     <title>미로 탈출하기</title>
     <link rel="stylesheet" href="./css/maze.css" />
+    <link rel="stylesheet" href="./css/modal.css" />
     <link
       rel="stylesheet"
       href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css"
     />
     <script src="./js/maze.js" defer></script>
     <script src="./js/main.js" defer></script>
+    <script src="./js/modal.js" defer></script>
   </head>
   <body>
+    <div id='modal'>
+      <div id='content'>
+          <label>
+              미로 크기를 입력해주세요<br/>
+              (최소: 5, 최대: 29)
+          </label><br/>
+          <input type='text' id='sizeInput' value='21' /><br />
+          <input type='button' value='시작' id='btnCheck' />
+      </div>
+  </div>
     <section class="container">
       <div id="backdrop"></div>
       <ul class="menu hide">
@@ -47,16 +59,7 @@
       <div class="gameBox">
         <div id="mazeMain">
           <canvas id="maze"></canvas>
-
           <br />
-
-          <p>Size(Min: 5, Max : 29)</p>
-          <br />
-          <input type="text" id="sizeInput" onkeyup="enterkey();" />
-
-          <br />
-          <br />
-
           <label id="text"></label>
           <br />
           <label id="count"></label>

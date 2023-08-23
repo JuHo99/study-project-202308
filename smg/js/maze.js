@@ -1,3 +1,4 @@
+var btnCheck = document.getElementById('btnCheck');
 var tc = 21 // tile count (must be odd number) 가로,세로 타일의 개수
 var gs = 20 // grid size 
 var field // map position array which value is 0 for wall, 1~2 for way
@@ -6,32 +7,16 @@ var xv = (yv = 0)
 var tracker
 var stack
 var stucked
+var clear = false; //미로를 클리어한 상태인지 체크하는 함수
 
 var x, y
 var count = 0;
 
 window.onload = function () {
-    canv = document.getElementById('maze')
-    ctx = canv.getContext('2d')
-    document.addEventListener('keydown', keyPush)
     initialize()
 }
 
-function enterkey() {
-    if (window.event.keyCode == 13) {
-        var sizeInput = document.getElementById('sizeInput').value
-        if (sizeInput % 2 == 0) {
-            alert('미로 사이즈는 홀수만 입력해주세요!')
-        } else if (sizeInput < 5) {
-            alert('미로 사이즈는 최소 5입니다!')
-        } else if (sizeInput > 30) {
-            alert('미로 사이즈는 최대 29입니다!')
-        } else {
-            tc = sizeInput
-            initialize()
-        }
-    }
-}
+document.addEventListener('keydown', keyPush)
 
 function initialize() {
     document.getElementById('sizeInput').value = tc
@@ -76,6 +61,7 @@ function makeWay(xx, yy) {
 }
 
 function keyPush(evt) {
+    if (clear) return;
     switch (evt.keyCode) {
         case 37:
             xv = -1
@@ -112,7 +98,9 @@ function keyPush(evt) {
         if (x == tc - 1 && y == tc - 2) {
             alert(`탈출 성공! \n이동횟수: ${count}회`);
             count = 0;
+            modal.style.display = 'block';
             initialize()
+            clear = true;
         }
     }
 }
@@ -202,3 +190,25 @@ function backtracking() {
     //ctx.fillRect(px*gs,py*gs,gs, gs);
     blockCheck()
 }
+
+// modal 창을 감춤
+var closeBtn = function () {
+    var sizeInput = document.getElementById('sizeInput').value
+    if (sizeInput % 2 == 0) {
+        alert('미로 사이즈는 홀수만 입력해주세요!')
+    } else if (sizeInput < 5) {
+        alert('미로 사이즈는 최소 5입니다!')
+    } else if (sizeInput > 30) {
+        alert('미로 사이즈는 최대 29입니다!')
+    } else {
+        var modal = document.getElementById('modal');
+        modal.style.display = 'none';
+        tc = sizeInput
+        canv = document.getElementById('maze')
+        ctx = canv.getContext('2d')
+        clear = false;
+        initialize()
+    }
+}
+
+btnCheck.onclick = closeBtn;
