@@ -81,6 +81,7 @@ const GameReslut=()=>{
             console.log('끝');
             // $readInput.value=`실패`;
 
+            $readInput.setAttribute('disabled','');
             $timeOver.classList.add('setGame');
             $setblack.classList.remove('inaction');        
         }
