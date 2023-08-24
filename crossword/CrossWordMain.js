@@ -98,23 +98,23 @@ const createGameBox = (difficulty) => {
                 case 14: gameBoxItem.classList.add('area'); break;
                 case 16: gameBoxItem.classList.add('area'); addAltBox(gameBoxItem, 2); break;
                 case 17: gameBoxItem.classList.add('area'); addAltBox(gameBoxItem, 3); break;
-                case 19: gameBoxItem.classList.add('area'); addAltBox(gameBoxItem, 7); break;
+                case 19: gameBoxItem.classList.add('area'); addAltBox(gameBoxItem, 6); break;
                 case 27: gameBoxItem.classList.add('area'); addAltBox(gameBoxItem, 3); break;
                 case 28: gameBoxItem.classList.add('area'); addAltBox(gameBoxItem, 4); break;
                 case 30: gameBoxItem.classList.add('area'); break;
                 case 32: gameBoxItem.classList.add('area'); break;
-                case 36: gameBoxItem.classList.add('area'); addAltBox(gameBoxItem, 12); break;
+                case 36: gameBoxItem.classList.add('area'); addAltBox(gameBoxItem, 11); break;
                 case 41: gameBoxItem.classList.add('area'); break;
                 case 43: gameBoxItem.classList.add('area'); addAltBox(gameBoxItem, 4); break;
                 case 44: gameBoxItem.classList.add('area'); break;
                 case 45: gameBoxItem.classList.add('area'); break;
                 case 49: gameBoxItem.classList.add('area'); addAltBox(gameBoxItem, 10); break;
                 case 50: gameBoxItem.classList.add('area'); break;
-                case 51: gameBoxItem.classList.add('area'); break;
+                case 51: gameBoxItem.classList.add('area');addAltBox(gameBoxItem, 12); break;
                 case 52: gameBoxItem.classList.add('area'); break;
                 case 54: gameBoxItem.classList.add('area'); break;
                 case 59: gameBoxItem.classList.add('area'); addAltBox(gameBoxItem, 9); break;
-                case 60: gameBoxItem.classList.add('area'); break;
+                case 60: gameBoxItem.classList.add('area'); addAltBox(gameBoxItem, 7); break;
                 case 61: gameBoxItem.classList.add('area'); break;
                 case 62: gameBoxItem.classList.add('area'); break;
                 case 64: gameBoxItem.classList.add('area'); break;
@@ -125,17 +125,17 @@ const createGameBox = (difficulty) => {
                 case 77: gameBoxItem.classList.add('area'); break;
                 case 82: gameBoxItem.classList.add('area'); addAltBox(gameBoxItem, 6); break;
                 case 83: gameBoxItem.classList.add('area'); break;
-                case 84: gameBoxItem.classList.add('area'); addAltBox(gameBoxItem, 11); break;
+                case 84: gameBoxItem.classList.add('area'); addAltBox(gameBoxItem, 10); break;
                 case 85: gameBoxItem.classList.add('area'); break;
                 case 86: gameBoxItem.classList.add('area'); break;
-                case 88: gameBoxItem.classList.add('area'); addAltBox(gameBoxItem, 14); break;
+                case 88: gameBoxItem.classList.add('area'); addAltBox(gameBoxItem, 13); break;
                 case 90: gameBoxItem.classList.add('area'); break;
-                case 92: gameBoxItem.classList.add('area'); addAltBox(gameBoxItem, 9); break;
+                case 92: gameBoxItem.classList.add('area'); addAltBox(gameBoxItem, 8); break;
                 case 97: gameBoxItem.classList.add('area'); break;
                 case 101: gameBoxItem.classList.add('area'); break;
                 case 103: gameBoxItem.classList.add('area'); break;
                 case 105: gameBoxItem.classList.add('area'); addAltBox(gameBoxItem, 7); break;
-                case 106: gameBoxItem.classList.add('area'); addAltBox(gameBoxItem, 10); break;
+                case 106: gameBoxItem.classList.add('area'); addAltBox(gameBoxItem, 9); break;
                 case 107: gameBoxItem.classList.add('area'); break;
                 case 108: gameBoxItem.classList.add('area'); break;
                 case 110: gameBoxItem.classList.add('area'); break;
@@ -171,15 +171,14 @@ const explainBoxDiffichltyHard = () => {
 <p>3.명사. 아주 짧은 동안</p>
 <p>4.부사. 더 어찌할 나위가 없을 만큼 가차 없이</p>
 <p>5.범죄 사실을 신고하여 기소를 요구하는 일</p>
-<p>6.어떤 일이 뜻하지 아니하게 일어남</p>
-<p>7.행정기관에서 일의 관련자에게 의견을 듣는 공개적 모임</p>
-<p>8.장치들이 과열되어 망가지는 것을 방지하는 화학물질</p>
-<p>9.가루로 된 설탕</p>
-<p>10.볼과 입술을 붉은 색조로 치장하는 화장품</p>
-<p>11.제 몸에 벌어지는 일을 모를 만큼 정신을 잃은 상태</p>
-<p>12.풀이나 나무 따위를 얽거나 엮어 경계를 지어 막는 물건</p>
-<p>13.프랑스 작가 빅토르 위고가 쓴 소설</p>
-<p>14.자기가 저지른 일은 자기가 해결하여야 함을 이르는 말.</p>
+<p>6.행정기관에서 일의 관련자에게 의견을 듣는 공개적 모임</p>
+<p>7.장치들이 과열되어 망가지는 것을 방지하는 화학물질</p>
+<p>8.가루로 된 설탕</p>
+<p>9.볼과 입술을 붉은 색조로 치장하는 화장품</p>
+<p>10.제 몸에 벌어지는 일을 모를 만큼 정신을 잃은 상태</p>
+<p>11.풀이나 나무 따위를 얽거나 엮어 경계를 지어 막는 물건</p>
+<p>12.프랑스 작가 빅토르 위고가 쓴 소설</p>
+<p>13.자기가 저지른 일은 자기가 해결하여야 함을 이르는 말.</p>
 `
     $explainBoxWidthLine.innerHTML = `
 <h3>가로문제</h3>
@@ -272,6 +271,7 @@ function hardButtonClickHandler() {
     const wrongAnswer = compareTextAndArray(boxIds, targetArray);
     endGame(wrongAnswer)
 }
+
 
 function nomalButtonClickHandler() {
     const boxIds = [
@@ -412,7 +412,7 @@ function compareTextAndArray(classNames, targetArray) {
         }
     }
 
-console.log(wrongAnswer);    
+    console.log(wrongAnswer);
     return wrongAnswer;
 }
 
@@ -428,22 +428,22 @@ function endGame(wrongAnswer) {
     $endGameBox.classList.add('resultBox')
     $container.appendChild($endGameBox)
     const $endGameBoxText = document.createElement('h4')
-    $endGameBoxText.textContent='게임 결과'
+    $endGameBoxText.textContent = '게임 결과'
     $endGameBox.appendChild($endGameBoxText)
     const $endGameResultBoxText = document.createElement('h5')
-    $endGameResultBoxText.textContent='틀린 문자'
+    $endGameResultBoxText.textContent = '틀린 문자'
     $endGameBox.appendChild($endGameResultBoxText)
     const $endGameResultBox = document.createElement('div')
     $endGameResultBox.classList.add('resultListBox')
     $endGameBox.appendChild($endGameResultBox)
     const $resultListBox = $endGameBox.querySelector('.resultListBox')
-    $resultListBox.textContent=wrongAnswer
+    $resultListBox.textContent = wrongAnswer
 
-    $endGameBox.addEventListener('click',e =>{
+    $endGameBox.addEventListener('click', e => {
         $endGameBox.classList.add('hide')
         $backdrop.classList.remove('visible')
     })
-    $backdrop.addEventListener('click',e=>{
+    $backdrop.addEventListener('click', e => {
         $endGameBox.classList.add('hide')
         $backdrop.classList.remove('visible')
     })
