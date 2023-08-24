@@ -1,0 +1,139 @@
+/* 게임 창 */
+.container .gameBox {
+  width: 100%;
+  height: 100%;
+
+  /* background: lightblue; */
+}
+/* 헤드부분  */
+
+.container .gameBox .gameHead {
+  width: 80%;
+  height: 8%;
+  margin: 0 4%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.container .gameBox .levels .lev {
+  padding: 10px;
+  border: 1px solid #000;
+  margin: 0 20px;
+}
+.container .gameBox .gameHead Button {
+  width: 100px;
+  height: 50px;
+}
+.container .gameBox .gameHead .gameHead_text .pding {
+  margin: 15px;
+}
+
+/* 메인 게임창 */
+.game-main {
+  display: table;
+  border-collapse: separate;
+  box-sizing: border-box;
+  text-indent: initial;
+  border-spacing: 2px;
+  border-color: gray;
+  background: #a6a6a6;
+}
+.game-board {
+  display: table-row-group;
+  vertical-align: middle;
+  border-color: inherit;
+}
+.game-board .rows {
+  /* display: flex; */
+  /* justify-content: space-around; */
+  height: 50px;
+}
+.game-board .square {
+  border: 2px solid #666;
+  border-top-color: #f6f6f6;
+  border-left-color: #f6f6f6;
+  box-sizing: border-box;
+  font-size: 0px;
+  cursor: pointer;
+  text-align: center;
+}
+.game-board .square.clicked {
+  border-color: transparent;
+  border-right: 2px dotted #333;
+  border-bottom: 2px dotted #333;
+  background: #c2c2c2;
+  font-size: 35px;
+}
+.container .gameBox .game-main {
+  width: 90%;
+  height: 90%;
+  margin: auto;
+  table-layout: fixed;
+}
+
+/* 모달부분  */
+.finish_modal,
+.death_modal {
+  width: 45%;
+  height: 30%;
+  background: lightcoral;
+  border-radius: 5%;
+  position: absolute;
+  top: 30%;
+  left: 30%;
+  z-index: 20;
+}
+.modal-dialog {
+  height: 100%;
+}
+.modal-content {
+  height: inherit;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.modal-title {
+  font-size: 3em;
+}
+
+/* 사진 관련 */
+.game-board .square.has-mine {
+  background: url('../../img/mines.png') no-repeat center / contain;
+}
+.game-board .square.bg-red {
+  background-color: #ff0000;
+}
+.game-board .square.flag {
+  background: url('../../img/flag.png') no-repeat center / contain;
+}
+.game-board .square.no-mine {
+  background: url('../../img/icon_nomine.png') no-repeat center / contain;
+}
+
+/* 지뢰 숫자 색 */
+
+.game-board .square.txt-1 {
+  color: #2483ff;
+}
+.game-board .square.txt-2 {
+  color: rgb(8, 141, 8);
+}
+.game-board .square.txt-3 {
+  color: #ff0000;
+}
+.game-board .square.txt-4 {
+  color: #ff9b00;
+}
+.game-board .square.txt-5 {
+  color: #924d32;
+}
+.game-board .square.txt-6 {
+  color: #3f4bfa;
+}
+.game-board .square.txt-7 {
+  color: #903ffa;
+}
+.game-board .square.txt-8 {
+  color: #333;
+}
