@@ -4,7 +4,7 @@ const btnCheck = document.getElementById('btnCheck');
 const modal = document.getElementById('modal');
 
 var tc = 21 // tile count (must be odd number) 가로,세로 타일의 개수
-var gs = 0 // grid size 
+var gs = 20 // grid size 
 var field // map position array which value is 0 for wall, 1~2 for way
 var px = (py = 1) // 0 <= px,py < tc
 var xv = (yv = 0)
