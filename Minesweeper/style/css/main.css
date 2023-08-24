@@ -1,11 +1,19 @@
 @import url(./common.css);
 /* 배경 */
-.container {
+.container{
   width: 75%;
   height: 80vh;
   background: #ffffff;
   margin: 10vh auto 0;
   position: relative;
+}
+.container.nomal {
+  width: 75%;
+  height: 90vh;
+}
+.container.hard {
+  width: 75%;
+  height: 95vh;
 }
 .container .icons {
   font-size: 3em;

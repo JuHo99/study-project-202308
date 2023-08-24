@@ -43,11 +43,7 @@
   vertical-align: middle;
   border-color: inherit;
 }
-.game-board .rows {
-  /* display: flex; */
-  /* justify-content: space-around; */
-  height: 50px;
-}
+
 .game-board .square {
   border: 2px solid #666;
   border-top-color: #f6f6f6;

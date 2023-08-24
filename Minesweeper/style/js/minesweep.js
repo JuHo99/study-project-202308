@@ -1,3 +1,4 @@
+const $contain = document.querySelector('.container');
 //게임창
 const $mineTagble = document.querySelector('.game-board');
 
@@ -36,11 +37,13 @@ function closeModal(e) {
   $backdrop.classList.remove('visible');
 }
 //게임 테이블 생성
-const createMineTable = () => {
+const createMineTable = (lev = 'easy') => {
   $minCount.textContent = MINE;
   for (let i = 0; i < ROW; i++) {
     const $tableTr = document.createElement('tr');
     $tableTr.classList.add('rows');
+    $contain.className = 'container ' + lev;
+
     $mineTagble.appendChild($tableTr);
     for (let j = 0; j < COL; j++) {
       const $tableTd = document.createElement('td');
@@ -49,6 +52,11 @@ const createMineTable = () => {
       $tableTr.appendChild($tableTd);
     }
   }
+};
+//테이블 지웠다가 다시 생성
+const reCreateTable = (lev) => {
+  $mineTagble.textContent = '';
+  createMineTable(lev);
 };
 
 function finishGame() {
@@ -96,11 +104,7 @@ function startTimer() {
 function stopTimer() {
   clearInterval(timerId);
 }
-//테이블 지웠다가 다시 생성
-const reCreateTable = () => {
-  $mineTagble.textContent = '';
-  createMineTable();
-};
+
 const resetTimer = () => {
   clearInterval(timerId);
   $timeCount.textContent = `00:00`;
@@ -379,7 +383,7 @@ $nomalBtn.addEventListener('click', () => {
   ROW = 16;
   COL = 16;
   MINE = 40;
-  reCreateTable();
+  reCreateTable('nomal');
   resetTimer();
   mineIsValid = false;
 });
@@ -387,7 +391,7 @@ $hardBtn.addEventListener('click', () => {
   ROW = 20;
   COL = 16;
   MINE = 68;
-  reCreateTable();
+  reCreateTable('hard');
   resetTimer();
   mineIsValid = false;
 });
