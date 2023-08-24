@@ -15,22 +15,24 @@
 
 <body>
 
-    <div class="backdrop"></div>
-
-    <div class="game-Explanation">
+  
+  <div class="game-Explanation">
       <div>타이핑 게임</div>
       <p>20초 안에 꽃밭에 가려져 있는 것을 찾아내시오</p>
       <button class="start-btn">게임시작</button>
       <button class="end-btn" onclick="location.href='#'">취소(아직안됨)</button>
     </div>
-  
-  <div class="game-end">
+    
+    <div class="game-over">
       <p>실패</p>
       <button class="reset-btn" onclick="location.href='/YoungheeSo/index.html'">다시하기</button>
       <button class="back-btn" onclick="location.href='#'">그만하기(아직안됨)</button>
-  </div>
+    </div>
+    
+    <div id="content">
 
-  <div id="content">
+    <div class="setGame-before"></div>
+
     <section class="container">
 
       <div id="backdrop"></div>
@@ -72,6 +74,7 @@
         <div class="read-Output">
           <ul id="textBox"></ul>
         </div>
+
         <div class="timer-box">
           <!-- <img src="/img/clock.png" alt="clock"> -->
           <p class="tiem-Gauge"></p>

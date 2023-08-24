@@ -1,14 +1,14 @@
 
-// const outputArray = ['출력','사랑','싹', '설산', '예수', '물방아 꽃', '사막', '해바라기', '얼음', '봄바람','마나님', '나그네'];   
-const outputArray = ['출력'];
+const outputArray = ['출력','사랑','싹', '설산', '예수', '물방아 꽃', '사막', '해바라기', '얼음', '봄바람','마나님', '나그네'];   
+// const outputArray = ['출력'];
 
 const $textbox = document.getElementById('textBox');
 
-const $backdp = document.querySelector('.backdrop');
+const $backdp = document.querySelector('.setGame-before');
 const $outputbg = document.querySelector('.read-Output');
 const $timergauge = document.querySelector('.tiem-Gauge');
 
-const $timeOver = document.querySelector('.game-end');
+const $timeOver = document.querySelector('.game-over');
 const $content = document.getElementById('content');
 const $readInput = document.querySelector('input');
 
@@ -52,9 +52,11 @@ const gameStartHandler=(e)=>{
     textLiBoxs(1);  
     
     $outputbg.removeAttribute('style');
+
     $backdp.classList.add('inaction');
-    $timergauge.classList.add('action');
     $setgame.classList.add('inaction');
+
+    $timergauge.classList.add('action');
     
     GameReslut();
 }
@@ -68,7 +70,7 @@ const GameReslut=()=>{
         console.log('끝');
         // $readInput.value=`실패`;
 
-        $timeOver.classList.add('game-over');
+        $timeOver.classList.add('setGame');
         $backdp.classList.remove('inaction');        
     }
         

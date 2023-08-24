@@ -11,14 +11,7 @@
     box-sizing: border-box;
 }
 
-body{
-    -webkit-user-select:none;
-    -moz-user-select:none;
-    -ms-user-select:none;
-    user-select:none;
-}
-
-.backdrop{
+.setGame-before{
     position: absolute;
     width: 100%;
     height: 100%;
@@ -33,19 +26,18 @@ body{
     flex-wrap: wrap;
 }
 
-.backdrop.inaction,
+.setGame-before.inaction,
 .game-Explanation.inaction,
-.game-end{
+.game-over{
     pointer-events: none;
     display: none;    
 }
 
 
 .game-Explanation,
-.game-over{
-    pointer-events: all;
+.game-over.setGame{
     width: 60%; padding: 20px;
-
+    
     position: absolute; z-index: 3;
     top: 40%; left: 50%; transform: translate(-50%, -50%);
     
@@ -53,9 +45,10 @@ body{
     
     border: 3px solid #93C6E7; border-radius: 15px; background: #fff;
     
-    display: flex; 
+    display: flex; flex-wrap: wrap;
     justify-content: center; align-items: center;
-    flex-wrap: wrap;
+
+    pointer-events: all;
 }
 
 .game-Explanation div{
@@ -66,14 +59,14 @@ body{
 }
 
 .game-Explanation p,
-.game-end p{
+.game-over p{
     /* background: red;  */
     width: 100%;
     font-size: 1.5em
 }
 
 .game-Explanation button,
-.game-end button{    
+.game-over button{    
     font-family: 'ONE-Mobile-POP'; font-size: 1.2em;
     
     width: 130px; height: 50px;   
@@ -84,14 +77,20 @@ body{
 }
 
 #content{    
-    height: 100vh;
+    /* height: 100vh; */
     background: #C9FFFC;
+    margin: 0;
     /* background: url('/img/background.png') no-repeat center/cover; */
     /* background: linear-gradient(180deg, #FDE5EC, #E48586); */
     display: flex; justify-content: center; align-items: center;
     flex-wrap: wrap;
 
-    position: relative;      
+    position: relative;  
+    
+    -webkit-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select:none;
+    user-select:none;
 }
 
 .container {
@@ -99,8 +98,10 @@ body{
     
     width: 75%; height: 80vh;
     min-width: 600px; 
+    min-height: 650px;
 
     margin: 10vh auto;
+
     position: relative;
   }
   
@@ -124,7 +125,7 @@ body{
 
 .main-game-play .read-Output{
     width: 55vw; height: 55vh;
-    min-width: 450px; 
+    min-width: 450px; min-height: 450px;
     
 
     background: url('/YoungheeSo/img/사진1.png') no-repeat center/cover;
@@ -170,7 +171,7 @@ body{
     margin-top: 10px;
     margin-left: 5vh; padding: 10px;
     
-    width: 5%; height: 53vh;
+    width: 5%; height: 53vh; min-height: 450px;
 }
 
 .main-game-play .timer-box .tiem-Gauge{
@@ -216,7 +217,7 @@ body{
     min-width: 150px; min-height: 30px;
 
     background: #B9F3FC;
-    border: 3px solid #93C6E7;
+    border: 0px solid #fff;
     border-radius: 15px;
     margin: 0 auto; padding: 20px; 
 
@@ -236,5 +237,5 @@ body{
 }
 
 footer{
-    width: 100%;
+    width: 100%; background: pink;
 }
