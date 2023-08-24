@@ -2,8 +2,9 @@
 
 const btnCheck = document.getElementById('btnCheck');
 const modal = document.getElementById('modal');
+
 var tc = 21 // tile count (must be odd number) 가로,세로 타일의 개수
-var gs = 20 // grid size 
+var gs = 0 // grid size 
 var field // map position array which value is 0 for wall, 1~2 for way
 var px = (py = 1) // 0 <= px,py < tc
 var xv = (yv = 0)
@@ -16,31 +17,6 @@ var count = 0;
 
 document.addEventListener('keydown', keyPush)
 btnCheck.onclick = inputSize;
-
-function setXY() {
-    document.getElementById('text').innerHTML =
-        'x좌표: ' + x + ' y좌표: ' + y
-}
-
-function inputSize() {
-    var sizeInput = document.getElementById('sizeInput').value
-    if (sizeInput.length === 0) return;
-    if (sizeInput % 2 == 0) {
-        alert('미로 사이즈는 홀수만 입력해주세요!')
-    } else if (sizeInput < 5) {
-        alert('미로 사이즈는 최소 5입니다!')
-    } else if (sizeInput > 30) {
-        alert('미로 사이즈는 최대 29입니다!')
-    } else {
-        tc = sizeInput
-        canv = document.getElementById('maze')
-        ctx = canv.getContext('2d')
-        setXY();
-        document.getElementById('count').innerHTML = '이동횟수: 0';
-        initialize()
-        closeModal()
-    }
-}
 
 function initialize() {
     document.getElementById('sizeInput').value = tc
@@ -77,6 +53,27 @@ function initialize() {
 
     ctx.fillRect(x * gs, y * gs, gs, gs)
 }
+
+function inputSize() {
+    var sizeInput = document.getElementById('sizeInput').value
+    if (sizeInput.length === 0) return;
+    if (sizeInput % 2 == 0) {
+        alert('미로 사이즈는 홀수만 입력해주세요!')
+    } else if (sizeInput < 5) {
+        alert('미로 사이즈는 최소 5입니다!')
+    } else if (sizeInput > 30) {
+        alert('미로 사이즈는 최대 29입니다!')
+    } else {
+        tc = sizeInput
+        canv = document.getElementById('maze')
+        ctx = canv.getContext('2d')
+        setXY();
+        document.getElementById('count').innerHTML = '이동횟수: 0';
+        initialize()
+        closeModal()
+    }
+}
+
 function makeWay(xx, yy) {
     //console.log("makeWay: " + xx + " " + yy);
     field[yy][xx]++
@@ -212,6 +209,11 @@ function backtracking() {
     //ctx.fillStyle="blue";
     //ctx.fillRect(px*gs,py*gs,gs, gs);
     blockCheck()
+}
+
+function setXY() {
+    document.getElementById('text').innerHTML =
+        'x좌표: ' + x + ' y좌표: ' + y
 }
 
 function closeModal() {
