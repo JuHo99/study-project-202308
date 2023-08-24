@@ -1,6 +1,6 @@
 
-// const outputArray = ['출력','사랑','싹', '설산', '예수', '물방아 꽃', '사막', '해바라기', '얼음', '봄바람','마나님', '나그네'];   
-const outputArray = ['출력'];
+const outputArray = ['출력','사랑','싹', '설산', '예수', '물방아 꽃', '사막', '해바라기', '얼음', '봄바람','마나님', '나그네'];   
+// const outputArray = ['출력'];
 
 const $textbox = document.getElementById('textBox');
 
@@ -20,7 +20,7 @@ const $setgame=document.querySelector('.game-Explanation');
 
 //타이머 게이지 변수
 let num=0;
-let setTime=5;
+let setTime=20;
 let secode;
 
 //게임 시작 화면 세팅
@@ -56,8 +56,8 @@ const gameStartHandler=(e)=>{
     
     $timergauge.classList.add('action');
     $outputbg.removeAttribute('style');
-    
-    GameReslut();
+
+    GameReslut();    
 }
 
 
@@ -71,42 +71,45 @@ const GameReslut=()=>{
         if(secode<0) return;
 
         secode=(setTime-1)-(num++);        
-        console.log(secode, num); //type number
-
-        if(secode>=0){
-            if(outputArray.length===0){
-
-                $timergauge.classList.remove('action');
-                $FindGameClear.classList.add('action');
-                $setblack.classList.remove('inaction');
-
-                $readInput.value=`${secode}, 걸린 시간: ${setTime-secode}초`;
-                $GameClearTime.textContent = `걸린 시간: ${setTime-secode}초`;
-                
-                clearInterval(timerId);
-                clearTimeout(timeOut);
-            }
-        };
+        console.log(secode, num); //type number        
 
     },1000);  
 
-  let timeOut=setTimeout(()=>{        
-    if(outputArray.length>0){
-        console.log('끝');
-        // $readInput.value=`실패`;
+    // setTime이 다 지나가면 실행
+    let timeOut=setTimeout(()=>{        
+        if(outputArray.length>0){
+            console.log('끝');
+            // $readInput.value=`실패`;
 
-        $timeOver.classList.add('setGame');
-        $setblack.classList.remove('inaction');        
-    }
+            $timeOver.classList.add('setGame');
+            $setblack.classList.remove('inaction');        
+        }
         
-    }, setTime*1000) 
+    }, setTime*1000);
+    
+    let quarter = setInterval(()=>{
+        if(secode>=0 && outputArray.length===0){
+            $timergauge.classList.remove('action');
+            $FindGameClear.classList.add('action');
+            $setblack.classList.remove('inaction');
+
+            // $readInput.value=`걸린 시간: ${setTime-secode+1}초`;
+            $GameClearTime.textContent = `${setTime-secode+1}초 만에 찾았다!`;
+            
+            clearInterval(timerId);
+            clearInterval(quarter);
+
+            clearTimeout(timeOut);
+            
+        }
+    }, 100);
 
 }
 
 //outputArray배열의 text를 맞게 치면 성공, 오타가 나면 실패
 const userInputTextHandler=()=>{    
     const $userInput = document.querySelector('.write-userInput');
-    const $textbox = document.getElementById('textBox');
+    // const $textbox = document.getElementById('textBox');
     
     if(!outputArray.includes($userInput.value)) {
         $userInput.classList.add('typing-error');

@@ -38,7 +38,9 @@
 .game-clear.action,
 .game-Explanation,
 .game-over.setGame{
-    width: 60%; padding: 20px;
+    width: 60%; 
+    
+    padding: 20px;
     
     position: absolute; z-index: 3;
     top: 50%; left: 50%; transform: translate(-50%, -50%);
@@ -55,25 +57,20 @@
 
 .game-Explanation div,
 .game-clear div{
-    /* background: red;  */
     width: 100%; 
-    /* font-size: 2em; */
-    margin-bottom: 20px;
+    font-size: 2em;
 }
 
 .game-Explanation p,
 .game-over p{
-    /* background: red;  */
     width: 100%;
-    font-size: 1.5em
+    font-size: 1.5em; 
+    padding: 10px;
 }
 
 .game-clear img{
-    /* position: absolute;  */
-    /* z-index: 3; */
-    height: 40vh;
-    margin: 5px auto;
-    /* background: url('/YoungheeSo/img/사진1.png') no-repeat center/cover; */
+    height: 50vh;
+    margin: 20px 30vh;
 }
 
 .game-clear button,
@@ -82,7 +79,7 @@
     font-family: 'ONE-Mobile-POP'; font-size: 1.2em;
     
     width: 130px; height: 50px;   
-    margin: 30px;
+    margin: 20px 30px;
     
     border: 3px solid #93C6E7; 
     border-radius: 15px; background: #fff;
@@ -100,7 +97,6 @@
     /* height: 100vh; */
     background: #C9FFFC;
     margin: 0;
-    /* background: url('/img/background.png') no-repeat center/cover; */
     display: flex; justify-content: center; align-items: center;
     flex-wrap: wrap;
 
