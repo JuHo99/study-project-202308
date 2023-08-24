@@ -226,7 +226,8 @@ function openAround(trIndex, tdIndex, trList) {
         numTdIndex === COL ||
         numTdIndex < 0 ||
         $tdTag === $initTdTag ||
-        $tdTag.hasAttribute('mine')
+        $tdTag.hasAttribute('mine') ||
+        $tdTag.classList.contains('clicked')
       ) {
         continue;
       }
