@@ -1,3 +1,5 @@
+// import { closeModal } from "./modal";
+
 const btnCheck = document.getElementById('btnCheck');
 const modal = document.getElementById('modal');
 var tc = 21 // tile count (must be odd number) 가로,세로 타일의 개수
@@ -9,10 +11,36 @@ var tracker
 var stack
 var stucked
 
-var x, y
+var x = 0, y = 1;
 var count = 0;
 
 document.addEventListener('keydown', keyPush)
+btnCheck.onclick = inputSize;
+
+function setXY() {
+    document.getElementById('text').innerHTML =
+        'x좌표: ' + x + ' y좌표: ' + y
+}
+
+function inputSize() {
+    var sizeInput = document.getElementById('sizeInput').value
+    if (sizeInput.length === 0) return;
+    if (sizeInput % 2 == 0) {
+        alert('미로 사이즈는 홀수만 입력해주세요!')
+    } else if (sizeInput < 5) {
+        alert('미로 사이즈는 최소 5입니다!')
+    } else if (sizeInput > 30) {
+        alert('미로 사이즈는 최대 29입니다!')
+    } else {
+        tc = sizeInput
+        canv = document.getElementById('maze')
+        ctx = canv.getContext('2d')
+        setXY();
+        document.getElementById('count').innerHTML = '이동횟수: 0';
+        initialize()
+        closeModal()
+    }
+}
 
 function initialize() {
     document.getElementById('sizeInput').value = tc
@@ -88,8 +116,7 @@ function keyPush(evt) {
         ctx.fillRect(x * gs, y * gs, gs, gs)
         ctx.fillStyle = 'white'
         ctx.fillRect((x - xv) * gs, (y - yv) * gs, gs, gs)
-        document.getElementById('text').innerHTML =
-            'x좌표: ' + x + ' y좌표: ' + y
+        setXY();
         count++;
         document.getElementById('count').innerHTML = '이동횟수 : ' + count;
         if (x == tc - 1 && y == tc - 2) {
@@ -187,23 +214,6 @@ function backtracking() {
     blockCheck()
 }
 
-// modal 창을 감춤
-var closeModal = function () {
-    var sizeInput = document.getElementById('sizeInput').value
-    if (sizeInput.length === 0) return;
-    if (sizeInput % 2 == 0) {
-        alert('미로 사이즈는 홀수만 입력해주세요!')
-    } else if (sizeInput < 5) {
-        alert('미로 사이즈는 최소 5입니다!')
-    } else if (sizeInput > 30) {
-        alert('미로 사이즈는 최대 29입니다!')
-    } else {
-        modal.style.display = 'none';
-        tc = sizeInput
-        canv = document.getElementById('maze')
-        ctx = canv.getContext('2d')
-        initialize()
-    }
+function closeModal() {
+    modal.style.display = 'none';
 }
-
-btnCheck.onclick = closeModal;
