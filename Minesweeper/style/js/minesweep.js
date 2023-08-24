@@ -1,4 +1,5 @@
 const $contain = document.querySelector('.container');
+const $gameMain = document.querySelector('.game-main');
 //게임창
 const $mineTagble = document.querySelector('.game-board');
 
@@ -38,11 +39,13 @@ function closeModal(e) {
 }
 //게임 테이블 생성
 const createMineTable = (lev = 'easy') => {
+  $mineTagble.textContent = '';
   $minCount.textContent = MINE;
   for (let i = 0; i < ROW; i++) {
     const $tableTr = document.createElement('tr');
     $tableTr.classList.add('rows');
     $contain.className = 'container ' + lev;
+    $gameMain.className = 'game-main ' + lev;
 
     $mineTagble.appendChild($tableTr);
     for (let j = 0; j < COL; j++) {
@@ -53,13 +56,8 @@ const createMineTable = (lev = 'easy') => {
     }
   }
 };
-//테이블 지웠다가 다시 생성
-const reCreateTable = (lev) => {
-  $mineTagble.textContent = '';
-  createMineTable(lev);
-};
 
-function finishGame() {
+function openAll() {
   const trList = Array.from($mineTagble.querySelectorAll('tr'));
   for (let i = 0; i < ROW; i++) {
     for (let j = 0; j < COL; j++) {
@@ -67,11 +65,14 @@ function finishGame() {
       if (trList[i].children[j].classList.contains('flag')) {
         continue;
       } else if (!trList[i].children[j].classList.contains('clicked')) {
-        return;
+        return false;
       }
     }
   }
-  if (MINE === 0) {
+  return true;
+}
+function finishGame() {
+  if (MINE === 0 && openAll()) {
     $finishModal.classList.remove('hide');
     $backdrop.classList.add('visible');
     stopTimer();
@@ -336,6 +337,7 @@ const tableRightClickHandler = (e) => {
   e.preventDefault();
   const $clickTd = e.target;
 
+  const openValid = openAll;
   let alreadyClicked = $clickTd.classList.contains('clicked');
   let hasFlag = $clickTd.classList.contains('flag');
 
@@ -353,9 +355,11 @@ const tableRightClickHandler = (e) => {
         $minCount.textContent = MINE;
         $clickTd.classList.add('flag');
       } else {
-        MINE += 1;
-        $minCount.textContent = MINE;
-        $clickTd.classList.remove('flag');
+        if (!openAll()) {
+          MINE += 1;
+          $minCount.textContent = MINE;
+          $clickTd.classList.remove('flag');
+        }
       }
     }
     hasFlag = !hasFlag;
@@ -375,7 +379,7 @@ $easyBtn.addEventListener('click', () => {
   ROW = 9;
   COL = 9;
   MINE = 10;
-  reCreateTable();
+  createMineTable();
   resetTimer();
   mineIsValid = false;
 });
@@ -383,7 +387,7 @@ $nomalBtn.addEventListener('click', () => {
   ROW = 16;
   COL = 16;
   MINE = 40;
-  reCreateTable('nomal');
+  createMineTable('nomal');
   resetTimer();
   mineIsValid = false;
 });
@@ -391,7 +395,7 @@ $hardBtn.addEventListener('click', () => {
   ROW = 20;
   COL = 16;
   MINE = 68;
-  reCreateTable('hard');
+  createMineTable('hard');
   resetTimer();
   mineIsValid = false;
 });

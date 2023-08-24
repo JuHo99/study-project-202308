@@ -1,6 +1,6 @@
 @import url(./common.css);
 /* 배경 */
-.container{
+.container {
   width: 75%;
   height: 80vh;
   background: #ffffff;
@@ -9,11 +9,13 @@
 }
 .container.nomal {
   width: 75%;
-  height: 90vh;
+  height: 100vh;
+  margin: 5vh auto 0;
 }
 .container.hard {
   width: 75%;
-  height: 95vh;
+  height: 120vh;
+  margin: 5vh auto 0;
 }
 .container .icons {
   font-size: 3em;
