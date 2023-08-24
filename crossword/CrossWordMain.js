@@ -10,8 +10,8 @@ const menuberClickHandler = e => {
 const backdropHandler = e => {
     if (!$menu.classList.contains('hide')) {
         $menu.classList.add('hide');
-        $backdrop.classList.remove('visible')
     }
+    $backdrop.classList.remove('visible')
 }
 $backdrop.addEventListener("click", backdropHandler);
 $menuber.addEventListener('click', menuberClickHandler)
@@ -269,8 +269,8 @@ function hardButtonClickHandler() {
         '당', '연', '지', '사', '불', '백', '년', '해', '로',
         '지', '성', '곽', '지'
     ];
-    const wrongAnswerNum = compareTextAndArray(boxIds, targetArray);
-    endGame(wrongAnswerNum)
+    const wrongAnswer = compareTextAndArray(boxIds, targetArray);
+    endGame(wrongAnswer)
 }
 
 function nomalButtonClickHandler() {
@@ -292,7 +292,8 @@ function nomalButtonClickHandler() {
         '동', '분', '서', '주', '심',
         '소', '리', '장', '도'
     ];
-    compareTextAndArray(boxIds, targetArray);
+    const wrongAnswers = compareTextAndArray(boxIds, targetArray);
+    endGame(wrongAnswers);
 }
 
 function easyButtonClickHandler() {
@@ -314,7 +315,8 @@ function easyButtonClickHandler() {
         '이', '구', '아', '나',
         '비'
     ];
-    compareTextAndArray(boxIds, targetArray);
+    const wrongAnswers = compareTextAndArray(boxIds, targetArray);
+    endGame(wrongAnswers);
 }
 
 
@@ -392,10 +394,9 @@ function addAltBox(box, question = '0') {
 
 // ================== 정답 체크 함수 ===================
 
-
 function compareTextAndArray(classNames, targetArray) {
-// 오답 문자열 추가할 변수 생성
-let wrongAnswer = [];
+    // 오답 문자열 추가할 배열 생성
+    let wrongAnswer = [];
 
     for (let i = 0; i < classNames.length; i++) {
         const boxElement = document.querySelector(`[data-box-id="${classNames[i]}"]`);
@@ -404,38 +405,73 @@ let wrongAnswer = [];
             console.log(`박스 엘리먼트를 찾을 수 없음`);
             continue;
         }
-        const boxText = boxElement.lastChild.textContent;
+        const boxText = boxElement.textContent;
 
-        // console.log(boxText);
-        if (boxText === targetArray[i]) {
-            console.log(`정답`);
-        } else {
-            // console.log(`${boxText}: 오답`);
-            wrongAnswer.push(boxText)
+        if (boxText !== targetArray[i]) {
+            wrongAnswer.push(boxText);
         }
     }
-console.log(wrongAnswer);
-return wrongAnswer
+
+console.log(wrongAnswer);    
+    return wrongAnswer;
 }
+
+// function compareTextAndArray(classNames, targetArray) {
+// // 오답 문자열 추가할 변수 생성
+// let wrongAnswer = [];
+
+//     for (let i = 0; i < classNames.length; i++) {
+//         const boxElement = document.querySelector(`[data-box-id="${classNames[i]}"]`);
+
+//         if (!boxElement) {
+//             console.log(`박스 엘리먼트를 찾을 수 없음`);
+//             continue;
+//         }
+//         const boxText = boxElement.lastChild.textContent;
+
+//         // console.log(boxText);
+//         if (boxText === targetArray[i]) {
+//             console.log(`정답`);
+//         } else {
+//             // console.log(`${boxText}: 오답`);
+//             wrongAnswer.push(boxText)
+//         }
+//     }
+// console.log(wrongAnswer);
+// return wrongAnswer
+// }
 
 // ======================게임 종료 창=====================
 
-function endGame(...wrongAnswer) {
 
-    let aaaaa = []
-    wrongAnswer.forEach(element => {
-        aaaaa = element
-    });
-    alert('틀린 글자 : ',aaaaa)
 
+function endGame(wrongAnswer) {
+    // alert('틀린 글자 : ' + wrongAnswer.join(', '));
+    $backdrop.classList.add('visible')
+    const $endGameBox = document.createElement('div')
+    $endGameBox.classList.add('resultBox')
+    $container.appendChild($endGameBox)
+    const $endGameBoxText = document.createElement('h4')
+    $endGameBoxText.textContent='게임 결과'
+    $endGameBox.appendChild($endGameBoxText)
+    const $endGameResultBoxText = document.createElement('h5')
+    $endGameResultBoxText.textContent='틀린 문자'
+    $endGameBox.appendChild($endGameResultBoxText)
+    const $endGameResultBox = document.createElement('div')
+    $endGameResultBox.classList.add('resultListBox')
+    $endGameBox.appendChild($endGameResultBox)
+    const $resultListBox = $endGameBox.querySelector('.resultListBox')
+    $resultListBox.textContent=wrongAnswer
+
+    $endGameBox.addEventListener('click',e =>{
+        $endGameBox.classList.add('hide')
+        $backdrop.classList.remove('visible')
+    })
+    $backdrop.addEventListener('click',e=>{
+        $endGameBox.classList.add('hide')
+        $backdrop.classList.remove('visible')
+    })
 }
-
-
-
-
-
-
-
 
 
 
