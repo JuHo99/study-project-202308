@@ -4,7 +4,7 @@ const outputArray = ['출력','사랑','싹', '설산', '예수', '물방아 꽃
 
 const $textbox = document.getElementById('textBox');
 
-const $backdp = document.querySelector('.setGame-before');
+const $setblack = document.querySelector('.setGame-before');
 const $outputbg = document.querySelector('.read-Output');
 const $timergauge = document.querySelector('.tiem-Gauge');
 
@@ -29,34 +29,34 @@ const textLiBoxs=(check)=>{
 
     outputArray.forEach(text => {
         const $newLi = document.createElement('li');
-        $newLi.setAttribute('class', `index-${outputArray.indexOf(text)}`);
+        // $newLi.setAttribute('class', `index-${outputArray.indexOf(text)}`);
         // $newLi.setAttribute(`${tag}`, `${value} index-${outputArray.indexOf(text)}`);        
-        
-        if(check!==1) {
-            $newLi.textContent='';
-
-            $outputbg.setAttribute('style','background: #fff;');            
-            return;
+        if(!check) {
+            $outputbg.setAttribute('style','background: #fff;');
+            $textbox.appendChild($newLi);
+            return;        
         }
-
-        $newLi.textContent=text;
-        $textbox.appendChild($newLi);        
+        
+        $newLi.textContent=text; 
+        $textbox.appendChild($newLi);       
     });
 }
 
 textLiBoxs();
 
 //게임 시작 버튼 클릭시 이벤트
-const gameStartHandler=(e)=>{
-    console.log('시작');
+const gameStartHandler=(e)=>{    
+    [...$textbox.children].forEach($text=>{
+        $textbox.removeChild($text);
+    });
+
     textLiBoxs(1);  
     
-    $outputbg.removeAttribute('style');
-
-    $backdp.classList.add('inaction');
+    $setblack.classList.add('inaction');
     $setgame.classList.add('inaction');
-
+    
     $timergauge.classList.add('action');
+    $outputbg.removeAttribute('style');
     
     GameReslut();
 }
@@ -64,18 +64,7 @@ const gameStartHandler=(e)=>{
 
 //게임 성공, 실패 이벤트
 const GameReslut=()=>{
-
-  let timeOut=setTimeout(()=>{        
-    if(outputArray.length>0){
-        console.log('끝');
-        // $readInput.value=`실패`;
-
-        $timeOver.classList.add('setGame');
-        $backdp.classList.remove('inaction');        
-    }
-        
-    }, setTime*1000) 
-
+    // 1초마다 반복
     let timerId = setInterval(()=>{   
         if(secode<0) return;
 
@@ -95,6 +84,18 @@ const GameReslut=()=>{
         };
 
     },1000);  
+
+  let timeOut=setTimeout(()=>{        
+    if(outputArray.length>0){
+        console.log('끝');
+        // $readInput.value=`실패`;
+
+        $timeOver.classList.add('setGame');
+        $setblack.classList.remove('inaction');        
+    }
+        
+    }, setTime*1000) 
+
 }
 
 //outputArray배열의 text를 맞게 치면 성공, 오타가 나면 실패
@@ -128,7 +129,6 @@ const userInputTextHandler=()=>{
 }
 
 //이벤트 핸들러
-
 const $startBtn = document.querySelector('.start-btn');
 $startBtn.addEventListener('click', gameStartHandler);
 

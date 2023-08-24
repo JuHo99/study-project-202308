@@ -34,12 +34,13 @@
 }
 
 
+.game-clear,
 .game-Explanation,
 .game-over.setGame{
     width: 60%; padding: 20px;
     
     position: absolute; z-index: 3;
-    top: 40%; left: 50%; transform: translate(-50%, -50%);
+    top: 50%; left: 50%; transform: translate(-50%, -50%);
     
     font-family: 'ONE-Mobile-POP'; text-align: center;
     
@@ -47,11 +48,12 @@
     
     display: flex; flex-wrap: wrap;
     justify-content: center; align-items: center;
-
+    
     pointer-events: all;
 }
 
-.game-Explanation div{
+.game-Explanation div,
+.game-clear div{
     /* background: red;  */
     width: 100%;
     /* font-size: 2em; */
@@ -65,15 +67,32 @@
     font-size: 1.5em
 }
 
+.game-clear .findbyimg{
+    /* position: absolute;  */
+    /* z-index: 3; */
+    width: 80%; height: 60vh;
+    margin: 5px auto;
+    background: url('/YoungheeSo/img/사진1.png') no-repeat center/cover;
+}
+
+.game-clear button,
 .game-Explanation button,
 .game-over button{    
     font-family: 'ONE-Mobile-POP'; font-size: 1.2em;
     
     width: 130px; height: 50px;   
-    margin: 20px;
+    margin: 30px;
     
-    border: 3px solid #93C6E7; border-radius: 15px;  background: #fff;
+    border: 3px solid #93C6E7; 
+    border-radius: 15px; background: #fff;
     display: flex; justify-content: center; align-items: center;
+}
+
+.game-Explanation button:hover,
+.game-over button:hover{
+    border: 0px solid #fff; 
+    background: linear-gradient(90deg, #FDE5EC, #E48586);
+
 }
 
 #content{    
@@ -81,7 +100,6 @@
     background: #C9FFFC;
     margin: 0;
     /* background: url('/img/background.png') no-repeat center/cover; */
-    /* background: linear-gradient(180deg, #FDE5EC, #E48586); */
     display: flex; justify-content: center; align-items: center;
     flex-wrap: wrap;
 
