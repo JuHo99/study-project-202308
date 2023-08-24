@@ -4,7 +4,7 @@ const btnCheck = document.getElementById('btnCheck');
 const modal = document.getElementById('modal');
 
 var tc = 21 // tile count (must be odd number) 가로,세로 타일의 개수
-var gs = 20 // grid size 
+var gs = 20 // 한 칸의 크기
 var field // map position array which value is 0 for wall, 1~2 for way
 var px = (py = 1) // 0 <= px,py < tc
 var xv = (yv = 0)
@@ -18,6 +18,7 @@ var count = 0;
 document.addEventListener('keydown', keyPush)
 btnCheck.onclick = inputSize;
 
+// 미로생성(메인 코드)
 function initialize() {
     document.getElementById('sizeInput').value = tc
     make2DArray()
@@ -54,6 +55,7 @@ function initialize() {
     ctx.fillRect(x * gs, y * gs, gs, gs)
 }
 
+// 미로 크기 입력 처리
 function inputSize() {
     var sizeInput = document.getElementById('sizeInput').value
     if (sizeInput.length === 0) return;
@@ -74,6 +76,7 @@ function inputSize() {
     }
 }
 
+// 길 생성
 function makeWay(xx, yy) {
     //console.log("makeWay: " + xx + " " + yy);
     field[yy][xx]++
@@ -81,6 +84,7 @@ function makeWay(xx, yy) {
     ctx.fillRect(xx * gs, yy * gs, gs, gs)
 }
 
+// 키보드 이동 처리
 function keyPush(evt) {
     if (modal.style.display === 'block') return;
     switch (evt.keyCode) {
@@ -120,11 +124,11 @@ function keyPush(evt) {
             alert(`탈출 성공! \n이동횟수: ${count}회`);
             count = 0;
             modal.style.display = 'block';
-            initialize()
         }
     }
 }
 
+// 미로 틀 생성
 function make2DArray() {
     // console.log('tc: ' + tc)
     field = new Array(parseInt(tc))
@@ -149,6 +153,7 @@ function randomMazeGenerator() {
     }
 }
 
+// 미로 생성을 위한 랜덤이동
 function tracking() {
     /* Random Move */
     key = Math.floor(Math.random() * 4)
@@ -191,6 +196,7 @@ function tracking() {
     }
 }
 
+// 주변이 전부 막혀있는지 체크
 function blockCheck() {
     var blockCount = 0
     if (py + 2 > tc - 1 || field[py + 2][px] != 0) blockCount++
@@ -201,6 +207,7 @@ function blockCheck() {
     else stucked = false
 }
 
+// 뒤로가기(백트래킹)
 function backtracking() {
     var backtracker = stack.pop()
     px = backtracker.x
@@ -216,6 +223,7 @@ function setXY() {
         'x좌표: ' + x + ' y좌표: ' + y
 }
 
+// modal 창을 감춤
 function closeModal() {
     modal.style.display = 'none';
 }
