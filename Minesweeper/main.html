@@ -85,7 +85,24 @@
               </div>
           </div>
         </div>
-      </div>
+          <!-- 게임이 승리했을때 모달  -->
+        <div class="finish_modal hide">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">게임 승리</h5>
+                </div>
+                <div class="modal-body">
+                  <p>걸린 시간:<span id="finish_time">00:00</span></p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-close">Close</button>
+                  <button type="button" class="btn btn-reset" onclick="window.location.reload()">Reset</button>
+                </div>
+              </div>
+          </div>
+        </div>
+      
     </section>
   </body>
 </html>

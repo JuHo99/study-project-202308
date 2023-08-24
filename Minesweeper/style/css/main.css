@@ -1,5 +1,16 @@
 @import url(./common.css);
-
+/* 배경 */
+.container {
+  width: 75%;
+  height: 80vh;
+  background: #ffffff;
+  margin: 10vh auto 0;
+  position: relative;
+}
+.container .icons {
+  font-size: 3em;
+  opacity: 0.4;
+}
 /* 닫기랑 메뉴 */
 .menuIcon .lnr-menu {
   position: absolute;

@@ -42,17 +42,7 @@ a {
 body {
   background: #c9fffc;
 }
-.container {
-  width: 75%;
-  height: 80vh;
-  background: #ffffff;
-  margin: 10vh auto 0;
-  position: relative;
-}
-.container .icons {
-  font-size: 3em;
-  opacity: 0.4;
-}
+
 .btn {
   width: 140px;
   height: 45px;

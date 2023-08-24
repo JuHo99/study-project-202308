@@ -4,6 +4,8 @@ const $mineTagble = document.querySelector('.game-board');
 //모달
 const $deathModal = document.querySelector('.death_modal');
 const $deathModalClose = $deathModal.querySelector('.btn-close');
+const $finishModal = document.querySelector('.finish_modal');
+const $finishModalClose = $finishModal.querySelector('.btn-close');
 
 //레벨 버튼
 const $easyBtn = document.querySelector('.easy');
@@ -13,6 +15,7 @@ const $hardBtn = document.querySelector('.hard');
 //지뢰랑 시간
 const $minCount = document.getElementById('mineCnt');
 const $timeCount = document.getElementById('time');
+const $finishTimeCount = document.getElementById('finish_time');
 
 //초급 : 9x9/10 , 중급:16x16/40 , 고급:20x16/68
 let ROW = 9;
@@ -26,11 +29,12 @@ const sweep = [];
 let mineIsValid = false;
 //타이머
 let timerId;
-$deathModal.addEventListener('click', (e) => {
-  $deathModal.classList.add('hide');
-  $backdrop.classList.remove('visible');
-});
 
+function closeModal(e) {
+  e.target === $deathModalClose && $deathModal.classList.add('hide');
+  e.target === $finishModalClose && $finishModal.classList.add('hide');
+  $backdrop.classList.remove('visible');
+}
 //게임 테이블 생성
 const createMineTable = () => {
   $minCount.textContent = MINE;
@@ -46,6 +50,26 @@ const createMineTable = () => {
     }
   }
 };
+
+function finishGame() {
+  const trList = Array.from($mineTagble.querySelectorAll('tr'));
+  for (let i = 0; i < ROW; i++) {
+    for (let j = 0; j < COL; j++) {
+      console.log(trList[i].children[j]);
+      if (trList[i].children[j].classList.contains('flag')) {
+        continue;
+      } else if (!trList[i].children[j].classList.contains('clicked')) {
+        return;
+      }
+    }
+  }
+  if (MINE === 0) {
+    $finishModal.classList.remove('hide');
+    $backdrop.classList.add('visible');
+    stopTimer();
+    $finishTimeCount.textContent = $timeCount.textContent;
+  }
+}
 
 //타이며
 function startTimer() {
@@ -69,7 +93,9 @@ function startTimer() {
     $timeCount.textContent = fomatTime;
   }, 1000);
 }
-
+function stopTimer() {
+  clearInterval(timerId);
+}
 //테이블 지웠다가 다시 생성
 const reCreateTable = () => {
   $mineTagble.textContent = '';
@@ -191,27 +217,32 @@ function openAround(trIndex, tdIndex, trList) {
       numTdIndex++
     ) {
       const $tdTag = trList[numTrIndex].children[numTdIndex];
-      if (numTdIndex === COL || numTdIndex < 0 || $tdTag === $initTdTag ||$tdTag.hasAttribute('mine')) {
+      if (
+        numTdIndex === COL ||
+        numTdIndex < 0 ||
+        $tdTag === $initTdTag ||
+        $tdTag.hasAttribute('mine')
+      ) {
         continue;
       }
       console.log('clickde 추가 ');
       $tdTag.classList.add('clicked');
-      if (!$tdTag.hasAttribute('num')){
+      if (!$tdTag.hasAttribute('num')) {
         $tdTag.setAttribute('num', '0');
-        EmpTd.push({trIndex : numTrIndex, tdIndex: numTdIndex});
+        EmpTd.push({ trIndex: numTrIndex, tdIndex: numTdIndex });
       }
       // openAround(numTdIndex, numTrIndex);
     }
     //빈칸을 클릭했을때 자동으로 열리게 하기
   }
   console.log(EmpTd);
-  if (EmpTd.length > 0){
+  if (EmpTd.length > 0) {
     console.log('EmpTd 실행');
-    for (const eTd of EmpTd){
-      const {trIndex,tdIndex} = eTd;
+    for (const eTd of EmpTd) {
+      const { trIndex, tdIndex } = eTd;
       openAroundTail(trIndex, tdIndex, trList);
-  }
-  }else {
+    }
+  } else {
     return 0;
   }
 }
@@ -232,27 +263,32 @@ function openAroundTail(trIndex, tdIndex, trList) {
       numTdIndex++
     ) {
       const $tdTag = trList[numTrIndex].children[numTdIndex];
-      if (numTdIndex === COL || numTdIndex < 0 || $tdTag === $initTdTag ||$tdTag.hasAttribute('mine')) {
+      if (
+        numTdIndex === COL ||
+        numTdIndex < 0 ||
+        $tdTag === $initTdTag ||
+        $tdTag.hasAttribute('mine')
+      ) {
         continue;
       }
       console.log('clickde 추가 ');
       $tdTag.classList.add('clicked');
-      if (!$tdTag.hasAttribute('num')){
+      if (!$tdTag.hasAttribute('num')) {
         $tdTag.setAttribute('num', '0');
-        EmpTd.push({trIndex : numTrIndex, tdIndex: numTdIndex});
+        EmpTd.push({ trIndex: numTrIndex, tdIndex: numTdIndex });
       }
       // openAround(numTdIndex, numTrIndex);
     }
     //빈칸을 클릭했을때 자동으로 열리게 하기
   }
   console.log(EmpTd);
-  if (EmpTd.length > 0){
+  if (EmpTd.length > 0) {
     console.log('EmpTd 실행');
-    for (const eTd of EmpTd){
-      const {trIndex,tdIndex} = eTd;
+    for (const eTd of EmpTd) {
+      const { trIndex, tdIndex } = eTd;
       openAround(trIndex, tdIndex, trList);
-  }
-  }else {
+    }
+  } else {
     return 0;
   }
 }
@@ -267,10 +303,13 @@ const tableLeftClickHandler = (e) => {
     mineIsValid = true;
     startTimer();
   }
+
   if ($clickTd.classList.contains('flag')) {
     return;
   }
+
   $clickTd.classList.add('clicked');
+
   if ($clickTd.hasAttribute('mine')) {
     $deathModal.classList.remove('hide');
     $backdrop.classList.add('visible');
@@ -282,11 +321,12 @@ const tableLeftClickHandler = (e) => {
       $tdCell.classList.add('has-mine');
     }
   } else if (!$clickTd.hasAttribute('num')) {
-    console.log('Around');
     openAround(trIndex, tdIndex, trList);
   } else {
     return;
   }
+
+  finishGame();
 };
 
 //table 우클릭 깃발 세우기
@@ -296,6 +336,13 @@ const tableRightClickHandler = (e) => {
 
   let alreadyClicked = $clickTd.classList.contains('clicked');
   let hasFlag = $clickTd.classList.contains('flag');
+
+  if (!mineIsValid) {
+    const { trIndex, tdIndex, trList } = selectCell($clickTd);
+    setMineAndNum(trIndex, tdIndex, trList);
+    mineIsValid = true;
+    startTimer();
+  }
 
   if (!alreadyClicked) {
     if (MINE > 0) {
@@ -311,10 +358,15 @@ const tableRightClickHandler = (e) => {
     }
     hasFlag = !hasFlag;
   }
+  finishGame();
 };
 
+// =========클릭 이벤트==========
 $mineTagble.addEventListener('click', tableLeftClickHandler);
 $mineTagble.addEventListener('contextmenu', tableRightClickHandler);
+
+$deathModalClose.addEventListener('click', closeModal);
+$finishModalClose.addEventListener('click', closeModal);
 
 // -====== 화면 렌더링 -
 $easyBtn.addEventListener('click', () => {
