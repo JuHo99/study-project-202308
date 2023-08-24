@@ -322,8 +322,6 @@ const tableLeftClickHandler = (e) => {
     }
   } else if (!$clickTd.hasAttribute('num')) {
     openAround(trIndex, tdIndex, trList);
-  } else {
-    return;
   }
 
   finishGame();
