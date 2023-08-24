@@ -416,30 +416,6 @@ console.log(wrongAnswer);
     return wrongAnswer;
 }
 
-// function compareTextAndArray(classNames, targetArray) {
-// // 오답 문자열 추가할 변수 생성
-// let wrongAnswer = [];
-
-//     for (let i = 0; i < classNames.length; i++) {
-//         const boxElement = document.querySelector(`[data-box-id="${classNames[i]}"]`);
-
-//         if (!boxElement) {
-//             console.log(`박스 엘리먼트를 찾을 수 없음`);
-//             continue;
-//         }
-//         const boxText = boxElement.lastChild.textContent;
-
-//         // console.log(boxText);
-//         if (boxText === targetArray[i]) {
-//             console.log(`정답`);
-//         } else {
-//             // console.log(`${boxText}: 오답`);
-//             wrongAnswer.push(boxText)
-//         }
-//     }
-// console.log(wrongAnswer);
-// return wrongAnswer
-// }
 
 // ======================게임 종료 창=====================
 
