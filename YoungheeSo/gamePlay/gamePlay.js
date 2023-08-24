@@ -1,6 +1,6 @@
 
-const outputArray = ['출력','사랑','싹', '설산', '예수', '물방아 꽃', '사막', '해바라기', '얼음', '봄바람','마나님', '나그네'];   
-// const outputArray = ['출력'];
+// const outputArray = ['출력','사랑','싹', '설산', '예수', '물방아 꽃', '사막', '해바라기', '얼음', '봄바람','마나님', '나그네'];   
+const outputArray = ['출력'];
 
 const $textbox = document.getElementById('textBox');
 
@@ -20,7 +20,7 @@ const $setgame=document.querySelector('.game-Explanation');
 
 //타이머 게이지 변수
 let num=0;
-let setTime=20;
+let setTime=5;
 let secode;
 
 //게임 시작 화면 세팅
@@ -29,8 +29,7 @@ const textLiBoxs=(check)=>{
 
     outputArray.forEach(text => {
         const $newLi = document.createElement('li');
-        // $newLi.setAttribute('class', `index-${outputArray.indexOf(text)}`);
-        // $newLi.setAttribute(`${tag}`, `${value} index-${outputArray.indexOf(text)}`);        
+
         if(!check) {
             $outputbg.setAttribute('style','background: #fff;');
             $textbox.appendChild($newLi);
@@ -64,6 +63,9 @@ const gameStartHandler=(e)=>{
 
 //게임 성공, 실패 이벤트
 const GameReslut=()=>{
+    const $GameClearTime = document.querySelector('.recordTimer');
+    const $FindGameClear = document.querySelector('.game-clear');
+
     // 1초마다 반복
     let timerId = setInterval(()=>{   
         if(secode<0) return;
@@ -73,10 +75,13 @@ const GameReslut=()=>{
 
         if(secode>=0){
             if(outputArray.length===0){
-                console.log(`걸린 시간: ${setTime-secode}초`);
-                $readInput.value=secode;
-                $readInput.value=`${secode}, 걸린 시간: ${setTime-secode}초`;
+
                 $timergauge.classList.remove('action');
+                $FindGameClear.classList.add('action');
+                $setblack.classList.remove('inaction');
+
+                $readInput.value=`${secode}, 걸린 시간: ${setTime-secode}초`;
+                $GameClearTime.textContent = `걸린 시간: ${setTime-secode}초`;
                 
                 clearInterval(timerId);
                 clearTimeout(timeOut);

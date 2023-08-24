@@ -28,13 +28,14 @@
 
 .setGame-before.inaction,
 .game-Explanation.inaction,
+.game-clear,
 .game-over{
     pointer-events: none;
     display: none;    
 }
 
 
-.game-clear,
+.game-clear.action,
 .game-Explanation,
 .game-over.setGame{
     width: 60%; padding: 20px;
@@ -44,7 +45,7 @@
     
     font-family: 'ONE-Mobile-POP'; text-align: center;
     
-    border: 3px solid #93C6E7; border-radius: 15px; background: #fff;
+    border: 3px solid #93C6E7; border-radius: 15px; background: #ffabab;
     
     display: flex; flex-wrap: wrap;
     justify-content: center; align-items: center;
@@ -55,7 +56,7 @@
 .game-Explanation div,
 .game-clear div{
     /* background: red;  */
-    width: 100%;
+    width: 100%; 
     /* font-size: 2em; */
     margin-bottom: 20px;
 }
@@ -67,12 +68,12 @@
     font-size: 1.5em
 }
 
-.game-clear .findbyimg{
+.game-clear img{
     /* position: absolute;  */
     /* z-index: 3; */
-    width: 80%; height: 60vh;
+    height: 40vh;
     margin: 5px auto;
-    background: url('/YoungheeSo/img/사진1.png') no-repeat center/cover;
+    /* background: url('/YoungheeSo/img/사진1.png') no-repeat center/cover; */
 }
 
 .game-clear button,
