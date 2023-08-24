@@ -1,0 +1,66 @@
+
+/* @import url('/YoungheeSo/myApp.css'); */
+
+@font-face {
+  font-family: 'ONE-Mobile-POP';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/ONE-Mobile-POP.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+} 
+
+/* 닫기랑 메뉴 */
+.menuIcon .lnr-menu {
+    position: absolute;
+    top: 15px;
+    left: 25px;
+    color: #937DC2;
+    z-index: 1;
+  }
+  .closedIcon .lnr-cross-circle {
+    position: absolute;
+    top: 15px;
+    right: 25px;
+    /* color: #ff0000; */
+    color: #fb87ff;
+  }
+
+  /* 메뉴바 */
+  .container .menu {
+    width: 40%;
+    height: 100%;
+    background: blanchedalmond;
+    position: absolute;
+    z-index: 1;
+  }
+  .container .menu.hide {
+    display: none;
+  }
+  .container .menu .menuItem {
+    width: 70%;
+    height: 20%;
+    border: 1px solid #000;
+    margin: 5% auto;
+    /* margin-top: 5%; */
+    /* margin-left: 15%; */
+  }
+  
+  .container .menu .menuItem:hover {
+    box-shadow: 5px 5px 10px #9c9c9c;
+  }
+  
+  #backdrop {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.45);
+    z-index: 1;
+    pointer-events: none;
+    display: none;
+  }
+  
+  #backdrop.visible {
+    display: block;
+    pointer-events: all;
+  }

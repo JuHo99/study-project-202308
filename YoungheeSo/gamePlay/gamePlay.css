@@ -1,0 +1,241 @@
+@import url(/YoungheeSo/menuBar/menuBar.css);
+
+@font-face {
+    font-family: 'ONE-Mobile-POP';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/ONE-Mobile-POP.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+*{
+    box-sizing: border-box;
+}
+
+.setGame-before{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: rgba(68, 53, 53, 0.45);
+    z-index: 1;
+    display: block;
+    pointer-events: all;
+
+    display: flex; justify-content: center; align-items: center;
+    flex-wrap: wrap;
+}
+
+.setGame-before.inaction,
+.game-Explanation.inaction,
+.game-over{
+    pointer-events: none;
+    display: none;    
+}
+
+
+.game-Explanation,
+.game-over.setGame{
+    width: 60%; padding: 20px;
+    
+    position: absolute; z-index: 3;
+    top: 40%; left: 50%; transform: translate(-50%, -50%);
+    
+    font-family: 'ONE-Mobile-POP'; text-align: center;
+    
+    border: 3px solid #93C6E7; border-radius: 15px; background: #fff;
+    
+    display: flex; flex-wrap: wrap;
+    justify-content: center; align-items: center;
+
+    pointer-events: all;
+}
+
+.game-Explanation div{
+    /* background: red;  */
+    width: 100%;
+    /* font-size: 2em; */
+    margin-bottom: 20px;
+}
+
+.game-Explanation p,
+.game-over p{
+    /* background: red;  */
+    width: 100%;
+    font-size: 1.5em
+}
+
+.game-Explanation button,
+.game-over button{    
+    font-family: 'ONE-Mobile-POP'; font-size: 1.2em;
+    
+    width: 130px; height: 50px;   
+    margin: 20px;
+    
+    border: 3px solid #93C6E7; border-radius: 15px;  background: #fff;
+    display: flex; justify-content: center; align-items: center;
+}
+
+#content{    
+    /* height: 100vh; */
+    background: #C9FFFC;
+    margin: 0;
+    /* background: url('/img/background.png') no-repeat center/cover; */
+    /* background: linear-gradient(180deg, #FDE5EC, #E48586); */
+    display: flex; justify-content: center; align-items: center;
+    flex-wrap: wrap;
+
+    position: relative;  
+    
+    -webkit-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select:none;
+    user-select:none;
+}
+
+.container {
+    font-family: 'ONE-Mobile-POP';
+    
+    width: 75%; height: 80vh;
+    min-width: 600px; 
+    min-height: 650px;
+
+    margin: 10vh auto;
+
+    position: relative;
+  }
+  
+  .container .icons {
+    font-size: 3em;
+    opacity: 0.4;
+  }
+
+.container .main-game-play{
+
+    background: #AEE2FF; 
+    border: 3px solid #93C6E7; border-radius: 15px; 
+
+    width: 100%; height: 100%;
+
+    padding: 10vh 0 0px;
+
+    display: flex; justify-content: center; 
+    flex-wrap: wrap;
+}
+
+.main-game-play .read-Output{
+    width: 55vw; height: 55vh;
+    min-width: 450px; min-height: 450px;
+    
+
+    background: url('/YoungheeSo/img/사진1.png') no-repeat center/cover;
+    border: 3px solid #93C6E7;
+    border-radius: 15px;
+
+    margin-bottom: 2vh;
+    /* padding: 10px;  */
+    /* text-align: justify; */
+
+    display: flex; justify-content: center; align-content: center;
+}
+
+.main-game-play .read-Output #textBox{
+    display: flex; flex-wrap: wrap; justify-content: center; 
+    align-items: center;
+    position: relative;
+}
+
+.main-game-play .read-Output #textBox li{
+    width: 30%; height: 24%;
+    min-width: 100px; min-height:85px; 
+
+    /* background: #FEDEFF; */
+    background: url('/YoungheeSo/img/6181861.jpg') no-repeat center/cover;
+
+    margin: 1px;
+
+    font-size: 2em; color: #FFA1CF;
+    border-radius: 15px;
+
+
+    display: flex; justify-content: center; align-items: center;
+}
+
+.main-game-play  .read-Output #textBox .no-see{
+    opacity: 0;
+}
+
+.main-game-play .timer-box{
+    position: relative;
+    background: #fff; border: 3px solid #93C6E7; border-radius: 15px;
+    margin-top: 10px;
+    margin-left: 5vh; padding: 10px;
+    
+    width: 5%; height: 53vh; min-height: 450px;
+}
+
+.main-game-play .timer-box .tiem-Gauge{
+    background: red; height: 100%; border-radius: 15px;
+}
+
+.main-game-play .timer-box img{
+    position: absolute;
+    width: 50px;
+}
+
+.main-game-play .timer-box .tiem-Gauge.action{
+    animation:  rotation 20s linear; 
+    animation-duration: reverse;   
+}
+
+
+@keyframes rotation{
+    0%{
+        background: blue;
+        height: 100%;
+    }
+    25%{
+        background: green;
+        height: 75%;
+    }
+    50%{
+        background: yellow;
+        height: 50%;
+    }
+    75%{
+        background: orange;
+        height: 25%;
+    }
+    100%{
+        background: red;
+        height: 0%;
+    }
+}
+
+.main-game-play input{
+    width: 50vw; height: 10vh; 
+    min-width: 150px; min-height: 30px;
+
+    background: #B9F3FC;
+    border: 0px solid #fff;
+    border-radius: 15px;
+    margin: 0 auto; padding: 20px; 
+
+    display: flex; justify-content: center; align-content: center;
+
+    font-size: 2em; font-family: 'ONE-Mobile-POP'; color: #FFA1CF;
+
+}
+
+.main-game-play input.typing-error{
+    background: red;
+}
+
+.main-game-play input:focus{
+    box-shadow: 5px 5px 5px #868686;
+    outline: none;
+}
+
+footer{
+    width: 100%; background: pink;
+}
