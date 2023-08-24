@@ -1,0 +1,65 @@
+@import url(./common.css);
+/* 배경 */
+.container {
+  width: 75%;
+  height: 80vh;
+  background: #ffffff;
+  margin: 10vh auto 0;
+  position: relative;
+}
+.container .icons {
+  font-size: 3em;
+  opacity: 0.4;
+}
+/* 닫기랑 메뉴 */
+.menuIcon .lnr-menu {
+  position: absolute;
+  top: 15px;
+  left: 25px;
+  color: #000000;
+}
+.closedIcon .lnr-cross-circle {
+  position: absolute;
+  top: 15px;
+  right: 25px;
+  color: #ff0000;
+}
+/* 메뉴바 */
+.container .menu {
+  width: 40%;
+  height: 100%;
+  background: blanchedalmond;
+  position: absolute;
+  z-index: 40;
+}
+.hide {
+  display: none;
+}
+.container .menu .menuItem {
+  width: 70%;
+  height: 150px;
+  border: 1px solid #000;
+  margin-top: 10%;
+  margin-left: 15%;
+}
+
+.container .menu .menuItem:hover {
+  box-shadow: 5px 5px 10px #9c9c9c;
+}
+
+#backdrop {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 4;
+  pointer-events: none;
+  display: none;
+}
+
+#backdrop.visible {
+  display: block;
+  pointer-events: all;
+}
