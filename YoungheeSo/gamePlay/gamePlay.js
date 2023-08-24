@@ -20,7 +20,7 @@ const $setgame=document.querySelector('.game-Explanation');
 
 //타이머 게이지 변수
 let num=0;
-let setTime=5;
+let setTime=20;
 let secode;
 
 //게임 시작 화면 세팅
