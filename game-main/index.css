@@ -1,7 +1,7 @@
-
 @font-face {
   font-family: 'ONE-Mobile-POP';
-  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/ONE-Mobile-POP.woff') format('woff');
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/ONE-Mobile-POP.woff')
+    format('woff');
   font-weight: normal;
   font-style: normal;
 }
@@ -17,7 +17,8 @@ section {
   background: url('./background1.jpg') no-repeat center/cover;
 
   display: flex;
-  justify-content: center; align-items: center;
+  justify-content: center;
+  align-items: center;
 }
 
 section .container {
@@ -42,13 +43,14 @@ section .container {
   border-radius: 15px;
   width: 40%;
   /* height: ; */
-  margin: 0px 30px 30px; padding: 20px 30px;
+  margin: 0px 30px 30px;
+  padding: 20px 30px;
   cursor: pointer;
 
   display: flex;
-  justify-content: center; 
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  flex-wrap: wrap;
 }
 
 #collection-of-games .game_box:hover {
@@ -65,7 +67,7 @@ section .container {
 
 #collection-of-games .game-name {
   margin-top: 10px;
-  
+
   font-weight: 700;
   font-size: 1.7em;
 }
