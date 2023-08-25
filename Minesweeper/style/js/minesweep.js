@@ -19,6 +19,10 @@ const $minCount = document.getElementById('mineCnt');
 const $timeCount = document.getElementById('time');
 const $finishTimeCount = document.getElementById('finish_time');
 
+//리셋 버튼
+const $btnReset = document.querySelector('.btn-reset');
+const $btnDeathReset = document.querySelector('.btn-death-reset');
+const $btnfinishReset = document.querySelector('.btn-finish-reset');
 //초급 : 9x9/10 , 중급:16x16/40 , 고급:20x16/68
 let ROW = 9;
 let COL = 9;
@@ -31,6 +35,8 @@ const sweep = [];
 let mineIsValid = false;
 //타이머
 let timerId;
+//레벨
+let level = 'easy';
 
 function closeModal(e) {
   e.target === $deathModalClose && $deathModal.classList.add('hide');
@@ -38,7 +44,7 @@ function closeModal(e) {
   $backdrop.classList.remove('visible');
 }
 //게임 테이블 생성
-const createMineTable = (lev = 'easy') => {
+const createMineTable = (lev) => {
   $mineTagble.textContent = '';
   $minCount.textContent = MINE;
   for (let i = 0; i < ROW; i++) {
@@ -341,6 +347,8 @@ const tableRightClickHandler = (e) => {
   e.preventDefault();
   const $clickTd = e.target;
 
+  let lev_Mine = MINE;
+
   const openValid = openAll;
   let alreadyClicked = $clickTd.classList.contains('clicked');
   let hasFlag = $clickTd.classList.contains('flag');
@@ -355,18 +363,18 @@ const tableRightClickHandler = (e) => {
   if (!alreadyClicked) {
     if (MINE > 0) {
       if (!hasFlag) {
-        MINE -= 1;
-        $minCount.textContent = MINE;
+        lev_Mine -= 1;
+        $minCount.textContent = lev_Mine;
         $clickTd.classList.add('flag');
       } else {
-        MINE += 1;
-        $minCount.textContent = MINE;
+        lev_Mine += 1;
+        $minCount.textContent = lev_Mine;
         $clickTd.classList.remove('flag');
       }
     } else {
       if (hasFlag) {
-        MINE += 1;
-        $minCount.textContent = MINE;
+        lev_Mine += 1;
+        $minCount.textContent = lev_Mine;
         $clickTd.classList.remove('flag');
       }
     }
@@ -375,6 +383,11 @@ const tableRightClickHandler = (e) => {
   }
   finishGame();
 };
+const resetHandler = (e) => {
+  createMineTable(level);
+  resetTimer();
+  mineIsValid = false;
+};
 
 // =========클릭 이벤트==========
 $mineTagble.addEventListener('click', tableLeftClickHandler);
@@ -382,13 +395,24 @@ $mineTagble.addEventListener('contextmenu', tableRightClickHandler);
 
 $deathModalClose.addEventListener('click', closeModal);
 $finishModalClose.addEventListener('click', closeModal);
+$btnReset.addEventListener('click', resetHandler);
+$btnDeathReset.addEventListener('click', resetHandler);
+$btnDeathReset.addEventListener('click', () => {
+  $deathModal.classList.add('hide');
+  $backdrop.classList.remove('visible');
+});
+$btnfinishReset.addEventListener('click', resetHandler);
+$btnfinishReset.addEventListener('click', () => {
+  $finishModal.classList.add('hide');
+  $backdrop.classList.remove('visible');
+});
 
 // -====== 화면 렌더링 -
 $easyBtn.addEventListener('click', () => {
   ROW = 9;
   COL = 9;
   MINE = 10;
-  createMineTable();
+  createMineTable(level);
   resetTimer();
   mineIsValid = false;
 });
@@ -396,7 +420,8 @@ $nomalBtn.addEventListener('click', () => {
   ROW = 16;
   COL = 16;
   MINE = 40;
-  createMineTable('nomal');
+  level = 'nomal';
+  createMineTable(level);
   resetTimer();
   mineIsValid = false;
 });
@@ -404,7 +429,8 @@ $hardBtn.addEventListener('click', () => {
   ROW = 20;
   COL = 16;
   MINE = 68;
-  createMineTable('hard');
+  level = 'hard';
+  createMineTable(level);
   resetTimer();
   mineIsValid = false;
 });
