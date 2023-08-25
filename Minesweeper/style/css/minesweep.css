@@ -9,8 +9,8 @@
 
 .container .gameBox .gameHead {
   width: 80%;
-  height: 8%;
-  margin: 0 4%;
+  height: 80px;
+  margin: 0 1rem;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
@@ -22,7 +22,6 @@
 }
 .container .gameBox .gameHead Button {
   width: 100px;
-  height: 50px;
 }
 .container .gameBox .gameHead .gameHead_text .pding {
   margin: 15px;
@@ -39,15 +38,14 @@
   background: #a6a6a6;
 }
 .game-board {
-  display: table-row-group;
+  table-layout: fixed;
   vertical-align: middle;
   border-color: inherit;
 }
 .game-board .rows {
-  /* display: flex; */
-  /* justify-content: space-around; */
-  height: 50px;
+  height: 60px;
 }
+
 .game-board .square {
   border: 2px solid #666;
   border-top-color: #f6f6f6;
@@ -56,6 +54,7 @@
   font-size: 0px;
   cursor: pointer;
   text-align: center;
+  padding-top: 20px;
 }
 .game-board .square.clicked {
   border-color: transparent;
@@ -69,6 +68,10 @@
   height: 90%;
   margin: auto;
   table-layout: fixed;
+}
+.container .gameBox .game-main.easy {
+  width: 70%;
+  height: 90%;
 }
 
 /* 모달부분  */

@@ -7,6 +7,16 @@
   margin: 10vh auto 0;
   position: relative;
 }
+.container.nomal {
+  width: 75%;
+  height: 100vh;
+  margin: 5vh auto 0;
+}
+.container.hard {
+  width: 75%;
+  height: 120vh;
+  margin: 5vh auto 0;
+}
 .container .icons {
   font-size: 3em;
   opacity: 0.4;
