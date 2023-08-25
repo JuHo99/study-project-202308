@@ -227,7 +227,8 @@ function openAround(trIndex, tdIndex, trList) {
         numTdIndex < 0 ||
         $tdTag === $initTdTag ||
         $tdTag.hasAttribute('mine') ||
-        $tdTag.classList.contains('clicked')
+        $tdTag.classList.contains('clicked') ||
+        $tdTag.classList.contains('flag')
       ) {
         continue;
       }
@@ -239,7 +240,6 @@ function openAround(trIndex, tdIndex, trList) {
       }
       // openAround(numTdIndex, numTrIndex);
     }
-    //빈칸을 클릭했을때 자동으로 열리게 하기
   }
   console.log(EmpTd);
   if (EmpTd.length > 0) {
@@ -252,6 +252,7 @@ function openAround(trIndex, tdIndex, trList) {
     return 0;
   }
 }
+
 function openAroundTail(trIndex, tdIndex, trList) {
   console.log(`in aroundTail: ${trIndex}, ${tdIndex}`);
 
@@ -273,7 +274,9 @@ function openAroundTail(trIndex, tdIndex, trList) {
         numTdIndex === COL ||
         numTdIndex < 0 ||
         $tdTag === $initTdTag ||
-        $tdTag.hasAttribute('mine')
+        $tdTag.hasAttribute('mine') ||
+        $tdTag.classList.contains('clicked') ||
+        $tdTag.classList.contains('flag')
       ) {
         continue;
       }
@@ -356,13 +359,18 @@ const tableRightClickHandler = (e) => {
         $minCount.textContent = MINE;
         $clickTd.classList.add('flag');
       } else {
-        if (!openAll()) {
-          MINE += 1;
-          $minCount.textContent = MINE;
-          $clickTd.classList.remove('flag');
-        }
+        MINE += 1;
+        $minCount.textContent = MINE;
+        $clickTd.classList.remove('flag');
+      }
+    } else {
+      if (hasFlag) {
+        MINE += 1;
+        $minCount.textContent = MINE;
+        $clickTd.classList.remove('flag');
       }
     }
+
     hasFlag = !hasFlag;
   }
   finishGame();
