@@ -43,10 +43,14 @@
 
 .container .menu .menuItem {
     width: 70%;
-    height: 15vh;
+    height: 13vh;
     border: 1px solid #000;
     margin-top: 10%;
     margin-left: 15%;
+}
+
+.container .menu .menuItem .gameName {
+    text-align: center;
 }
 
 .container .menu .menuItem:hover {
