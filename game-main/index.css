@@ -41,7 +41,8 @@ section .container {
   /* background: pink; */
   background: #fff;
   border-radius: 15px;
-  width: 400px; min-width: 400px;
+  width: 40%;
+  min-width: 400px;
 
   /* height: ; */
   margin: 0px 30px 30px;
