@@ -54,8 +54,9 @@ const gameStartHandler=(e)=>{
     $setblack.classList.add('inaction');
     $setgame.classList.add('inaction');
     
-    $timergauge.classList.add('action');
     $outputbg.removeAttribute('style');
+    $timergauge.classList.add('action');
+    $timergauge.setAttribute('style',`animation-duration : ${setTime}s;`);
 
     GameReslut();    
 }
@@ -91,8 +92,9 @@ const GameReslut=()=>{
     let quarter = setInterval(()=>{
         if(secode>=0 && outputArray.length===0){
             $timergauge.classList.remove('action');
-            $FindGameClear.classList.add('action');
             $setblack.classList.remove('inaction');
+
+            $FindGameClear.classList.add('action');
 
             // $readInput.value=`걸린 시간: ${setTime-secode+1}초`;
             $GameClearTime.textContent = `${setTime-secode+1}초 만에 찾았다!`;

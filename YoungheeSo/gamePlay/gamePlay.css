@@ -199,7 +199,7 @@
 }
 
 .main-game-play .timer-box .tiem-Gauge.action{
-    animation:  rotation linear; 
+    animation: rotation linear; 
     animation-duration: reverse;   
 }
 
