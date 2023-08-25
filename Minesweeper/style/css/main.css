@@ -7,14 +7,19 @@
   margin: 10vh auto 0;
   position: relative;
 }
+.container.easy {
+  width: 75%;
+  height: 80vh;
+  margin: 10vh auto 0;
+}
 .container.nomal {
   width: 75%;
-  height: 85vh;
+  height: 1150px;
   margin: 5vh auto 0;
 }
 .container.hard {
   width: 75%;
-  height: 140vh;
+  height: 1500px;
   margin: 5vh auto 0;
 }
 .container .icons {
@@ -81,10 +86,3 @@
   pointer-events: all;
 }
 
-@media screen and (min-height: 1000px) {
-  .container.nomal {
-    width: 75%;
-    height: 110vh;
-    margin: 5vh auto 0;
-  }
-}

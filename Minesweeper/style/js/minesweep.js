@@ -396,11 +396,13 @@ $mineTagble.addEventListener('contextmenu', tableRightClickHandler);
 $deathModalClose.addEventListener('click', closeModal);
 $finishModalClose.addEventListener('click', closeModal);
 $btnReset.addEventListener('click', resetHandler);
+
 $btnDeathReset.addEventListener('click', resetHandler);
 $btnDeathReset.addEventListener('click', () => {
   $deathModal.classList.add('hide');
   $backdrop.classList.remove('visible');
 });
+
 $btnfinishReset.addEventListener('click', resetHandler);
 $btnfinishReset.addEventListener('click', () => {
   $finishModal.classList.add('hide');
