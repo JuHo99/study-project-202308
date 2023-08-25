@@ -9,12 +9,12 @@
 }
 .container.nomal {
   width: 75%;
-  height: 110vh;
+  height: 85vh;
   margin: 5vh auto 0;
 }
 .container.hard {
   width: 75%;
-  height: 130vh;
+  height: 140vh;
   margin: 5vh auto 0;
 }
 .container .icons {
@@ -79,4 +79,12 @@
 #backdrop.visible {
   display: block;
   pointer-events: all;
+}
+
+@media screen and (min-height: 1000px) {
+  .container.nomal {
+    width: 75%;
+    height: 110vh;
+    margin: 5vh auto 0;
+  }
 }

@@ -71,9 +71,11 @@
 }
 .container .gameBox .game-main.easy {
   width: 70%;
+  height: 85%;
 }
 .container .gameBox .game-main.nomal {
   width: 80%;
+  height: 75%;
 }
 .container .gameBox .game-main.hard {
   width: 90%;
