@@ -64,14 +64,19 @@
   font-size: 35px;
 }
 .container .gameBox .game-main {
-  width: 90%;
+  width: 70%;
   height: 90%;
-  margin: auto;
+  margin: 1px auto;
   table-layout: fixed;
 }
 .container .gameBox .game-main.easy {
   width: 70%;
-  height: 90%;
+}
+.container .gameBox .game-main.nomal {
+  width: 80%;
+}
+.container .gameBox .game-main.hard {
+  width: 90%;
 }
 
 /* 모달부분  */
