@@ -199,10 +199,9 @@
 }
 
 .main-game-play .timer-box .tiem-Gauge.action{
-    animation:  rotation 20s linear; 
+    animation:  rotation linear; 
     animation-duration: reverse;   
 }
-
 
 @keyframes rotation{
     0%{
