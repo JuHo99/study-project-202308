@@ -9,12 +9,12 @@
 }
 .container.nomal {
   width: 75%;
-  height: 100vh;
+  height: 110vh;
   margin: 5vh auto 0;
 }
 .container.hard {
   width: 75%;
-  height: 120vh;
+  height: 130vh;
   margin: 5vh auto 0;
 }
 .container .icons {

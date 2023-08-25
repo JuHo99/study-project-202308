@@ -412,6 +412,7 @@ $easyBtn.addEventListener('click', () => {
   ROW = 9;
   COL = 9;
   MINE = 10;
+  level = 'easy';
   createMineTable(level);
   resetTimer();
   mineIsValid = false;
