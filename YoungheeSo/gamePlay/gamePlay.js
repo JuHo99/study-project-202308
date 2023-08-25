@@ -4,7 +4,7 @@ const outputArray = ['출력','사랑','싹', '설산', '예수', '물방아 꽃
 
 const $textbox = document.getElementById('textBox');
 
-const $backdp = document.querySelector('.setGame-before');
+const $setblack = document.querySelector('.setGame-before');
 const $outputbg = document.querySelector('.read-Output');
 const $timergauge = document.querySelector('.tiem-Gauge');
 
@@ -29,78 +29,90 @@ const textLiBoxs=(check)=>{
 
     outputArray.forEach(text => {
         const $newLi = document.createElement('li');
-        $newLi.setAttribute('class', `index-${outputArray.indexOf(text)}`);
-        // $newLi.setAttribute(`${tag}`, `${value} index-${outputArray.indexOf(text)}`);        
-        
-        if(check!==1) {
-            $newLi.textContent='';
 
-            $outputbg.setAttribute('style','background: #fff;');            
-            return;
+        if(!check) {
+            $outputbg.setAttribute('style','background: #fff;');
+            $textbox.appendChild($newLi);
+            return;        
         }
-
-        $newLi.textContent=text;
-        $textbox.appendChild($newLi);        
+        
+        $newLi.textContent=text; 
+        $textbox.appendChild($newLi);       
     });
 }
 
 textLiBoxs();
 
 //게임 시작 버튼 클릭시 이벤트
-const gameStartHandler=(e)=>{
-    console.log('시작');
+const gameStartHandler=(e)=>{    
+    [...$textbox.children].forEach($text=>{
+        $textbox.removeChild($text);
+    });
+
     textLiBoxs(1);  
     
-    $outputbg.removeAttribute('style');
-
-    $backdp.classList.add('inaction');
+    $setblack.classList.add('inaction');
     $setgame.classList.add('inaction');
-
-    $timergauge.classList.add('action');
     
-    GameReslut();
+    $outputbg.removeAttribute('style');
+    $timergauge.classList.add('action');
+    $timergauge.setAttribute('style',`animation-duration : ${setTime}s;`);
+
+    GameReslut();    
 }
 
 
 //게임 성공, 실패 이벤트
 const GameReslut=()=>{
+    const $GameClearTime = document.querySelector('.recordTimer');
+    const $FindGameClear = document.querySelector('.game-clear');
 
-  let timeOut=setTimeout(()=>{        
-    if(outputArray.length>0){
-        console.log('끝');
-        // $readInput.value=`실패`;
-
-        $timeOver.classList.add('setGame');
-        $backdp.classList.remove('inaction');        
-    }
-        
-    }, setTime*1000) 
-
+    // 1초마다 반복
     let timerId = setInterval(()=>{   
         if(secode<0) return;
 
         secode=(setTime-1)-(num++);        
-        console.log(secode, num); //type number
-
-        if(secode>=0){
-            if(outputArray.length===0){
-                console.log(`걸린 시간: ${setTime-secode}초`);
-                $readInput.value=secode;
-                $readInput.value=`${secode}, 걸린 시간: ${setTime-secode}초`;
-                $timergauge.classList.remove('action');
-                
-                clearInterval(timerId);
-                clearTimeout(timeOut);
-            }
-        };
+        console.log(secode, num); //type number        
 
     },1000);  
+
+    // setTime이 다 지나가면 실행
+    let timeOut=setTimeout(()=>{        
+        if(outputArray.length>0){
+            console.log('끝');
+            // $readInput.value=`실패`;
+
+            $readInput.setAttribute('disabled','');
+            $timeOver.classList.add('setGame');
+            $setblack.classList.remove('inaction');        
+        }
+        
+    }, setTime*1000);
+    
+    let quarter = setInterval(()=>{
+        if(secode>=0 && outputArray.length===0){
+            $timergauge.classList.remove('action');
+            $setblack.classList.remove('inaction');
+
+            $FindGameClear.classList.add('action');
+
+            // $readInput.value=`걸린 시간: ${setTime-secode+1}초`;
+            $GameClearTime.textContent = `${setTime-secode+1}초 만에 찾았다!`;
+            
+            clearInterval(timerId);
+            clearInterval(quarter);
+
+            clearTimeout(timeOut);
+            
+        }
+    }, 100);
+
 }
 
 //outputArray배열의 text를 맞게 치면 성공, 오타가 나면 실패
 const userInputTextHandler=()=>{    
     const $userInput = document.querySelector('.write-userInput');
-    const $textbox = document.getElementById('textBox');
+    // const $textbox = document.getElementById('textBox');
     
     if(!outputArray.includes($userInput.value)) {
         $userInput.classList.add('typing-error');
@@ -128,7 +140,6 @@ const userInputTextHandler=()=>{
 }
 
 //이벤트 핸들러
-
 const $startBtn = document.querySelector('.start-btn');
 $startBtn.addEventListener('click', gameStartHandler);
 

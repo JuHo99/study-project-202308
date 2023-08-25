@@ -28,60 +28,75 @@
 
 .setGame-before.inaction,
 .game-Explanation.inaction,
+.game-clear,
 .game-over{
     pointer-events: none;
     display: none;    
 }
 
 
+.game-clear.action,
 .game-Explanation,
 .game-over.setGame{
-    width: 60%; padding: 20px;
+    width: 60%; 
+    
+    padding: 20px;
     
     position: absolute; z-index: 3;
-    top: 40%; left: 50%; transform: translate(-50%, -50%);
+    top: 50%; left: 50%; transform: translate(-50%, -50%);
     
     font-family: 'ONE-Mobile-POP'; text-align: center;
     
-    border: 3px solid #93C6E7; border-radius: 15px; background: #fff;
+    border: 3px solid #93C6E7; border-radius: 15px; background: #ffabab;
     
     display: flex; flex-wrap: wrap;
     justify-content: center; align-items: center;
-
+    
     pointer-events: all;
 }
 
-.game-Explanation div{
-    /* background: red;  */
-    width: 100%;
-    /* font-size: 2em; */
-    margin-bottom: 20px;
+.game-Explanation div,
+.game-clear div{
+    width: 100%; 
+    font-size: 2em;
 }
 
 .game-Explanation p,
 .game-over p{
-    /* background: red;  */
     width: 100%;
-    font-size: 1.5em
+    font-size: 1.5em; 
+    padding: 10px;
 }
 
+.game-clear img{
+    height: 50vh;
+    margin: 20px 30vh;
+}
+
+.game-clear button,
 .game-Explanation button,
 .game-over button{    
     font-family: 'ONE-Mobile-POP'; font-size: 1.2em;
     
     width: 130px; height: 50px;   
-    margin: 20px;
+    margin: 20px 30px;
     
-    border: 3px solid #93C6E7; border-radius: 15px;  background: #fff;
+    border: 3px solid #93C6E7; 
+    border-radius: 15px; background: #fff;
     display: flex; justify-content: center; align-items: center;
+}
+
+.game-Explanation button:hover,
+.game-over button:hover{
+    border: 0px solid #fff; 
+    background: linear-gradient(90deg, #FDE5EC, #E48586);
+
 }
 
 #content{    
     /* height: 100vh; */
     background: #C9FFFC;
     margin: 0;
-    /* background: url('/img/background.png') no-repeat center/cover; */
-    /* background: linear-gradient(180deg, #FDE5EC, #E48586); */
     display: flex; justify-content: center; align-items: center;
     flex-wrap: wrap;
 
@@ -184,10 +199,9 @@
 }
 
 .main-game-play .timer-box .tiem-Gauge.action{
-    animation:  rotation 20s linear; 
+    animation: rotation linear; 
     animation-duration: reverse;   
 }
-
 
 @keyframes rotation{
     0%{
