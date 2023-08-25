@@ -23,10 +23,12 @@ const $finishTimeCount = document.getElementById('finish_time');
 const $btnReset = document.querySelector('.btn-reset');
 const $btnDeathReset = document.querySelector('.btn-death-reset');
 const $btnfinishReset = document.querySelector('.btn-finish-reset');
+
 //초급 : 9x9/10 , 중급:16x16/40 , 고급:20x16/68
 let ROW = 9;
 let COL = 9;
 let MINE = 10;
+let MINECnt = 10;
 
 //폭탄 위치를 담을 배열
 const sweep = [];
@@ -78,7 +80,7 @@ function openAll() {
   return true;
 }
 function finishGame() {
-  if (MINE === 0 && openAll()) {
+  if (MINECnt === 0 && openAll()) {
     $finishModal.classList.remove('hide');
     $backdrop.classList.add('visible');
     stopTimer();
@@ -347,8 +349,6 @@ const tableRightClickHandler = (e) => {
   e.preventDefault();
   const $clickTd = e.target;
 
-  let lev_Mine = MINE;
-
   const openValid = openAll;
   let alreadyClicked = $clickTd.classList.contains('clicked');
   let hasFlag = $clickTd.classList.contains('flag');
@@ -361,20 +361,20 @@ const tableRightClickHandler = (e) => {
   }
 
   if (!alreadyClicked) {
-    if (MINE > 0) {
+    if (MINECnt > 0) {
       if (!hasFlag) {
-        lev_Mine -= 1;
-        $minCount.textContent = lev_Mine;
+        MINECnt -= 1;
+        $minCount.textContent = MINECnt;
         $clickTd.classList.add('flag');
       } else {
-        lev_Mine += 1;
-        $minCount.textContent = lev_Mine;
+        MINECnt += 1;
+        $minCount.textContent = MINECnt;
         $clickTd.classList.remove('flag');
       }
     } else {
       if (hasFlag) {
-        lev_Mine += 1;
-        $minCount.textContent = lev_Mine;
+        MINECnt += 1;
+        $minCount.textContent = MINECnt;
         $clickTd.classList.remove('flag');
       }
     }
@@ -384,6 +384,7 @@ const tableRightClickHandler = (e) => {
   finishGame();
 };
 const resetHandler = (e) => {
+  MINECnt = MINE;
   createMineTable(level);
   resetTimer();
   mineIsValid = false;
@@ -414,6 +415,7 @@ $easyBtn.addEventListener('click', () => {
   ROW = 9;
   COL = 9;
   MINE = 10;
+  MINECnt = 10;
   level = 'easy';
   createMineTable(level);
   resetTimer();
@@ -423,6 +425,7 @@ $nomalBtn.addEventListener('click', () => {
   ROW = 16;
   COL = 16;
   MINE = 40;
+  MINECnt = 40;
   level = 'nomal';
   createMineTable(level);
   resetTimer();
@@ -432,6 +435,7 @@ $hardBtn.addEventListener('click', () => {
   ROW = 20;
   COL = 16;
   MINE = 68;
+  MINECnt = 68;
   level = 'hard';
   createMineTable(level);
   resetTimer();
