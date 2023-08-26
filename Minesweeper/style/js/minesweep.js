@@ -216,98 +216,35 @@ const setMineAndNum = (trIndex, tdIndex, trList) => {
 //빈칸을 클릭했을때 자동으로 열리게 하기
 function openAround(trIndex, tdIndex, trList) {
   console.log('in around');
-  const EmpTd = [];
+  if (trIndex === ROW || trIndex < 0 ||
+    tdIndex === COL || tdIndex < 0 ){
+      return;
+    }
   const $initTdTag = trList[trIndex].children[tdIndex];
-  $initTdTag.setAttribute('num', '0');
+  console.log($initTdTag);
 
-  for (let numTrIndex = trIndex - 1; numTrIndex <= trIndex + 1; numTrIndex++) {
-    if (numTrIndex === ROW || numTrIndex < 0) {
-      continue;
-    }
-    for (
-      let numTdIndex = tdIndex - 1;
-      numTdIndex <= tdIndex + 1;
-      numTdIndex++
-    ) {
-      const $tdTag = trList[numTrIndex].children[numTdIndex];
-      if (
-        numTdIndex === COL ||
-        numTdIndex < 0 ||
-        $tdTag === $initTdTag ||
-        $tdTag.hasAttribute('mine') ||
-        $tdTag.classList.contains('clicked') ||
-        $tdTag.classList.contains('flag')
-      ) {
-        continue;
-      }
-      console.log('clickde 추가 ');
-      $tdTag.classList.add('clicked');
-      if (!$tdTag.hasAttribute('num')) {
-        $tdTag.setAttribute('num', '0');
-        EmpTd.push({ trIndex: numTrIndex, tdIndex: numTdIndex });
-      }
-      // openAround(numTdIndex, numTrIndex);
-    }
+  if (
+      $initTdTag.hasAttribute('mine') || 
+      $initTdTag.classList.contains('clicked') ||
+      $initTdTag.classList.contains('flag')
+  ) {
+    return;
   }
-  console.log(EmpTd);
-  if (EmpTd.length > 0) {
-    console.log('EmpTd 실행');
-    for (const eTd of EmpTd) {
-      const { trIndex, tdIndex } = eTd;
-      openAroundTail(trIndex, tdIndex, trList);
-    }
-  } else {
-    return 0;
+  $initTdTag.classList.add('clicked');
+  if ($initTdTag.hasAttribute('num') ){
+    return;
+  } else{
+    $initTdTag.setAttribute('num', '0');
   }
-}
 
-function openAroundTail(trIndex, tdIndex, trList) {
-  console.log(`in aroundTail: ${trIndex}, ${tdIndex}`);
-
-  const EmpTd = [];
-  const $initTdTag = trList[trIndex].children[tdIndex];
-  $initTdTag.setAttribute('num', '0');
-
-  for (let numTrIndex = trIndex - 1; numTrIndex <= trIndex + 1; numTrIndex++) {
-    if (numTrIndex === ROW || numTrIndex < 0) {
-      continue;
-    }
-    for (
-      let numTdIndex = tdIndex - 1;
-      numTdIndex <= tdIndex + 1;
-      numTdIndex++
-    ) {
-      const $tdTag = trList[numTrIndex].children[numTdIndex];
-      if (
-        numTdIndex === COL ||
-        numTdIndex < 0 ||
-        $tdTag === $initTdTag ||
-        $tdTag.hasAttribute('mine') ||
-        $tdTag.classList.contains('clicked') ||
-        $tdTag.classList.contains('flag')
-      ) {
-        continue;
-      }
-      console.log('clickde 추가 ');
-      $tdTag.classList.add('clicked');
-      if (!$tdTag.hasAttribute('num')) {
-        $tdTag.setAttribute('num', '0');
-        EmpTd.push({ trIndex: numTrIndex, tdIndex: numTdIndex });
-      }
-      // openAround(numTdIndex, numTrIndex);
-    }
-    //빈칸을 클릭했을때 자동으로 열리게 하기
-  }
-  console.log(EmpTd);
-  if (EmpTd.length > 0) {
-    console.log('EmpTd 실행');
-    for (const eTd of EmpTd) {
-      const { trIndex, tdIndex } = eTd;
-      openAround(trIndex, tdIndex, trList);
-    }
-  } else {
-    return 0;
-  }
+  openAround(trIndex-1, tdIndex-1, trList);
+  openAround(trIndex-1, tdIndex, trList);
+  openAround(trIndex-1, tdIndex+1, trList);
+  openAround(trIndex, tdIndex-1, trList);
+  openAround(trIndex, tdIndex+1, trList);
+  openAround(trIndex+1, tdIndex-1, trList);
+  openAround(trIndex+1, tdIndex, trList);
+  openAround(trIndex+1, tdIndex+1, trList);
 }
 
 // ==========테이블 클릭 핸들러 ============
@@ -325,9 +262,8 @@ const tableLeftClickHandler = (e) => {
     return;
   }
 
-  $clickTd.classList.add('clicked');
-
   if ($clickTd.hasAttribute('mine')) {
+    $clickTd.classList.add('clicked');
     $deathModal.classList.remove('hide');
     $backdrop.classList.add('visible');
 
@@ -339,6 +275,8 @@ const tableLeftClickHandler = (e) => {
     }
   } else if (!$clickTd.hasAttribute('num')) {
     openAround(trIndex, tdIndex, trList);
+  }else{
+    $clickTd.classList.add('clicked');
   }
 
   finishGame();
