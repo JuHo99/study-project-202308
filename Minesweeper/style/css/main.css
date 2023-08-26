@@ -1,6 +1,31 @@
 @import url(./common.css);
-
-
+/* 배경 */
+.container {
+  width: 75%;
+  height: 80vh;
+  background: #ffffff;
+  margin: 10vh auto 0;
+  position: relative;
+}
+.container.easy {
+  width: 75%;
+  height: 80vh;
+  margin: 10vh auto 0;
+}
+.container.nomal {
+  width: 75%;
+  height: 1150px;
+  margin: 5vh auto 0;
+}
+.container.hard {
+  width: 75%;
+  height: 1400px;
+  margin: 5vh auto 0;
+}
+.container .icons {
+  font-size: 3em;
+  opacity: 0.4;
+}
 /* 닫기랑 메뉴 */
 .menuIcon .lnr-menu {
   position: absolute;
@@ -20,9 +45,9 @@
   height: 100%;
   background: blanchedalmond;
   position: absolute;
-  z-index: 1;
+  z-index: 40;
 }
-.container .menu.hide {
+.hide {
   display: none;
 }
 .container .menu .menuItem {
@@ -31,6 +56,13 @@
   border: 1px solid #000;
   margin-top: 10%;
   margin-left: 15%;
+}
+.container .menu .menuItem .gameImg {
+  width: 100%;
+  height: 100%;
+}
+.container .menu .menuItem .gameName {
+  text-align: center;
 }
 
 .container .menu .menuItem:hover {
@@ -44,7 +76,7 @@
   top: 0;
   left: 0;
   background: rgba(0, 0, 0, 0.45);
-  z-index: 1;
+  z-index: 4;
   pointer-events: none;
   display: none;
 }
@@ -54,29 +86,3 @@
   pointer-events: all;
 }
 
-/* 게임 창 */
-.container .gameBox {
-  height: 100%;
-  /* background: lightblue; */
-}
-
-.container .gameBox .mainTitle {
-  height: 100%;
-
-  font-size: 25px;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  align-items: center;
-}
-.container .gameBox .mainTitle h1 {
-  font-size: 50px;
-  font-weight: 700;
-}
-.container .gameBox .mainTitle .levels a {
-  padding: 15px;
-  border: 1px solid #000;
-  border-radius: 25%;
-  margin: 0 20px;
-}

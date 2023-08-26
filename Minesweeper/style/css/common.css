@@ -16,14 +16,15 @@
 }
 @font-face {
   font-family: 'ONE-Mobile-Title';
-  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/ONE-Mobile-Title.woff') format('woff');
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/ONE-Mobile-Title.woff')
+    format('woff');
   font-weight: normal;
   font-style: normal;
 }
 * {
-box-sizing: border-box;
+  box-sizing: border-box;
 }
-p{
+p {
   font-family: 'ONE-Mobile-Regular';
 }
 h1 {
@@ -41,14 +42,26 @@ a {
 body {
   background: #c9fffc;
 }
-.container {
-  width: 75%;
-  height: 80vh;
-  background: #ffffff;
-  margin: 10vh auto 0;
-  position: relative;
+
+.btn {
+  width: 140px;
+  height: 45px;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 700;
+  color: #000;
+  background-color: #fff;
+  border: none;
+  border-radius: 45px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+  outline: none;
 }
-.container .icons {
-  font-size: 3em;
-  opacity: 0.4;
+
+.btn:hover {
+  background-color: #c9fffc;
+  box-shadow: 0px 5px 20px rgba(46, 229, 157, 0.4);
+  transform: translateY(-7px);
 }
