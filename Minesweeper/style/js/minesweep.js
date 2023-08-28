@@ -40,11 +40,7 @@ let timerId;
 //레벨
 let level = 'easy';
 
-function closeModal(e) {
-  e.target === $deathModalClose && $deathModal.classList.add('hide');
-  e.target === $finishModalClose && $finishModal.classList.add('hide');
-  $backdrop.classList.remove('visible');
-}
+
 //게임 테이블 생성
 const createMineTable = (lev) => {
   $mineTagble.textContent = '';
@@ -65,11 +61,11 @@ const createMineTable = (lev) => {
   }
 };
 
+//게임 버튼을 다 열었는지 체크 하는 함수 
 function openAll() {
   const trList = Array.from($mineTagble.querySelectorAll('tr'));
   for (let i = 0; i < ROW; i++) {
     for (let j = 0; j < COL; j++) {
-      console.log(trList[i].children[j]);
       if (trList[i].children[j].classList.contains('flag')) {
         continue;
       } else if (!trList[i].children[j].classList.contains('clicked')) {
@@ -79,6 +75,7 @@ function openAll() {
   }
   return true;
 }
+//게임을 끝내는 함수 
 function finishGame() {
   if (MINECnt === 0 && openAll()) {
     $finishModal.classList.remove('hide');
@@ -118,133 +115,12 @@ const resetTimer = () => {
   clearInterval(timerId);
   $timeCount.textContent = `00:00`;
 };
-// 선택한 셀 찾아오기 =================
-const selectCell = ($clickTd) => {
-  //tr 전체를 배열로 변환
-  const trList = Array.from($mineTagble.querySelectorAll('tr'));
 
-  //클릭된 td에서 tr가 몇번째 있는지 확인
-  const tdTr = $clickTd.closest('.rows');
-  //클릭된 tr에서의 td 리스트 생성
-  const tdTrList = Array.from(tdTr.children);
-
-  //tr과 td 인덱스 뽑아옴
-  const trIndex = trList.indexOf(tdTr);
-  const tdIndex = tdTrList.indexOf($clickTd);
-
-  return {
-    trIndex: trIndex,
-    tdIndex: tdIndex,
-    trList: trList,
-  };
-};
-
-//지뢰와 숫자 넣기
-const setMineAndNum = (trIndex, tdIndex, trList) => {
-  //폭탄 10개를 심을 인덱스 생성
-  while (sweep.length !== MINE) {
-    const one = Math.floor(Math.random() * ROW);
-    const two = Math.floor(Math.random() * COL);
-
-    //초기 클릭위치와 one,two가 이미 있는지 확인
-    let isDuplicate = false;
-    if (trIndex === one && tdIndex === two) {
-      isDuplicate = true;
-    }
-    for (const entry of sweep) {
-      if (entry.one === one && entry.two === two) {
-        isDuplicate = true;
-        break;
-      }
-    }
-    //false일때 실행
-    if (!isDuplicate) {
-      sweep.push({
-        one: one,
-        two: two,
-      });
-    }
-  }
-  console.log(sweep);
-  //지뢰 넣기
-  for (const swp of sweep) {
-    const { one: trIndex, two: tdIndex } = swp;
-    const tdCell = trList[trIndex].children[tdIndex];
-
-    tdCell.setAttribute('mine', 1);
-  }
-
-  //지뢰 주변에 숫자 넣기
-  for (const swp of sweep) {
-    const { one: trIndex, two: tdIndex } = swp;
-    for (
-      let numTrIndex = trIndex - 1;
-      numTrIndex <= trIndex + 1;
-      numTrIndex++
-    ) {
-      if (numTrIndex === ROW || numTrIndex < 0) {
-        continue;
-      }
-      for (
-        let numTdIndex = tdIndex - 1;
-        numTdIndex <= tdIndex + 1;
-        numTdIndex++
-      ) {
-        const $tdTag = trList[numTrIndex].children[numTdIndex];
-        if (
-          numTdIndex === COL ||
-          numTdIndex < 0 ||
-          $tdTag.getAttribute('mine') ||
-          (numTdIndex === tdIndex && numTrIndex === trIndex)
-        ) {
-          continue;
-        }
-
-        if (!$tdTag.textContent) {
-          $tdTag.textContent = 1;
-        } else {
-          $tdTag.textContent = +$tdTag.textContent + 1;
-          $tdTag.classList.remove('txt-' + `${+$tdTag.textContent - 1}`);
-        }
-        $tdTag.setAttribute('Num', `${$tdTag.textContent}`);
-        $tdTag.classList.add('txt-' + `${$tdTag.getAttribute('Num')}`);
-      }
-    }
-  }
-};
-
-//빈칸을 클릭했을때 자동으로 열리게 하기
-function openAround(trIndex, tdIndex, trList) {
-  console.log('in around');
-  if (trIndex === ROW || trIndex < 0 ||
-    tdIndex === COL || tdIndex < 0 ){
-      return;
-    }
-  const $initTdTag = trList[trIndex].children[tdIndex];
-  console.log($initTdTag);
-
-  if (
-      $initTdTag.hasAttribute('mine') || 
-      $initTdTag.classList.contains('clicked') ||
-      $initTdTag.classList.contains('flag')
-  ) {
-    return;
-  }
-  $initTdTag.classList.add('clicked');
-  if ($initTdTag.hasAttribute('num') ){
-    return;
-  } else{
-    $initTdTag.setAttribute('num', '0');
-  }
-
-  openAround(trIndex-1, tdIndex-1, trList);
-  openAround(trIndex-1, tdIndex, trList);
-  openAround(trIndex-1, tdIndex+1, trList);
-  openAround(trIndex, tdIndex-1, trList);
-  openAround(trIndex, tdIndex+1, trList);
-  openAround(trIndex+1, tdIndex-1, trList);
-  openAround(trIndex+1, tdIndex, trList);
-  openAround(trIndex+1, tdIndex+1, trList);
+//모달 닫기 
+function closeModal(e) {
+  e.target === $deathModalClose && $deathModal.classList.add('hide');
+  e.target === $finishModalClose && $finishModal.classList.add('hide');
+  $backdrop.classList.remove('visible');
 }
 
 // ==========테이블 클릭 핸들러 ============
@@ -326,6 +202,7 @@ const resetHandler = (e) => {
   createMineTable(level);
   resetTimer();
   mineIsValid = false;
+  sweep.splice(0);
 };
 
 // =========클릭 이벤트==========
@@ -348,7 +225,6 @@ $btnfinishReset.addEventListener('click', () => {
   $backdrop.classList.remove('visible');
 });
 
-// -====== 화면 렌더링 -
 $easyBtn.addEventListener('click', () => {
   ROW = 9;
   COL = 9;
@@ -380,4 +256,6 @@ $hardBtn.addEventListener('click', () => {
   mineIsValid = false;
 });
 
+
+// -====== 화면 렌더링 -
 createMineTable();
