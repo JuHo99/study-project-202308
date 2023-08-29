@@ -47,7 +47,7 @@
     
     font-family: 'ONE-Mobile-POP'; text-align: center;
     
-    border: 3px solid #93C6E7; border-radius: 15px; background: #ffabab;
+    border: 3px solid #93C6E7; border-radius: 15px; background: #fff;
     
     display: flex; flex-wrap: wrap;
     justify-content: center; align-items: center;
@@ -89,13 +89,13 @@
 .game-Explanation button:hover,
 .game-over button:hover{
     border: 0px solid #fff; 
-    background: linear-gradient(90deg, #FDE5EC, #E48586);
+    background: linear-gradient(45deg, #8ec1ff, #8588e4);
 
 }
 
 #content{    
     /* height: 100vh; */
-    background: #C9FFFC;
+    background: url('/YoungheeSo/img/9210295.jpg') no-repeat center/cover;
     margin: 0;
     display: flex; justify-content: center; align-items: center;
     flex-wrap: wrap;
@@ -142,7 +142,6 @@
     width: 55vw; height: 55vh;
     min-width: 450px; min-height: 450px;
     
-
     background: url('/YoungheeSo/img/사진1.png') no-repeat center/cover;
     border: 3px solid #93C6E7;
     border-radius: 15px;
