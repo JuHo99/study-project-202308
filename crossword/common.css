@@ -50,20 +50,43 @@ body {
 }
 
 .menu{
-  width: 35%;
+  width: 20%;
   height: 100%;
   background: #ffffff;
   position: absolute;
   z-index: 4;
+  padding-top: 4rem;
 }
-
+/* 
 .menuItem{
   width: 70%;
   height: 150px;
   border: 1px solid #000;
   margin-top: 7%;
   margin-left: 15%;
+} */
+
+.container .menu.hide {
+  display: none;
 }
+
+.container .menu .menuItem {
+  width: 55%;
+  height: 13vh;
+  /* border: 1px solid #000; */
+  margin-top: 10%;
+  margin-left: 15%;
+}
+
+.container .menu .menuItem .gameName {
+  text-align: center;
+}
+
+.container .menu .menuItem:hover {
+  box-shadow: 5px 5px 10px #9c9c9c;
+}
+
+
 
 .gameImg{
   height: 80%;

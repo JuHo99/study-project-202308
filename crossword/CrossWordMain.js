@@ -3,6 +3,7 @@
 const $menuber = document.querySelector('.lnr-menu');
 const $menu = document.querySelector('.menu')
 const $backdrop = document.getElementById('backdrop')
+const $closedButton = document.querySelector('.closedIcon');
 const menuberClickHandler = e => {
     $menu.classList.remove('hide');
     $backdrop.classList.add('visible')
@@ -13,6 +14,12 @@ const backdropHandler = e => {
     }
     $backdrop.classList.remove('visible')
 }
+const closedButtonClickHandler = (e)=>{
+    console.log('1');
+}
+
+
+$closedButton.addEventListener('click',closedButtonClickHandler);
 $backdrop.addEventListener("click", backdropHandler);
 $menuber.addEventListener('click', menuberClickHandler)
 
@@ -635,37 +642,6 @@ function endGame(wrongAnswer) {
         $backdrop.classList.remove('visible');
     });
 }
-
-
-// function endGame(wrongAnswer) {
-//     // alert('틀린 글자 : ' + wrongAnswer.join(', '));
-//     $backdrop.classList.add('visible')
-//     const $endGameBox = document.createElement('div')
-//     $endGameBox.classList.add('resultBox')
-//     $container.appendChild($endGameBox)
-//     const $endGameBoxText = document.createElement('h4')
-//     $endGameBoxText.textContent = '게임 결과'
-//     $endGameBox.appendChild($endGameBoxText)
-//     const $endGameResultBoxText = document.createElement('h5')
-//     $endGameResultBoxText.textContent = '틀린 문자'
-//     $endGameBox.appendChild($endGameResultBoxText)
-//     const $endGameResultBox = document.createElement('div')
-//     $endGameResultBox.classList.add('resultListBox')
-//     $endGameBox.appendChild($endGameResultBox)
-//     const $resultListBox = $endGameBox.querySelector('.resultListBox')
-//     $resultListBox.textContent = wrongAnswer
-
-//     $endGameBox.addEventListener('click', e => {
-//         $endGameBox.classList.add('hide')
-//         $backdrop.classList.remove('visible')
-//     })
-//     $backdrop.addEventListener('click', e => {
-//         $endGameBox.classList.add('hide')
-//         $backdrop.classList.remove('visible')
-//     })
-// }
-
-
 
 
 
