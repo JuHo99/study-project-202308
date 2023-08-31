@@ -1,6 +1,6 @@
 # KDT 팀 프로젝트 2조 
 
-- game-main -> main.html 실행
+- game-main -> main.html 실행 or https://juho99.github.io/study-project-202308/game-main/index.html 해당링크로 접속
 - 미니게임 4종을 모아놓은 사이트 입니다.
 - 십자말풀이, 지뢰찾기, 미로찾기, 타자연습 게임이 존재합니다.
 
