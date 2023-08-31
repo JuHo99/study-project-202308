@@ -1,0 +1,223 @@
+@import url(./common.css);
+
+#crossWordBody .container {
+  width: 75%;
+  height: 80vh;
+  background: #ffffff;
+  margin: 10vh auto 0;
+  position: relative;
+  display: flex;
+}
+
+#crossWordBody .container .start{
+  position: absolute;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  font-family: 'ONE-Mobile-POP';
+  background: #c2c2c2;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  gap : 5vh;
+}
+
+#crossWordBody .container .start.invisible {
+  display: none;
+}
+
+#crossWordBody .container .start h1{
+  font-size: 8em;
+  margin-bottom: 15vh;
+}
+
+#crossWordBody .container .start .startButton{
+  color: #ffffff;
+  background: #000;
+  border-radius: 20px;
+  width: 10rem;
+  height: 4rem;
+  font-size: 2em;
+  
+}
+
+
+#crossWordBody .container .difficulty{
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  font-family: 'ONE-Mobile-POP';
+  background: #c2c2c2;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+#crossWordBody .container .difficulty.invisible{
+  display: none;
+}
+
+#crossWordBody .container .difficulty button{
+  width: 15%;
+  height: 15vh;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3em;
+  border-radius: 15px;
+}
+
+#crossWordBody .container .difficulty button:hover{
+  box-shadow:  5px 5px 5px #000;
+  background: #feaefe;
+}
+
+#crossWordBody .container .gameBox {
+  width: 65%;
+  height: 100%;
+  display: flex;
+  /* background: #e2e2e2; */
+  background: #ffffff;
+  flex-wrap: wrap;
+  align-items: end;
+  align-content: end;
+}
+
+#crossWordBody .container .gameBox .title{
+  position: absolute;
+  top: 0.7rem;
+  left: 43%;
+  z-index: 1;
+  font-size: 3em;
+  font-family: 'ONE-Mobile-POP';
+}
+
+#crossWordBody .container .gameBox .box {
+  width: 6.5%;
+  height: 7.5%;
+  /* border: 1px solid #000; */
+  border-radius: 15px;
+  margin: 0.3rem;
+  position: relative;
+  background: #e4e4e4;
+}
+
+#crossWordBody .container .gameBox .box.area{
+  background: #ffffff;
+  border: 1px solid #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  font-family: 'ONE-Mobile-POP';
+  position: relative;
+}
+
+#crossWordBody .container .gameBox .box div{
+  margin: 0;
+  width: 1rem;
+  height: 1rem;
+  position: absolute;
+  z-index: 3;
+  font-size: 1rem;
+  top: 0;
+  right: 0;
+}
+
+#crossWordBody .container .gameBox .box.area input{
+  font-size: 2.5rem;
+  width: 3rem;
+}
+
+#crossWordBody .container .explainBox {
+  width: 35%;
+  height: 100%;
+  margin: 0 auto 0;
+  background: #ffffff; 
+  border: 5px double #000;
+  padding: 1rem;
+}
+#crossWordBody .container .explainBox .widthLine,
+#crossWordBody .container .explainBox .columnLine
+{
+  width: 100%;
+  height: 50%;
+  display: flex;
+  flex-flow: column;
+}
+#crossWordBody .container .explainBox .widthLine h3,
+#crossWordBody .container .explainBox .columnLine h3
+{
+  font-size: 2rem;
+  font-weight: 700;
+  margin-top: 1rem;
+}
+#crossWordBody .container .explainBox .widthLine p,
+#crossWordBody .container .explainBox .columnLine p
+{
+  margin-top: 0.4rem;
+  font-size: 1rem;
+}
+#crossWordBody .container .explainBox .widthLine p:nth-child(2),
+#crossWordBody .container .explainBox .columnLine p:nth-child(2)
+{
+  margin-top: 1.4rem;
+}
+
+#crossWordBody .container .explainBox .box button{
+  position: absolute;
+  right: 2rem;
+  bottom: 1rem;
+  width: 5rem;
+  height: 2.5rem;
+  font-size: 1rem;
+  font-family: 'ONE-Mobile-POP';
+  border-radius: 30px;
+  background: #6e6e6e;
+  color: #f7e6e6;
+}
+
+#crossWordBody .container .resultBox{
+  background: #fff;
+  position: absolute;
+  top: 30%;
+  right: 38%;
+  z-index: 6;
+  width: 25rem;
+  height: 20rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-flow: column;
+  border-radius: 15px;
+}
+#crossWordBody .container .resultBox.hide{
+  display: none;
+}
+
+#crossWordBody .container .resultBox h4{
+  font-size: 2rem;
+  padding: 2rem;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2rem;
+  margin-bottom: 0.5rem;
+  border: 1px solid #000;
+  border-radius: 50%;
+}
+
+#crossWordBody .container .resultBox .resultListBox{
+  width: 95%;
+  height: 65%;
+  text-align: justify;
+  margin: 1rem;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ flex-flow: column;
+ border: 1px solid #000;
+}
+

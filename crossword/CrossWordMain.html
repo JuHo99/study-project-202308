@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css"
+    />
+    <link rel="stylesheet" href="./CrossWordMain.css" />
+    <script src="./CrossWordMain.js" defer></script>
+  </head>
+  <body>
+    <div id="crossWordHeader"></div>
+    <div id="crossWordBody">
+      <div class="container">
+        <ul class="menu hide">
+          <a href="../crossword/CrossWordMain.html">
+            <li class="menuItem">
+              <img src="../Title_Image/Crossword.png" class="gameImg"></img>
+              <p class="gameName">십자말풀이</p>
+            </li>
+          </a>
+          <a href="../Minesweeper/main.html">
+            <li class="menuItem">
+              <img src="../Title_Image/Minesweeper.png" class="gameImg"></img>
+              <p class="gameName">지뢰찾기</p>
+            </li>
+          </a>
+          <a href="../maze/maze.html">
+            <li class="menuItem">
+              <img src="../Title_Image/maze.png" class="gameImg"></img>
+              <p class="gameName">미로찾기</p>
+            </li>
+          </a>
+          <a href="../YoungheeSo/gametyping.html">
+            <li class="menuItem">
+              <img src="../Title_Image/Typing.png" class="gameImg"></img>
+              <p class="gameName">타자연습</p>
+            </li>
+          </a>
+        </ul>
+
+        <div class="start">
+          <h1>십자말풀이</h1>
+          <button class="startButton">start</button>
+        </div>
+        <div class="difficulty">
+          <button class="easy">Easy</button>
+          <button class="nomal">Nomal</button>
+          <button class="hard">Hard</button>
+        </div>
+        <div id="backdrop"></div>
+        <div class="gameBox">
+          <h2 class="title">십자말풀이</h2>
+          <!-- box의 갯수 13 * 10 -->
+        </div>
+
+        <div class="explainBox">
+          <div class="box">
+            <div class="widthLine"></div>
+            <div class="columnLine"></div>
+            <button>정답확인</button>
+          </>
+        </div>
+        <!-- <div class="menuIcon"><span class="lnr lnr-menu-circle"></span></div> -->
+        <div class="menuIcon" ><span class="lnr lnr-menu"></span></div>
+        <a class="closedIcon" href="../game-main/index.html"><span class="lnr lnr-cross-circle"></span></a>
+        <!-- <div class="closedIcon"><span class="lnr lnr-cross"></span></div> -->
+
+      </div>
+    </div>
+    <div id="crossWordFooter"></div>
+  </body>
+</html>

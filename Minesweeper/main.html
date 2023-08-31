@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css"
+    />
+    <link rel="stylesheet" href="style/css/main.css" />
+    <script src="style/js/main.js" defer></script>
+
+    <link rel="stylesheet" href="style/css/minesweep.css" />
+    <script src="style/js/minesweep.js" defer></script>
+    <script src="style/js/mineFunc.js" defer></script>
+  </head>
+  <body>
+    <section class="container">
+      <div id="backdrop"></div>
+      <ul class="menu hide">
+        <a href="../crossword/CrossWordMain.html">
+          <li class="menuItem">
+            <img src="../Title_Image/Crossword.png" class="gameImg"></img>
+            <p class="gameName">십자말풀이</p>
+          </li>
+        </a>
+        <a href="../Minesweeper/main.html">
+          <li class="menuItem">
+            <img src="../Title_Image/Minesweeper.png" class="gameImg"></img>
+            <p class="gameName">지뢰찾기</p>
+          </li>
+        </a>
+        <a href="../maze/maze.html">
+          <li class="menuItem">
+            <img src="../Title_Image/maze.png" class="gameImg"></img>
+            <p class="gameName">미로찾기</p>
+          </li>
+        </a>
+        <a href="../YoungheeSo/gametyping.html">
+          <li class="menuItem">
+            <img src="../Title_Image/Typing.png" class="gameImg"></img>
+            <p class="gameName">타자연습</p>
+          </li>
+        </a>
+      </ul>
+      <div class="icons">
+        <div class="menuIcon"><span class="lnr lnr-menu"></span></div>
+        <div class="closedIcon"><a href="../game-main/index.html"><span class="lnr lnr-cross-circle"></span></a></div>
+      </div>
+      <div class="gameBox">
+        <!-- 헤드부분 -->
+        <div class="gameHead">
+          <div class="levels">
+            <button type="button" class="btn lev easy">초급</button>
+            <button type="button" class="btn lev nomal">중급</button>
+            <button type="button" class="btn lev hard">고급</button>
+          </div>
+          <button type="reset" class="btn btn-reset">Reset</button>
+          <div class="gameHead_text">
+            <p class="pding">남은 지뢰 :<span id="mineCnt">0</span> </p>
+            <p class="pding">Time : <span id="time">00:00</span> </p>
+          </div>
+        </div>
+        <!-- 지뢰찾기 메인 -->
+        <table class="game-main">
+          <tbody class="game-board">
+          </tbody>
+        </table>
+
+        <!-- 지뢰 밟았을때 모달 -->
+        <div class="death_modal hide">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title">게임 오버</h1>
+                </div>
+                <div class="modal-body">
+                  <p>지뢰를 밟았습니다 ! ! !</p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-close">Close</button>
+                  <button type="button" class="btn btn-death-reset">Reset</button>
+                </div>
+              </div>
+          </div>
+        </div>
+          <!-- 게임이 승리했을때 모달  -->
+        <div class="finish_modal hide">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title">게임 승리</h1>
+                </div>
+                <div class="modal-body">
+                  <p>걸린 시간:<span id="finish_time">00:00</span></p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-close">Close</button>
+                  <button type="button" class="btn btn-finish-reset">Reset</button>
+                </div>
+              </div>
+          </div>
+        </div>
+      
+    </section>
+  </body>
+</html>
