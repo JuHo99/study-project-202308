@@ -1,4 +1,5 @@
-@import url(/YoungheeSo/menuBar/menuBar.css);
+/* @import url(/YoungheeSo/menuBar/menuBar.css); */
+@import url(../menuBar/menuBar.css);
 
 @font-face {
     font-family: 'ONE-Mobile-POP';
@@ -95,7 +96,8 @@
 
 #content{    
     /* height: 100vh; */
-    background: url('/YoungheeSo/img/9210295.jpg') no-repeat center/cover;
+    /* background: url('/YoungheeSo/img/9210295.jpg') no-repeat center/cover; */
+    background: url('../img/9210295.jpg') no-repeat center/cover;
     margin: 0;
     display: flex; justify-content: center; align-items: center;
     flex-wrap: wrap;
@@ -142,7 +144,8 @@
     width: 55vw; height: 55vh;
     min-width: 450px; min-height: 450px;
     
-    background: url('/YoungheeSo/img/사진1.png') no-repeat center/cover;
+    /* background: url('/YoungheeSo/img/사진1.png') no-repeat center/cover; */
+    background: url('../img/사진1.png') no-repeat center/cover;
     border: 3px solid #93C6E7;
     border-radius: 15px;
 
@@ -164,7 +167,8 @@
     min-width: 100px; min-height:85px; 
 
     /* background: #FEDEFF; */
-    background: url('/YoungheeSo/img/6181861.jpg') no-repeat center/cover;
+    /* background: url('/YoungheeSo/img/6181861.jpg') no-repeat center/cover; */
+    background: url('../img/6181861.jpg') no-repeat center/cover;
 
     margin: 1px;
 
