@@ -6,7 +6,7 @@
 
 
 ## 🦁 팀원 소개 
-| <a href="https://github.com/Limseonjin"> <img src="https://avatars.githubusercontent.com/u/128454779?v=4" width="220" height="200"/> </a> | <a href="https://github.com/JuHo99"> <img src="https://avatars.githubusercontent.com/u/138633367?v=4" width="220" height="200"/> </a> |<a href="https://github.com/YoungHeeSo"> <img src="https://avatars.githubusercontent.com/u/138635849?v=4" width="220" height="200"/> </a>| <a href="https://github.com/smg0218"> <img src="https://avatars.githubusercontent.com/u/128454773?v=4" width="220" height="200"/> </a>|
+| <a href="https://github.com/Limseonjin"> <img src="https://avatars.githubusercontent.com/u/128454779?v=4" height="200"/> </a> | <a href="https://github.com/JuHo99"> <img src="https://avatars.githubusercontent.com/u/138633367?v=4" height="200"/> </a> |<a href="https://github.com/YoungHeeSo"> <img src="https://avatars.githubusercontent.com/u/138635849?v=4" height="200"/> </a>| <a href="https://github.com/smg0218"> <img src="https://avatars.githubusercontent.com/u/128454773?v=4" height="200"/> </a>|
 |:----:|:---:|:----:|:----:|
 |[임선진](https://github.com/Limseonjin)|[박주호](https://github.com/JuHo99)| [박소영](https://github.com/YoungHeeSo)  |[송민건](https://github.com/smg0218) |
 
@@ -15,9 +15,9 @@
 ## 😎사용된 언어 및 사이트
 <hr>
 
-| HTML CSS JS | 피그마(팀 디자인) | 캔바(PPT) |
-|-----------------------|---------------------|---------------------|
-| <img src="https://images.velog.io/images/gga4638/post/6d9df8cb-5086-4fa9-83d1-521fd6a2cb27/image.png" width="400" height="200"> | <img src="https://images.velog.io/images/duboo/post/cedafb12-5021-423e-a512-6d33096830f7/figma.png" width="300" height="150" > | <img src="https://static.canva.com/web/images/12487a1e0770d29351bd4ce4f87ec8fe.svg" > |
+| 깃헙 | HTML CSS JS | 피그마(팀 디자인) | 캔바(PPT) | 
+|----------|-----------------------|---------------------|---------------------|
+|<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6iQiJYD-sGEnopzv4diTNPfZWq6EHYFPRjg&usqp=CAU"  height="200">| <img src="https://images.velog.io/images/gga4638/post/6d9df8cb-5086-4fa9-83d1-521fd6a2cb27/image.png"  height="200"> | <img src="https://images.velog.io/images/duboo/post/cedafb12-5021-423e-a512-6d33096830f7/figma.png"  height="150" > | <img src="https://static.canva.com/web/images/12487a1e0770d29351bd4ce4f87ec8fe.svg" > |
 
 
 ## 🤞게임 소개
@@ -41,3 +41,6 @@
   - 친구를 찾는데 얼마나 걸릴지 시간을 재볼까요?
   - 꽃을 올바르게 정리하지 못하면 시간만 지체될거에요
   - 찾는 시간이 오래 걸리면 친구는 사라져버릴거에요
+
+## 🦋기대 효과 
+스트레스 해소 및 집중력 향상, 기억력 향상, 상식 채우기 등을 얻을 수 있습니다
